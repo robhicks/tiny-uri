@@ -1,0 +1,16 @@
+node_modules
+.DS_Store
+.monitor
+*.esproj
+*.iml
+*.ipr
+*.iws
+npm-debug.log
+nodemon.json
+coverage
+reports
+tags
+.tags*
+build
+rollup.build.css
+.reify-cache

@@ -1,0 +1,16 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/.iife.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "keywords": [&quot;awesome&quot;, &quot;library&quot;],
+  "authors": "rob@hixfamily.org",
+  "license": "MIT"
+}
