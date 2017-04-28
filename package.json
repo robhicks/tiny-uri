@@ -1,10 +1,13 @@
 {
   "name": "Uri",
   "version": "1.0.0",
-  "description": "",
+  "description": "Lightweight Javascript library for handling URLs",
   "keywords": [
-    "awesome",
-    "library"
+    "Lightweight",
+    "Javascript",
+    "library",
+    "es2015",
+    "URLs"
   ],
   "repository": "https://github.com/robhicks/Uri.git",
   "module": "dist/Uri.es.js",
