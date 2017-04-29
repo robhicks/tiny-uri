@@ -37,8 +37,7 @@ class Uri {
   }
 
   fragment(f = '') {
-    if (f !== '') return this.gs(f, '_fragment');
-    return this._fragment;
+    return this.gs(f, '_fragment');
   }
 
   gs(val, tar, fn) {
@@ -46,12 +45,11 @@ class Uri {
       this[tar] = val;
       return this;
     }
-    return fn ? fn(this[tar]) : this[tar];
+    return fn ? fn(this[tar]) : this[tar] ? this[tar] : '';
   }
 
   host(f) {
-    if (f) return this.gs(f, '_host');
-    return this._host;
+    return this.gs(f, '_host');
   }
 
   parse(uri) {
@@ -73,8 +71,7 @@ class Uri {
   }
 
   scheme(f) {
-    if (f) return this.gs(f, '_scheme');
-    return this._scheme;
+    return this.gs(f, '_scheme');
   }
 
   userInfo(f) {

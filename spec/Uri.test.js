@@ -63,4 +63,18 @@ describe('Uri', () => {
     expect(uri.scheme()).toBe('http');
   });
 
+  it('should demonstrate chaining', () => {
+    let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+    let uri = new Uri(url);
+    expect(uri.scheme().toString()).toBe('https');
+    expect(uri.host().toString()).toBe('big.example.com');
+    expect(uri.port().toString()).toBe('');
+    expect(Array.isArray(uri.path.get())).toEqual(true);
+    expect(uri.path.toString()).toEqual('path/to/file.xml');
+    expect(uri.query).toEqual(jasmine.any(Object));
+    expect(uri.query.add({foo: 'bar'}).toString()).toEqual('context=foo&credentials=bar&foo=bar')
+    expect(uri.query.add({foo: 'bar'}).merge({foo: 'bars'}).toString()).toEqual('context=foo&credentials=bar&foo=bars')
+    expect(uri.query.clear().add({foo: 'bar'}).merge({foo: 'bars'}).toString()).toEqual('foo=bars')
+  });
+
 });

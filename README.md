@@ -106,3 +106,22 @@ uri.
 console.log('query', uri.query.toString()); // hello=universe&goodby=world
 
 ```
+
+## Chaining Methods
+
+You can chain Uri, Path and Query methods within themselves. This means you cannot chain
+Uri methods from Path methods or Query methods, or Path methods from Query methods , or
+Query methods from Path methods.
+
+```Javascript
+let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+let uri = new Uri(url);
+expect(uri.scheme().toString()).toBe('https');
+expect(uri.host().toString()).toBe('big.example.com');
+expect(uri.port().toString()).toBe('');
+expect(Array.isArray(uri.path.get())).toEqual(true);
+expect(uri.path.toString()).toEqual('path/to/file.xml');
+expect(uri.query.add({foo: 'bar'}).toString()).toEqual('context=foo&credentials=bar&foo=bar')
+expect(uri.query.add({foo: 'bar'}).merge({foo: 'bars'}).toString()).toEqual('context=foo&credentials=bar&foo=bars')
+expect(uri.query.clear().add({foo: 'bar'}).merge({foo: 'bars'}).toString()).toEqual('foo=bars')
+```

@@ -11,6 +11,10 @@ export default class Path {
     return this;
   }
 
+  get() {
+    return this._path;
+  }
+
   toString() {
     return Array.isArray(this._path) ? this._path.join('/') : '';
   }
