@@ -79,14 +79,14 @@ export default class Query {
     return this;
   }
 
-  _parse(q) {
+  _parse(q = '') {
     let struct = [[], []];
     let pairs = q.split(/&|;/);
 
     for (let j = 0; j < pairs.length; j++) {
       let name, value, pair = pairs[j], nPair = pair.match(this.qRegEx);
 
-      if(typeof nPair[nPair.length -1] !== 'undefined') {
+      if(nPair && typeof nPair[nPair.length -1] !== 'undefined') {
         nPair.shift();
         for (let i = 0; i < nPair.length; i++) {
           let p = nPair[i];

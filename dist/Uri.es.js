@@ -105,6 +105,7 @@ Query.prototype.merge = function merge (obj) {
 
 Query.prototype._parse = function _parse (q) {
     var this$1 = this;
+    if ( q === void 0 ) q = '';
 
   var struct = [[], []];
   var pairs = q.split(/&|;/);
@@ -112,7 +113,7 @@ Query.prototype._parse = function _parse (q) {
   for (var j = 0; j < pairs.length; j++) {
     var name = (void 0), value = (void 0), pair = pairs[j], nPair = pair.match(this$1.qRegEx);
 
-    if(typeof nPair[nPair.length -1] !== 'undefined') {
+    if(nPair && typeof nPair[nPair.length -1] !== 'undefined') {
       nPair.shift();
       for (var i = 0; i < nPair.length; i++) {
         var p = nPair[i];

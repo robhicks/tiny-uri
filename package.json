@@ -1,6 +1,6 @@
 {
   "name": "Uri",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight Javascript library for handling URLs",
   "keywords": [
     "Lightweight",
@@ -14,7 +14,7 @@
   "scripts": {
     "build": "rollup -cw",
     "dev": "rollup -cw",
-    "jasmine": "jasmine-node spec --autotest --watch src --watch spec",
+    "jasmine": "jasmine-node spec --color --verbose --autotest --watch src --watch spec",
     "test": "jasmine-node spec"
   },
   "author": "rob@hixfamily.org",
@@ -22,6 +22,7 @@
   "devDependencies": {
     "jasmine": "^2.6.0",
     "jasmine-node": "^1.14.5",
+    "jasmine-spec-reporter": "^4.0.0",
     "nock": "^9.0.13",
     "reify": "^0.8.2",
     "rollup": "^0.41.4",
