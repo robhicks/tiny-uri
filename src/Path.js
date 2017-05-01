@@ -1,6 +1,15 @@
 export default class Path {
   constructor(f, ctx = {}) {
     Object.assign(this, ctx);
+    this._path = [];
+    return this.parse(f);
+  }
+
+  get() {
+    return this._path;
+  }
+
+  parse(f = '') {
     let path = decodeURIComponent(f);
     let split = path.split('/');
     if (Array.isArray(split)) {
@@ -11,9 +20,20 @@ export default class Path {
     return this;
   }
 
-  get() {
-    return this._path;
+  replace(f) {
+    return this.parse(f);
   }
+
+  removeFilename() {
+    this._path.splice(this._path.length - 1, 1);
+    return this;
+  }
+
+  replaceFilename(n) {
+    this._path.splice(this._path.length - 1, 1, n);
+    return this;
+  }
+
 
   toString() {
     return Array.isArray(this._path) ? this._path.join('/') : '';

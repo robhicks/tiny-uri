@@ -2,6 +2,17 @@ var Path = function Path(f, ctx) {
   if ( ctx === void 0 ) ctx = {};
 
   Object.assign(this, ctx);
+  this._path = [];
+  return this.parse(f);
+};
+
+Path.prototype.get = function get () {
+  return this._path;
+};
+
+Path.prototype.parse = function parse (f) {
+    if ( f === void 0 ) f = '';
+
   var path = decodeURIComponent(f);
   var split = path.split('/');
   if (Array.isArray(split)) {
@@ -11,6 +22,21 @@ var Path = function Path(f, ctx) {
   }
   return this;
 };
+
+Path.prototype.replace = function replace (f) {
+  return this.parse(f);
+};
+
+Path.prototype.removeFilename = function removeFilename () {
+  this._path.splice(this._path.length - 1, 1);
+  return this;
+};
+
+Path.prototype.replaceFilename = function replaceFilename (n) {
+  this._path.splice(this._path.length - 1, 1, n);
+  return this;
+};
+
 
 Path.prototype.toString = function toString () {
   return Array.isArray(this._path) ? this._path.join('/') : '';
@@ -214,8 +240,7 @@ Uri.prototype.authority = function authority (authority) {
 Uri.prototype.fragment = function fragment (f) {
     if ( f === void 0 ) f = '';
 
-  if (f !== '') { return this.gs(f, '_fragment'); }
-  return this._fragment;
+  return this.gs(f, '_fragment');
 };
 
 Uri.prototype.gs = function gs (val, tar, fn) {
@@ -223,12 +248,11 @@ Uri.prototype.gs = function gs (val, tar, fn) {
     this[tar] = val;
     return this;
   }
-  return fn ? fn(this[tar]) : this[tar];
+  return fn ? fn(this[tar]) : this[tar] ? this[tar] : '';
 };
 
 Uri.prototype.host = function host (f) {
-  if (f) { return this.gs(f, '_host'); }
-  return this._host;
+  return this.gs(f, '_host');
 };
 
 Uri.prototype.parse = function parse (uri) {
@@ -250,8 +274,7 @@ Uri.prototype.protocol = function protocol (f) {
 };
 
 Uri.prototype.scheme = function scheme (f) {
-  if (f) { return this.gs(f, '_scheme'); }
-  return this._scheme;
+  return this.gs(f, '_scheme');
 };
 
 Uri.prototype.userInfo = function userInfo (f) {
