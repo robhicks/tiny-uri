@@ -1,0 +1,2284 @@
+[
+  {
+    "__docId__": 0,
+    "kind": "file",
+    "name": "src/Path.js",
+    "content": "/**\n * Class to manage URL paths\n */\nexport default class Path {\n  /**\n   * @param {string} f - string path\n   * @param {object} ctx - context of Uri class\n   */\n  constructor(f, ctx = {}) {\n    this.ctx = ctx;\n    this._path = [];\n    return this.parse(f);\n  }\n\n  /**\n   * Append to a path\n   * @param {string} s path to append\n   * @return {instance} for chaining\n   */\n  append(s) {\n    this._path.push(s);\n    return this;\n  }\n\n  /**\n   * Delete end of path\n   * @param {integer} loc - segment of path to delete\n   * @return {instance} for chaining\n   */\n  delete(loc) {\n    if (!loc) {\n      this._path.pop();\n      return this;\n    }\n  }\n\n  /**\n   * Get the path\n   * @return {array} path as array\n   */\n  get() {\n    return this._path;\n  }\n\n  /**\n   * Parse the path part of a URl\n   * @param {string} f - string path\n   * @return {instance} for chaining\n   */\n  parse(f = '') {\n    let path = decodeURIComponent(f);\n    let split = path.split('/');\n    if (Array.isArray(split)) {\n      if(path.match(/^\\//)) split.shift();\n      if (split.length > 1 && path.match(/\\/$/)) split.pop();\n      this._path = split;\n    }\n    return this;\n  }\n\n  /**\n   * Replace part of a path\n   * @param {string} f - path replacement\n   * @param {integer} loc - location to replace\n   * @return {instance} for chaining\n   */\n  replace(f, loc) {\n    if (loc === 'file') {\n      this._path.splice(this._path.length - 1, 1, f);\n      return this;\n    } else if (Number.isInteger(loc)) {\n      this._path.splice(loc, 1, f);\n      return this;\n    }\n    return this.parse(f);\n  }\n\n  /**\n   * Get string representatio of the path or the uri\n   * @param {boolen} uri - if true return string represention of uri\n   * @return {string} path or uri as string\n   */\n  toString(uri) {\n    if (uri) return this.ctx.toString();\n    return Array.isArray(this._path) ? this._path.join('/') : '';\n  }\n}\n",
+    "static": true,
+    "longname": "src/Path.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 1,
+    "kind": "class",
+    "name": "Path",
+    "memberof": "src/Path.js",
+    "static": true,
+    "longname": "src/Path.js~Path",
+    "access": null,
+    "export": true,
+    "importPath": "Uri/src/Path.js",
+    "importStyle": "Path",
+    "description": "Class to manage URL paths",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 2,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/Path.js~Path",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Path.js~Path#constructor",
+    "access": null,
+    "description": "",
+    "lineNumber": 9,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "string path"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ctx",
+        "description": "context of Uri class"
+      }
+    ]
+  },
+  {
+    "__docId__": 3,
+    "kind": "member",
+    "name": "ctx",
+    "memberof": "src/Path.js~Path",
+    "static": false,
+    "longname": "src/Path.js~Path#ctx",
+    "access": null,
+    "description": null,
+    "lineNumber": 10,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 4,
+    "kind": "member",
+    "name": "_path",
+    "memberof": "src/Path.js~Path",
+    "static": false,
+    "longname": "src/Path.js~Path#_path",
+    "access": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 5,
+    "kind": "method",
+    "name": "append",
+    "memberof": "src/Path.js~Path",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Path.js~Path#append",
+    "access": null,
+    "description": "Append to a path",
+    "lineNumber": 20,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "s",
+        "description": "path to append"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 6,
+    "kind": "method",
+    "name": "delete",
+    "memberof": "src/Path.js~Path",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Path.js~Path#delete",
+    "access": null,
+    "description": "Delete end of path",
+    "lineNumber": 30,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "integer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "loc",
+        "description": "segment of path to delete"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 7,
+    "kind": "method",
+    "name": "get",
+    "memberof": "src/Path.js~Path",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Path.js~Path#get",
+    "access": null,
+    "description": "Get the path",
+    "lineNumber": 41,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "array"
+      ],
+      "spread": false,
+      "description": "path as array"
+    }
+  },
+  {
+    "__docId__": 8,
+    "kind": "method",
+    "name": "parse",
+    "memberof": "src/Path.js~Path",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Path.js~Path#parse",
+    "access": null,
+    "description": "Parse the path part of a URl",
+    "lineNumber": 50,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "string path"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 9,
+    "kind": "member",
+    "name": "_path",
+    "memberof": "src/Path.js~Path",
+    "static": false,
+    "longname": "src/Path.js~Path#_path",
+    "access": null,
+    "description": null,
+    "lineNumber": 56,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 10,
+    "kind": "method",
+    "name": "replace",
+    "memberof": "src/Path.js~Path",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Path.js~Path#replace",
+    "access": null,
+    "description": "Replace part of a path",
+    "lineNumber": 67,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "path replacement"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "integer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "loc",
+        "description": "location to replace"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 11,
+    "kind": "method",
+    "name": "toString",
+    "memberof": "src/Path.js~Path",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Path.js~Path#toString",
+    "access": null,
+    "description": "Get string representatio of the path or the uri",
+    "lineNumber": 83,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "boolen"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "uri",
+        "description": "if true return string represention of uri"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "path or uri as string"
+    }
+  },
+  {
+    "__docId__": 12,
+    "kind": "file",
+    "name": "src/Query.js",
+    "content": "/**\n * Class to manage query part of URL\n */\nexport default class Query {\n  /**\n   * @param {string} f - query string\n   * @param {object} ctx - context of uri instance\n   * @return {instance} for chaining\n   */\n  constructor(f, ctx = {}) {\n    Object.assign(this, ctx);\n    this.ctx = ctx;\n    this.set(f);\n    return this;\n  }\n\n  /**\n   * Add a query string\n   * @param {object} obj {name: 'value'}\n   * @return {instance} for chaining\n   */\n  add(obj = {}) {\n    this._query = this._convert(obj, this._query[0], this._query[1]);\n    return this;\n  }\n\n  /**\n   * Remove the query string\n   * @return {instance} for chaining\n   */\n  clear() {\n    this._query = [[], []];\n    return this;\n  }\n\n  _convert(obj, p = [], q = []) {\n    for (let key in obj) {\n      if (Array.isArray(obj[key])) {\n        for (let i = 0; i < obj[key].length; i++) {\n          let val = obj[key][i];\n          p.push(key);\n          q.push(val);\n        }\n      } else if(obj[key]) {\n        p.push(key);\n        q.push(obj[key]);\n      }\n    }\n    return [p, q];\n  }\n\n  /**\n   * Get the query string\n   * @return {array} representing the query string\n   */\n  get() {\n    let dict = {};\n    let obj = this._query;\n\n    for (let i = 0; i < obj[0].length; i++) {\n      let k = obj[0][i];\n      let v = obj[1][i];\n      if (dict[k]) {\n        dict[k].push(v);\n      } else {\n        dict[k] = [v];\n      }\n    }\n    return dict;\n  }\n\n  /**\n   * Merge with the query string - replaces query string values if they exist\n   * @param {object} obj {name: 'value'}\n   * @return {instance} for chaining\n   */\n  merge(obj) {\n    let p = this._query[0];\n    let q = this._query[1];\n    for (let key in obj) {\n      let kset = false;\n\n      for(let i=0; i < p.length; i++) {\n        let xKey = p[i];\n        if(key === xKey) {\n          if(kset) {\n            p.splice(i,1);\n            q.splice(i,1);\n            continue;\n          }\n          if (Array.isArray(obj[key])) {\n            q[i] = obj[key].shift();\n          } else if (typeof obj[key] === 'undefined' || obj[key] === null) {\n            p.splice(i, 1);\n            q.splice(i, 1);\n            delete obj[key];\n          } else {\n            q[i] = obj[key];\n            delete obj[key];\n          }\n          kset = true;\n        }\n      }\n    }\n    this._query = this._convert(obj, this._query[0], this._query[1]);\n    return this;\n  }\n\n  _parse(q = '') {\n    let struct = [[], []];\n    let pairs = q.split(/&|;/);\n\n    for (let j = 0; j < pairs.length; j++) {\n      let name, value, pair = pairs[j], nPair = pair.match(this.qRegEx);\n\n      if(nPair && typeof nPair[nPair.length -1] !== 'undefined') {\n        nPair.shift();\n        for (let i = 0; i < nPair.length; i++) {\n          let p = nPair[i];\n          struct[i].push(decodeURIComponent(p.replace('+', ' ', 'g')));\n        }\n      }\n    }\n    return struct;\n  }\n\n  /**\n   * Set with the query string - replaces existing query string\n   * @param {obj} or {string} ...q\n   * @return {instance} for chaining\n   */\n  set(...q) {\n    let args = [...q];\n\n    if (args.length === 1) {\n      if (typeof args[0] === 'object') {\n        this._query = this._convert(args[0]);\n      } else {\n        this._query = this._parse(args[0]);\n      }\n    } else if (args.length === 0) {\n      this.clear();\n    } else {\n      let obj = {};\n      obj[args[0]] = args[1];\n      this.merge(obj);\n    }\n    return this;\n  }\n\n  /**\n   * Get string representatio of the path or the uri\n   * @param {boolen} uri - if true return string represention of uri\n   * @return {string} query or uri as string\n   */\n  toString(uri) {\n    if (uri) return this.ctx.toString();\n    let pairs = [];\n    let n = this._query[0];\n    let v = this._query[1];\n\n    for(let i = 0; i < n.length; i++) {\n      pairs.push(encodeURIComponent(n[i]) + '=' + encodeURIComponent(v[i]));\n    }\n    return pairs.join('&');\n   }\n}\n",
+    "static": true,
+    "longname": "src/Query.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 13,
+    "kind": "class",
+    "name": "Query",
+    "memberof": "src/Query.js",
+    "static": true,
+    "longname": "src/Query.js~Query",
+    "access": null,
+    "export": true,
+    "importPath": "Uri/src/Query.js",
+    "importStyle": "Query",
+    "description": "Class to manage query part of URL",
+    "lineNumber": 4,
+    "interface": false
+  },
+  {
+    "__docId__": 14,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/Query.js~Query",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Query.js~Query#constructor",
+    "access": null,
+    "description": "",
+    "lineNumber": 10,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "query string"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "ctx",
+        "description": "context of uri instance"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 15,
+    "kind": "member",
+    "name": "ctx",
+    "memberof": "src/Query.js~Query",
+    "static": false,
+    "longname": "src/Query.js~Query#ctx",
+    "access": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 16,
+    "kind": "method",
+    "name": "add",
+    "memberof": "src/Query.js~Query",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Query.js~Query#add",
+    "access": null,
+    "description": "Add a query string",
+    "lineNumber": 22,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "obj",
+        "description": "{name: 'value'}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 17,
+    "kind": "member",
+    "name": "_query",
+    "memberof": "src/Query.js~Query",
+    "static": false,
+    "longname": "src/Query.js~Query#_query",
+    "access": null,
+    "description": null,
+    "lineNumber": 23,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 18,
+    "kind": "method",
+    "name": "clear",
+    "memberof": "src/Query.js~Query",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Query.js~Query#clear",
+    "access": null,
+    "description": "Remove the query string",
+    "lineNumber": 31,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 19,
+    "kind": "member",
+    "name": "_query",
+    "memberof": "src/Query.js~Query",
+    "static": false,
+    "longname": "src/Query.js~Query#_query",
+    "access": null,
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "undefined[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 20,
+    "kind": "method",
+    "name": "_convert",
+    "memberof": "src/Query.js~Query",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Query.js~Query#_convert",
+    "access": null,
+    "description": null,
+    "lineNumber": 36,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "obj",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "p",
+        "optional": true,
+        "types": [
+          "*[]"
+        ],
+        "defaultRaw": [],
+        "defaultValue": "[]"
+      },
+      {
+        "name": "q",
+        "optional": true,
+        "types": [
+          "*[]"
+        ],
+        "defaultRaw": [],
+        "defaultValue": "[]"
+      }
+    ],
+    "return": {
+      "types": [
+        "undefined[]"
+      ]
+    }
+  },
+  {
+    "__docId__": 21,
+    "kind": "method",
+    "name": "get",
+    "memberof": "src/Query.js~Query",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Query.js~Query#get",
+    "access": null,
+    "description": "Get the query string",
+    "lineNumber": 56,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "array"
+      ],
+      "spread": false,
+      "description": "representing the query string"
+    }
+  },
+  {
+    "__docId__": 22,
+    "kind": "method",
+    "name": "merge",
+    "memberof": "src/Query.js~Query",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Query.js~Query#merge",
+    "access": null,
+    "description": "Merge with the query string - replaces query string values if they exist",
+    "lineNumber": 77,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "obj",
+        "description": "{name: 'value'}"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 23,
+    "kind": "member",
+    "name": "_query",
+    "memberof": "src/Query.js~Query",
+    "static": false,
+    "longname": "src/Query.js~Query#_query",
+    "access": null,
+    "description": null,
+    "lineNumber": 105,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 24,
+    "kind": "method",
+    "name": "_parse",
+    "memberof": "src/Query.js~Query",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Query.js~Query#_parse",
+    "access": null,
+    "description": null,
+    "lineNumber": 109,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "q",
+        "optional": true,
+        "types": [
+          "string"
+        ],
+        "defaultRaw": "",
+        "defaultValue": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 25,
+    "kind": "method",
+    "name": "set",
+    "memberof": "src/Query.js~Query",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Query.js~Query#set",
+    "access": null,
+    "description": "Set with the query string - replaces existing query string",
+    "lineNumber": 132,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "obj"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "or",
+        "description": "{string} ...q"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 26,
+    "kind": "member",
+    "name": "_query",
+    "memberof": "src/Query.js~Query",
+    "static": false,
+    "longname": "src/Query.js~Query#_query",
+    "access": null,
+    "description": null,
+    "lineNumber": 137,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 27,
+    "kind": "member",
+    "name": "_query",
+    "memberof": "src/Query.js~Query",
+    "static": false,
+    "longname": "src/Query.js~Query#_query",
+    "access": null,
+    "description": null,
+    "lineNumber": 139,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 28,
+    "kind": "method",
+    "name": "toString",
+    "memberof": "src/Query.js~Query",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Query.js~Query#toString",
+    "access": null,
+    "description": "Get string representatio of the path or the uri",
+    "lineNumber": 156,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "boolen"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "uri",
+        "description": "if true return string represention of uri"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "query or uri as string"
+    }
+  },
+  {
+    "__docId__": 29,
+    "kind": "file",
+    "name": "src/StringBuilder.js",
+    "content": "\n/**\n * Class to make it easier to build strings\n */\nexport default class StringBuilder {\n  /**\n   * @param {string} string - starting string (optional)\n   * @return {instance} for chaining\n   */\n  constructor(string) {\n    if (!string || typeof string === 'undefined') this.string = String(\"\");\n    else this.string = String(string);\n  }\n\n  /**\n   * Return full string\n   * @return {string} assembled string\n   */\n  toString() {\n    return this.string;\n  }\n\n  /**\n   * Append a string to an existing string\n   * @param {string} val - string to be appended\n   * @return {instance} for chaining\n   */\n  append(val) {\n    this.string += val;\n    return this;\n  }\n\n  /**\n   * Insert a string to an existing string\n   * @param {integer} pos - position at which to insert value\n   * @param {string} val - string to be inserted\n   * @return {instance} for chaining\n   */\n  insert(pos, val) {\n    let length = this.string.length;\n    let left = this.string.slice(0, pos);\n    let right = this.string.slice(pos);\n    this.string = left + val + right;\n    return this;\n  }\n}\n",
+    "static": true,
+    "longname": "src/StringBuilder.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 30,
+    "kind": "class",
+    "name": "StringBuilder",
+    "memberof": "src/StringBuilder.js",
+    "static": true,
+    "longname": "src/StringBuilder.js~StringBuilder",
+    "access": null,
+    "export": true,
+    "importPath": "Uri/src/StringBuilder.js",
+    "importStyle": "StringBuilder",
+    "description": "Class to make it easier to build strings",
+    "lineNumber": 5,
+    "interface": false
+  },
+  {
+    "__docId__": 31,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/StringBuilder.js~StringBuilder",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/StringBuilder.js~StringBuilder#constructor",
+    "access": null,
+    "description": "",
+    "lineNumber": 10,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "string",
+        "description": "starting string (optional)"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 32,
+    "kind": "member",
+    "name": "string",
+    "memberof": "src/StringBuilder.js~StringBuilder",
+    "static": false,
+    "longname": "src/StringBuilder.js~StringBuilder#string",
+    "access": null,
+    "description": null,
+    "lineNumber": 11,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 33,
+    "kind": "member",
+    "name": "string",
+    "memberof": "src/StringBuilder.js~StringBuilder",
+    "static": false,
+    "longname": "src/StringBuilder.js~StringBuilder#string",
+    "access": null,
+    "description": null,
+    "lineNumber": 12,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 34,
+    "kind": "method",
+    "name": "toString",
+    "memberof": "src/StringBuilder.js~StringBuilder",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/StringBuilder.js~StringBuilder#toString",
+    "access": null,
+    "description": "Return full string",
+    "lineNumber": 19,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "assembled string"
+    }
+  },
+  {
+    "__docId__": 35,
+    "kind": "method",
+    "name": "append",
+    "memberof": "src/StringBuilder.js~StringBuilder",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/StringBuilder.js~StringBuilder#append",
+    "access": null,
+    "description": "Append a string to an existing string",
+    "lineNumber": 28,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "val",
+        "description": "string to be appended"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 36,
+    "kind": "member",
+    "name": "string",
+    "memberof": "src/StringBuilder.js~StringBuilder",
+    "static": false,
+    "longname": "src/StringBuilder.js~StringBuilder#string",
+    "access": null,
+    "description": null,
+    "lineNumber": 29,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 37,
+    "kind": "method",
+    "name": "insert",
+    "memberof": "src/StringBuilder.js~StringBuilder",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/StringBuilder.js~StringBuilder#insert",
+    "access": null,
+    "description": "Insert a string to an existing string",
+    "lineNumber": 39,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "integer"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "pos",
+        "description": "position at which to insert value"
+      },
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "val",
+        "description": "string to be inserted"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "for chaining"
+    }
+  },
+  {
+    "__docId__": 38,
+    "kind": "member",
+    "name": "string",
+    "memberof": "src/StringBuilder.js~StringBuilder",
+    "static": false,
+    "longname": "src/StringBuilder.js~StringBuilder#string",
+    "access": null,
+    "description": null,
+    "lineNumber": 43,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 39,
+    "kind": "file",
+    "name": "src/Uri.js",
+    "content": "import Path from './Path.js';\nimport Query from './Query.js';\nimport StringBuilder from './StringBuilder.js';\n\n/**\n * Uri - manipulate URLs\n */\nclass Uri {\n  /**\n   * @param {string} uri - a URI string\n   * @return {instance} - return Uri instance for chaining\n   */\n  constructor(uri) {\n    this.uriRegEx = /^(([^:\\/?#]+):)?(\\/\\/([^\\/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?/;\n    this.authRegEx = /^([^\\@]+)\\@/;\n    this.portRegEx = /:(\\d+)$/;\n    this.qRegEx = /^([^=]+)(?:=(.*))?$/;\n    return this.parse(uri);\n  }\n\n  /**\n   * @param {string} authority - username password part of URL\n   * @return {instance} - returns Uri instance for chaining\n   */\n  authority(authority = '') {\n    if (authority !== '') {\n      let auth = authority.match(this.authRegEx);\n      this._authority = authority;\n      if (auth) {\n        authority = authority.replace(this.authRegEx, '');\n        this.userInfo(auth[1]);\n      }\n      let port = authority.match(this.portRegEx);\n      if(port) {\n        authority = authority.replace(this.portRegEx, '');\n        this.port(port[1]);\n      }\n      this.host(authority);\n      return this;\n    } else {\n      let userinfo = this.userInfo();\n      if (userinfo) authority = userinfo + '@';\n      authority += this.host();\n      let port = this.port();\n      if (port) authority += ':' + port;\n      return authority;\n    }\n  }\n\n  /**\n   * @param {string} f - string representation of fragment\n   * @return {instance} - returns Uri instance for chaining\n   */\n  fragment(f = '') {\n    return this.gs(f, '_fragment');\n  }\n\n  gs(val, tar, fn) {\n    if (typeof val !== 'undefined') {\n      this[tar] = val;\n      return this;\n    }\n    return fn ? fn(this[tar]) : this[tar] ? this[tar] : '';\n  }\n\n  /**\n   * @param {string} f - string representation of host\n   * @return {instance} - returns Uri instance for chaining\n   */\n  host(f) {\n    return this.gs(f, '_host');\n  }\n\n  /**\n   * @param {string} uri - URL\n   * @return {instance} - returns Uri instance for chaining\n   */\n  parse(uri) {\n    let f = uri ? uri.match(this.uriRegEx) : [];\n    this.path = new Path(f[5], this);\n    this.scheme(f[2]);\n    this.authority(f[4]);\n    this.fragment(f[9]);\n    this.query = new Query(f[7], this);\n    return this;\n  }\n\n  /**\n   * @param {string} f - port part of URL\n   * @return {instance} - returns Uri instance for chaining\n   */\n  port(f) {\n    return this.gs(f, '_port');\n  }\n\n  /**\n   * @param {string} f - protocol part of URL\n   * @return {instance} - returns Uri instance for chaining\n   */\n  protocol(f) {\n    return this.scheme.toLowerCase();\n  }\n\n  /**\n   * @param {string} f - protocol scheme\n   * @return {instance} - returns Uri instance for chaining\n   */\n  scheme(f) {\n    return this.gs(f, '_scheme');\n  }\n\n  /**\n   * @param {string} f - user info part of URL\n   * @return {instance} - returns Uri instance for chaining\n   */\n  userInfo(f) {\n    return this.gs(f, '_userinfo', (r) => {\n      return r ? encodeURI(r) : r;\n    });\n  }\n\n  /**\n   * @return {string} - returns string URL\n   */\n  toString() {\n    let q = this.query.toString();\n    let p = this.path.toString();\n    let f = this.fragment();\n    let s = this.scheme();\n    let str = new StringBuilder();\n    return str.append(s ? s + '://' : \"\").append(this.authority()).append('/').append(p).append(q !== '' ? '?' : '').append(q).toString();\n  }\n\n\n}\n\nexport default Uri;\n",
+    "static": true,
+    "longname": "src/Uri.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 40,
+    "kind": "class",
+    "name": "Uri",
+    "memberof": "src/Uri.js",
+    "static": true,
+    "longname": "src/Uri.js~Uri",
+    "access": null,
+    "export": true,
+    "importPath": "Uri/src/Uri.js",
+    "importStyle": "Uri",
+    "description": "Uri - manipulate URLs",
+    "lineNumber": 8,
+    "interface": false
+  },
+  {
+    "__docId__": 41,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "src/Uri.js~Uri",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Uri.js~Uri#constructor",
+    "access": null,
+    "description": "",
+    "lineNumber": 13,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "uri",
+        "description": "a URI string"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "return Uri instance for chaining"
+    }
+  },
+  {
+    "__docId__": 42,
+    "kind": "member",
+    "name": "uriRegEx",
+    "memberof": "src/Uri.js~Uri",
+    "static": false,
+    "longname": "src/Uri.js~Uri#uriRegEx",
+    "access": null,
+    "description": null,
+    "lineNumber": 14,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "undefined"
+      ]
+    }
+  },
+  {
+    "__docId__": 43,
+    "kind": "member",
+    "name": "authRegEx",
+    "memberof": "src/Uri.js~Uri",
+    "static": false,
+    "longname": "src/Uri.js~Uri#authRegEx",
+    "access": null,
+    "description": null,
+    "lineNumber": 15,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "undefined"
+      ]
+    }
+  },
+  {
+    "__docId__": 44,
+    "kind": "member",
+    "name": "portRegEx",
+    "memberof": "src/Uri.js~Uri",
+    "static": false,
+    "longname": "src/Uri.js~Uri#portRegEx",
+    "access": null,
+    "description": null,
+    "lineNumber": 16,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "undefined"
+      ]
+    }
+  },
+  {
+    "__docId__": 45,
+    "kind": "member",
+    "name": "qRegEx",
+    "memberof": "src/Uri.js~Uri",
+    "static": false,
+    "longname": "src/Uri.js~Uri#qRegEx",
+    "access": null,
+    "description": null,
+    "lineNumber": 17,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "undefined"
+      ]
+    }
+  },
+  {
+    "__docId__": 46,
+    "kind": "method",
+    "name": "authority",
+    "memberof": "src/Uri.js~Uri",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Uri.js~Uri#authority",
+    "access": null,
+    "description": "",
+    "lineNumber": 25,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "authority",
+        "description": "username password part of URL"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "returns Uri instance for chaining"
+    }
+  },
+  {
+    "__docId__": 47,
+    "kind": "member",
+    "name": "_authority",
+    "memberof": "src/Uri.js~Uri",
+    "static": false,
+    "longname": "src/Uri.js~Uri#_authority",
+    "access": null,
+    "description": null,
+    "lineNumber": 28,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 48,
+    "kind": "method",
+    "name": "fragment",
+    "memberof": "src/Uri.js~Uri",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Uri.js~Uri#fragment",
+    "access": null,
+    "description": "",
+    "lineNumber": 54,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "string representation of fragment"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "returns Uri instance for chaining"
+    }
+  },
+  {
+    "__docId__": 49,
+    "kind": "method",
+    "name": "gs",
+    "memberof": "src/Uri.js~Uri",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Uri.js~Uri#gs",
+    "access": null,
+    "description": null,
+    "lineNumber": 58,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "params": [
+      {
+        "name": "val",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "tar",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "fn",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 50,
+    "kind": "member",
+    "name": "[tar]",
+    "memberof": "src/Uri.js~Uri",
+    "static": false,
+    "longname": "src/Uri.js~Uri#[tar]",
+    "access": null,
+    "description": null,
+    "lineNumber": 60,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 51,
+    "kind": "method",
+    "name": "host",
+    "memberof": "src/Uri.js~Uri",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Uri.js~Uri#host",
+    "access": null,
+    "description": "",
+    "lineNumber": 70,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "string representation of host"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "returns Uri instance for chaining"
+    }
+  },
+  {
+    "__docId__": 52,
+    "kind": "method",
+    "name": "parse",
+    "memberof": "src/Uri.js~Uri",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Uri.js~Uri#parse",
+    "access": null,
+    "description": "",
+    "lineNumber": 78,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "uri",
+        "description": "URL"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "returns Uri instance for chaining"
+    }
+  },
+  {
+    "__docId__": 53,
+    "kind": "member",
+    "name": "path",
+    "memberof": "src/Uri.js~Uri",
+    "static": false,
+    "longname": "src/Uri.js~Uri#path",
+    "access": null,
+    "description": null,
+    "lineNumber": 80,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 54,
+    "kind": "member",
+    "name": "query",
+    "memberof": "src/Uri.js~Uri",
+    "static": false,
+    "longname": "src/Uri.js~Uri#query",
+    "access": null,
+    "description": null,
+    "lineNumber": 84,
+    "undocument": true,
+    "unknown": [
+      {
+        "tagName": "@_undocument",
+        "tagValue": ""
+      }
+    ],
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "__docId__": 55,
+    "kind": "method",
+    "name": "port",
+    "memberof": "src/Uri.js~Uri",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Uri.js~Uri#port",
+    "access": null,
+    "description": "",
+    "lineNumber": 92,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "port part of URL"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "returns Uri instance for chaining"
+    }
+  },
+  {
+    "__docId__": 56,
+    "kind": "method",
+    "name": "protocol",
+    "memberof": "src/Uri.js~Uri",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Uri.js~Uri#protocol",
+    "access": null,
+    "description": "",
+    "lineNumber": 100,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "protocol part of URL"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "returns Uri instance for chaining"
+    }
+  },
+  {
+    "__docId__": 57,
+    "kind": "method",
+    "name": "scheme",
+    "memberof": "src/Uri.js~Uri",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Uri.js~Uri#scheme",
+    "access": null,
+    "description": "",
+    "lineNumber": 108,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "protocol scheme"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "returns Uri instance for chaining"
+    }
+  },
+  {
+    "__docId__": 58,
+    "kind": "method",
+    "name": "userInfo",
+    "memberof": "src/Uri.js~Uri",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Uri.js~Uri#userInfo",
+    "access": null,
+    "description": "",
+    "lineNumber": 116,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "f",
+        "description": "user info part of URL"
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "instance"
+      ],
+      "spread": false,
+      "description": "returns Uri instance for chaining"
+    }
+  },
+  {
+    "__docId__": 59,
+    "kind": "method",
+    "name": "toString",
+    "memberof": "src/Uri.js~Uri",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "src/Uri.js~Uri#toString",
+    "access": null,
+    "description": "",
+    "lineNumber": 125,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "string"
+      ],
+      "spread": false,
+      "description": "returns string URL"
+    }
+  },
+  {
+    "__docId__": 61,
+    "kind": "external",
+    "name": "Infinity",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 62,
+    "kind": "external",
+    "name": "NaN",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 63,
+    "kind": "external",
+    "name": "undefined",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~undefined",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 64,
+    "kind": "external",
+    "name": "null",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~null",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 65,
+    "kind": "external",
+    "name": "Object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 66,
+    "kind": "external",
+    "name": "object",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~object",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 67,
+    "kind": "external",
+    "name": "Function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 68,
+    "kind": "external",
+    "name": "function",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~function",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 69,
+    "kind": "external",
+    "name": "Boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 70,
+    "kind": "external",
+    "name": "boolean",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 71,
+    "kind": "external",
+    "name": "Symbol",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 72,
+    "kind": "external",
+    "name": "Error",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 73,
+    "kind": "external",
+    "name": "EvalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 74,
+    "kind": "external",
+    "name": "InternalError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 75,
+    "kind": "external",
+    "name": "RangeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 76,
+    "kind": "external",
+    "name": "ReferenceError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 77,
+    "kind": "external",
+    "name": "SyntaxError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 78,
+    "kind": "external",
+    "name": "TypeError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 79,
+    "kind": "external",
+    "name": "URIError",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 80,
+    "kind": "external",
+    "name": "Number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 81,
+    "kind": "external",
+    "name": "number",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~number",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 82,
+    "kind": "external",
+    "name": "Date",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 83,
+    "kind": "external",
+    "name": "String",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~String",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 84,
+    "kind": "external",
+    "name": "string",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~string",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 85,
+    "kind": "external",
+    "name": "RegExp",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 86,
+    "kind": "external",
+    "name": "Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 87,
+    "kind": "external",
+    "name": "Int8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 88,
+    "kind": "external",
+    "name": "Uint8Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 89,
+    "kind": "external",
+    "name": "Uint8ClampedArray",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 90,
+    "kind": "external",
+    "name": "Int16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 91,
+    "kind": "external",
+    "name": "Uint16Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 92,
+    "kind": "external",
+    "name": "Int32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 93,
+    "kind": "external",
+    "name": "Uint32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 94,
+    "kind": "external",
+    "name": "Float32Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 95,
+    "kind": "external",
+    "name": "Float64Array",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 96,
+    "kind": "external",
+    "name": "Map",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 97,
+    "kind": "external",
+    "name": "Set",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 98,
+    "kind": "external",
+    "name": "WeakMap",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 99,
+    "kind": "external",
+    "name": "WeakSet",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 100,
+    "kind": "external",
+    "name": "ArrayBuffer",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 101,
+    "kind": "external",
+    "name": "DataView",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 102,
+    "kind": "external",
+    "name": "JSON",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 103,
+    "kind": "external",
+    "name": "Promise",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 104,
+    "kind": "external",
+    "name": "Generator",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 105,
+    "kind": "external",
+    "name": "GeneratorFunction",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 106,
+    "kind": "external",
+    "name": "Reflect",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 107,
+    "kind": "external",
+    "name": "Proxy",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
+    "memberof": "BuiltinExternal/ECMAScriptExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "access": null,
+    "description": "",
+    "lineNumber": 193,
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 109,
+    "kind": "external",
+    "name": "CanvasRenderingContext2D",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 110,
+    "kind": "external",
+    "name": "DocumentFragment",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 111,
+    "kind": "external",
+    "name": "Element",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Element",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Element",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 112,
+    "kind": "external",
+    "name": "Event",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Event",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Event",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 113,
+    "kind": "external",
+    "name": "Node",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/Node",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~Node",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 114,
+    "kind": "external",
+    "name": "NodeList",
+    "externalLink": "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~NodeList",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 115,
+    "kind": "external",
+    "name": "XMLHttpRequest",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "access": null,
+    "description": "",
+    "builtinExternal": true
+  },
+  {
+    "__docId__": 116,
+    "kind": "external",
+    "name": "AudioContext",
+    "externalLink": "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
+    "memberof": "BuiltinExternal/WebAPIExternal.js",
+    "static": true,
+    "longname": "BuiltinExternal/WebAPIExternal.js~AudioContext",
+    "access": null,
+    "description": "",
+    "lineNumber": 34,
+    "builtinExternal": true
+  }
+]

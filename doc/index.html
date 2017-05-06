@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl">
+  <title data-ice="title">API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/robhicks/Uri.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Path.js~Path.html">Path</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Query.js~Query.html">Query</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/StringBuilder.js~StringBuilder.html">StringBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Uri.js~Uri.html">Uri</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="uri">Uri</h1>
+<p>Uri is yet another Javascript library for working with URLs. It offers a (fluent interface)[<a href="https://en.wikipedia.org/wiki/Fluent_interface">https://en.wikipedia.org/wiki/Fluent_interface</a>],
+method chaining, and sensible means of manipulating Url parts and a file size of less than 2K, gzipped.</p>
+<h1 id="installation">Installation</h1>
+<pre><code class="lang-shell"><code class="source-code prettyprint">npm install https://github.com/robhicks/Uri.git
+
+# or
+
+yarn add https://github.com/robhicks/Uri.git</code>
+</code></pre>
+<h1 id="use">Use</h1>
+<p>You can use the library in the browser or on NodeJs.</p>
+<p>In the browser you can load dist/Uri.iife.js in
+a script tag, or if you are using an es6 aware bundler like RollupJs, you can import it into your
+entry file.</p>
+<p>In NodeJs, require it as usual.</p>
+<h1 id="examples">Examples</h1>
+<h2 id="getting-url-parts-">Getting URL parts:</h2>
+<pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new Uri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+
+console.log(&apos;scheme&apos;, uri.scheme()); // &apos;http&apos;
+console.log(&apos;host&apos;, uri.host()); // &apos;example.org&apos;
+console.log(&apos;path&apos;, uri.path.toString()); // /path/to/foo/index.html
+console.log(&apos;query&apos;, uri.query.toString()); // hello=world</code>
+</code></pre>
+<h2 id="manipulating-url-parts-">Manipulating URL parts:</h2>
+<pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new Uri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+
+uri
+  .scheme(&apos;https&apos;)
+  .host(&apos;example.com&apos;)
+  .path.set(&apos;path/to/bar/index.html&apos;);
+
+console.log(&apos;scheme&apos;, uri.scheme()); // &apos;https&apos;
+console.log(&apos;host&apos;, uri.host()); // &apos;example.com&apos;
+console.log(&apos;path&apos;, uri.path.toString()); // /path/to/bar/index.html
+console.log(&apos;query&apos;, uri.query.toString()); // hello=world</code>
+</code></pre>
+<h2 id="manipulating-query-strings">Manipulating query strings</h2>
+<pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new Uri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+
+console.log(&apos;query&apos;, uri.query.toString()); // hello=world</code>
+</code></pre>
+<h3 id="setting-the-query-string">Setting the query string</h3>
+<pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new Uri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+
+uri.path.set({goodby: &apos;world&apos;});
+
+console.log(&apos;query&apos;, uri.query.toString()); // goodby=world</code>
+</code></pre>
+<h3 id="clearing-the-query-string">Clearing the query string</h3>
+<pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new Uri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+
+uri.path.clear();
+
+console.log(&apos;query&apos;, uri.query.toString()); //</code>
+</code></pre>
+<h3 id="adding-to-the-query-string">Adding to the query string</h3>
+<pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new Uri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+
+uri.path.add({goodby: &apos;world&apos;});
+
+console.log(&apos;query&apos;, uri.query.toString()); // hello=world&amp;goodby=world</code>
+</code></pre>
+<h3 id="merging-the-query-string">Merging the query string</h3>
+<pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new Uri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+
+uri.
+  path.add({goodby: &apos;world&apos;})
+  path.merge({hello: &apos;universe&apos;})
+
+console.log(&apos;query&apos;, uri.query.toString()); // hello=universe&amp;goodby=world</code>
+</code></pre>
+<h2 id="chaining-methods">Chaining Methods</h2>
+<p>You can chain Uri, Path and Query methods within themselves. This means you cannot chain
+Uri methods from Path methods or Query methods, or Path methods from Query methods , or
+Query methods from Path methods.</p>
+<pre><code class="lang-Javascript"><code class="source-code prettyprint">let url = &apos;https://user:pass@big.example.com/path/to/file.xml?context=foo&amp;credentials=bar&apos;;
+let uri = new Uri(url);
+expect(uri.scheme().toString()).toBe(&apos;https&apos;);
+expect(uri.host().toString()).toBe(&apos;big.example.com&apos;);
+expect(uri.port().toString()).toBe(&apos;&apos;);
+expect(Array.isArray(uri.path.get())).toEqual(true);
+expect(uri.path.toString()).toEqual(&apos;path/to/file.xml&apos;);
+expect(uri.query.add({foo: &apos;bar&apos;}).toString()).toEqual(&apos;context=foo&amp;credentials=bar&amp;foo=bar&apos;)
+expect(uri.query.add({foo: &apos;bar&apos;}).merge({foo: &apos;bars&apos;}).toString()).toEqual(&apos;context=foo&amp;credentials=bar&amp;foo=bars&apos;)
+expect(uri.query.clear().add({foo: &apos;bar&apos;}).merge({foo: &apos;bars&apos;}).toString()).toEqual(&apos;foo=bars&apos;)</code>
+</code></pre>
+</div>
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

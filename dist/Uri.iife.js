@@ -1,6 +1,9 @@
 var Uri = (function () {
 'use strict';
 
+/**
+ * Class to manage URL paths
+ */
 var Path = function Path(f, ctx) {
   if ( ctx === void 0 ) ctx = {};
 
@@ -9,11 +12,21 @@ var Path = function Path(f, ctx) {
   return this.parse(f);
 };
 
+/**
+ * Append to a path
+ * @param {string} s path to append
+ * @return {instance} for chaining
+ */
 Path.prototype.append = function append (s) {
   this._path.push(s);
   return this;
 };
 
+/**
+ * Delete end of path
+ * @param {integer} loc - segment of path to delete
+ * @return {instance} for chaining
+ */
 Path.prototype.delete = function delete$1 (loc) {
   if (!loc) {
     this._path.pop();
@@ -21,10 +34,19 @@ Path.prototype.delete = function delete$1 (loc) {
   }
 };
 
+/**
+ * Get the path
+ * @return {array} path as array
+ */
 Path.prototype.get = function get () {
   return this._path;
 };
 
+/**
+ * Parse the path part of a URl
+ * @param {string} f - string path
+ * @return {instance} for chaining
+ */
 Path.prototype.parse = function parse (f) {
     if ( f === void 0 ) f = '';
 
@@ -38,6 +60,12 @@ Path.prototype.parse = function parse (f) {
   return this;
 };
 
+/**
+ * Replace part of a path
+ * @param {string} f - path replacement
+ * @param {integer} loc - location to replace
+ * @return {instance} for chaining
+ */
 Path.prototype.replace = function replace (f, loc) {
   if (loc === 'file') {
     this._path.splice(this._path.length - 1, 1, f);
@@ -49,14 +77,19 @@ Path.prototype.replace = function replace (f, loc) {
   return this.parse(f);
 };
 
-Path.prototype.uriToString = function uriToString () {
-  return this.ctx.toString();
-};
-
-Path.prototype.toString = function toString () {
+/**
+ * Get string representatio of the path or the uri
+ * @param {boolen} uri - if true return string represention of uri
+ * @return {string} path or uri as string
+ */
+Path.prototype.toString = function toString (uri) {
+  if (uri) { return this.ctx.toString(); }
   return Array.isArray(this._path) ? this._path.join('/') : '';
 };
 
+/**
+ * Class to manage query part of URL
+ */
 var Query = function Query(f, ctx) {
   if ( ctx === void 0 ) ctx = {};
 
@@ -66,6 +99,11 @@ var Query = function Query(f, ctx) {
   return this;
 };
 
+/**
+ * Add a query string
+ * @param {object} obj {name: 'value'}
+ * @return {instance} for chaining
+ */
 Query.prototype.add = function add (obj) {
     if ( obj === void 0 ) obj = {};
 
@@ -73,6 +111,10 @@ Query.prototype.add = function add (obj) {
   return this;
 };
 
+/**
+ * Remove the query string
+ * @return {instance} for chaining
+ */
 Query.prototype.clear = function clear () {
   this._query = [[], []];
   return this;
@@ -97,6 +139,10 @@ Query.prototype._convert = function _convert (obj, p, q) {
   return [p, q];
 };
 
+/**
+ * Get the query string
+ * @return {array} representing the query string
+ */
 Query.prototype.get = function get () {
   var dict = {};
   var obj = this._query;
@@ -113,6 +159,11 @@ Query.prototype.get = function get () {
   return dict;
 };
 
+/**
+ * Merge with the query string - replaces query string values if they exist
+ * @param {object} obj {name: 'value'}
+ * @return {instance} for chaining
+ */
 Query.prototype.merge = function merge (obj) {
   var p = this._query[0];
   var q = this._query[1];
@@ -166,6 +217,11 @@ Query.prototype._parse = function _parse (q) {
   return struct;
 };
 
+/**
+ * Set with the query string - replaces existing query string
+ * @param {obj} or {string} ...q
+ * @return {instance} for chaining
+ */
 Query.prototype.set = function set () {
     var q = [], len = arguments.length;
     while ( len-- ) q[ len ] = arguments[ len ];
@@ -188,7 +244,13 @@ Query.prototype.set = function set () {
   return this;
 };
 
-Query.prototype.toString = function toString () {
+/**
+ * Get string representatio of the path or the uri
+ * @param {boolen} uri - if true return string represention of uri
+ * @return {string} query or uri as string
+ */
+Query.prototype.toString = function toString (uri) {
+  if (uri) { return this.ctx.toString(); }
   var pairs = [];
   var n = this._query[0];
   var v = this._query[1];
@@ -199,24 +261,41 @@ Query.prototype.toString = function toString () {
   return pairs.join('&');
  };
 
- Query.prototype.uriToString = function uriToString () {
-   return this.ctx.toString();
- };
-
+/**
+ * Class to make it easier to build strings
+ */
 var StringBuilder = function StringBuilder(string) {
   if (!string || typeof string === 'undefined') { this.string = String(""); }
   else { this.string = String(string); }
 };
+
+/**
+ * Return full string
+ * @return {string} assembled string
+ */
 StringBuilder.prototype.toString = function toString () {
   return this.string;
 };
+
+/**
+ * Append a string to an existing string
+ * @param {string} val - string to be appended
+ * @return {instance} for chaining
+ */
 StringBuilder.prototype.append = function append (val) {
   this.string += val;
   return this;
 };
+
+/**
+ * Insert a string to an existing string
+ * @param {integer} pos - position at which to insert value
+ * @param {string} val - string to be inserted
+ * @return {instance} for chaining
+ */
 StringBuilder.prototype.insert = function insert (pos, val) {
   var length = this.string.length;
-  var left = this.string.slice(0,pos);
+  var left = this.string.slice(0, pos);
   var right = this.string.slice(pos);
   this.string = left + val + right;
   return this;
@@ -230,6 +309,10 @@ var Uri = function Uri(uri) {
   return this.parse(uri);
 };
 
+/**
+ * @param {string} authority - username password part of URL
+ * @return {instance} - returns Uri instance for chaining
+ */
 Uri.prototype.authority = function authority (authority) {
     if ( authority === void 0 ) authority = '';
 
@@ -257,6 +340,10 @@ Uri.prototype.authority = function authority (authority) {
   }
 };
 
+/**
+ * @param {string} f - string representation of fragment
+ * @return {instance} - returns Uri instance for chaining
+ */
 Uri.prototype.fragment = function fragment (f) {
     if ( f === void 0 ) f = '';
 
@@ -271,10 +358,18 @@ Uri.prototype.gs = function gs (val, tar, fn) {
   return fn ? fn(this[tar]) : this[tar] ? this[tar] : '';
 };
 
+/**
+ * @param {string} f - string representation of host
+ * @return {instance} - returns Uri instance for chaining
+ */
 Uri.prototype.host = function host (f) {
   return this.gs(f, '_host');
 };
 
+/**
+ * @param {string} uri - URL
+ * @return {instance} - returns Uri instance for chaining
+ */
 Uri.prototype.parse = function parse (uri) {
   var f = uri ? uri.match(this.uriRegEx) : [];
   this.path = new Path(f[5], this);
@@ -285,24 +380,43 @@ Uri.prototype.parse = function parse (uri) {
   return this;
 };
 
+/**
+ * @param {string} f - port part of URL
+ * @return {instance} - returns Uri instance for chaining
+ */
 Uri.prototype.port = function port (f) {
   return this.gs(f, '_port');
 };
 
+/**
+ * @param {string} f - protocol part of URL
+ * @return {instance} - returns Uri instance for chaining
+ */
 Uri.prototype.protocol = function protocol (f) {
   return this.scheme.toLowerCase();
 };
 
+/**
+ * @param {string} f - protocol scheme
+ * @return {instance} - returns Uri instance for chaining
+ */
 Uri.prototype.scheme = function scheme (f) {
   return this.gs(f, '_scheme');
 };
 
+/**
+ * @param {string} f - user info part of URL
+ * @return {instance} - returns Uri instance for chaining
+ */
 Uri.prototype.userInfo = function userInfo (f) {
   return this.gs(f, '_userinfo', function (r) {
     return r ? encodeURI(r) : r;
   });
 };
 
+/**
+ * @return {string} - returns string URL
+ */
 Uri.prototype.toString = function toString () {
   var q = this.query.toString();
   var p = this.path.toString();

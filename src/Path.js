@@ -1,15 +1,32 @@
+/**
+ * Class to manage URL paths
+ */
 export default class Path {
+  /**
+   * @param {string} f - string path
+   * @param {object} ctx - context of Uri class
+   */
   constructor(f, ctx = {}) {
     this.ctx = ctx;
     this._path = [];
     return this.parse(f);
   }
 
+  /**
+   * Append to a path
+   * @param {string} s path to append
+   * @return {instance} for chaining
+   */
   append(s) {
     this._path.push(s);
     return this;
   }
 
+  /**
+   * Delete end of path
+   * @param {integer} loc - segment of path to delete
+   * @return {instance} for chaining
+   */
   delete(loc) {
     if (!loc) {
       this._path.pop();
@@ -17,10 +34,19 @@ export default class Path {
     }
   }
 
+  /**
+   * Get the path
+   * @return {array} path as array
+   */
   get() {
     return this._path;
   }
 
+  /**
+   * Parse the path part of a URl
+   * @param {string} f - string path
+   * @return {instance} for chaining
+   */
   parse(f = '') {
     let path = decodeURIComponent(f);
     let split = path.split('/');
@@ -32,6 +58,12 @@ export default class Path {
     return this;
   }
 
+  /**
+   * Replace part of a path
+   * @param {string} f - path replacement
+   * @param {integer} loc - location to replace
+   * @return {instance} for chaining
+   */
   replace(f, loc) {
     if (loc === 'file') {
       this._path.splice(this._path.length - 1, 1, f);
@@ -43,11 +75,13 @@ export default class Path {
     return this.parse(f);
   }
 
-  uriToString() {
-    return this.ctx.toString();
-  }
-
-  toString() {
+  /**
+   * Get string representatio of the path or the uri
+   * @param {boolen} uri - if true return string represention of uri
+   * @return {string} path or uri as string
+   */
+  toString(uri) {
+    if (uri) return this.ctx.toString();
     return Array.isArray(this._path) ? this._path.join('/') : '';
   }
 }

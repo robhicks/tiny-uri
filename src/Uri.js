@@ -2,7 +2,14 @@ import Path from './Path.js';
 import Query from './Query.js';
 import StringBuilder from './StringBuilder.js';
 
+/**
+ * Uri - manipulate URLs
+ */
 class Uri {
+  /**
+   * @param {string} uri - a URI string
+   * @return {instance} - return Uri instance for chaining
+   */
   constructor(uri) {
     this.uriRegEx = /^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
     this.authRegEx = /^([^\@]+)\@/;
@@ -11,6 +18,10 @@ class Uri {
     return this.parse(uri);
   }
 
+  /**
+   * @param {string} authority - username password part of URL
+   * @return {instance} - returns Uri instance for chaining
+   */
   authority(authority = '') {
     if (authority !== '') {
       let auth = authority.match(this.authRegEx);
@@ -36,6 +47,10 @@ class Uri {
     }
   }
 
+  /**
+   * @param {string} f - string representation of fragment
+   * @return {instance} - returns Uri instance for chaining
+   */
   fragment(f = '') {
     return this.gs(f, '_fragment');
   }
@@ -48,10 +63,18 @@ class Uri {
     return fn ? fn(this[tar]) : this[tar] ? this[tar] : '';
   }
 
+  /**
+   * @param {string} f - string representation of host
+   * @return {instance} - returns Uri instance for chaining
+   */
   host(f) {
     return this.gs(f, '_host');
   }
 
+  /**
+   * @param {string} uri - URL
+   * @return {instance} - returns Uri instance for chaining
+   */
   parse(uri) {
     let f = uri ? uri.match(this.uriRegEx) : [];
     this.path = new Path(f[5], this);
@@ -62,24 +85,43 @@ class Uri {
     return this;
   }
 
+  /**
+   * @param {string} f - port part of URL
+   * @return {instance} - returns Uri instance for chaining
+   */
   port(f) {
     return this.gs(f, '_port');
   }
 
+  /**
+   * @param {string} f - protocol part of URL
+   * @return {instance} - returns Uri instance for chaining
+   */
   protocol(f) {
     return this.scheme.toLowerCase();
   }
 
+  /**
+   * @param {string} f - protocol scheme
+   * @return {instance} - returns Uri instance for chaining
+   */
   scheme(f) {
     return this.gs(f, '_scheme');
   }
 
+  /**
+   * @param {string} f - user info part of URL
+   * @return {instance} - returns Uri instance for chaining
+   */
   userInfo(f) {
     return this.gs(f, '_userinfo', (r) => {
       return r ? encodeURI(r) : r;
     });
   }
 
+  /**
+   * @return {string} - returns string URL
+   */
   toString() {
     let q = this.query.toString();
     let p = this.path.toString();

@@ -1,4 +1,12 @@
+/**
+ * Class to manage query part of URL
+ */
 export default class Query {
+  /**
+   * @param {string} f - query string
+   * @param {object} ctx - context of uri instance
+   * @return {instance} for chaining
+   */
   constructor(f, ctx = {}) {
     Object.assign(this, ctx);
     this.ctx = ctx;
@@ -6,11 +14,20 @@ export default class Query {
     return this;
   }
 
+  /**
+   * Add a query string
+   * @param {object} obj {name: 'value'}
+   * @return {instance} for chaining
+   */
   add(obj = {}) {
     this._query = this._convert(obj, this._query[0], this._query[1]);
     return this;
   }
 
+  /**
+   * Remove the query string
+   * @return {instance} for chaining
+   */
   clear() {
     this._query = [[], []];
     return this;
@@ -32,6 +49,10 @@ export default class Query {
     return [p, q];
   }
 
+  /**
+   * Get the query string
+   * @return {array} representing the query string
+   */
   get() {
     let dict = {};
     let obj = this._query;
@@ -48,6 +69,11 @@ export default class Query {
     return dict;
   }
 
+  /**
+   * Merge with the query string - replaces query string values if they exist
+   * @param {object} obj {name: 'value'}
+   * @return {instance} for chaining
+   */
   merge(obj) {
     let p = this._query[0];
     let q = this._query[1];
@@ -98,6 +124,11 @@ export default class Query {
     return struct;
   }
 
+  /**
+   * Set with the query string - replaces existing query string
+   * @param {obj} or {string} ...q
+   * @return {instance} for chaining
+   */
   set(...q) {
     let args = [...q];
 
@@ -117,7 +148,13 @@ export default class Query {
     return this;
   }
 
-  toString() {
+  /**
+   * Get string representatio of the path or the uri
+   * @param {boolen} uri - if true return string represention of uri
+   * @return {string} query or uri as string
+   */
+  toString(uri) {
+    if (uri) return this.ctx.toString();
     let pairs = [];
     let n = this._query[0];
     let v = this._query[1];
@@ -126,9 +163,5 @@ export default class Query {
       pairs.push(encodeURIComponent(n[i]) + '=' + encodeURIComponent(v[i]));
     }
     return pairs.join('&');
-   }
-
-   uriToString() {
-     return this.ctx.toString();
    }
 }

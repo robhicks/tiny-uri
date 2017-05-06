@@ -1,0 +1,42 @@
+{
+  "coverage": "74.41%",
+  "expectCount": 43,
+  "actualCount": 32,
+  "files": {
+    "src/Path.js": {
+      "expectCount": 9,
+      "actualCount": 8,
+      "undocumentLines": [
+        10
+      ]
+    },
+    "src/Query.js": {
+      "expectCount": 9,
+      "actualCount": 8,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "src/StringBuilder.js": {
+      "expectCount": 6,
+      "actualCount": 5,
+      "undocumentLines": [
+        11
+      ]
+    },
+    "src/Uri.js": {
+      "expectCount": 19,
+      "actualCount": 11,
+      "undocumentLines": [
+        60,
+        15,
+        58,
+        80,
+        16,
+        17,
+        84,
+        14
+      ]
+    }
+  }
+}

@@ -75,7 +75,14 @@ describe('Uri', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml';
       let uri = new Uri(url);
 
-      expect(uri.path.replace('new-to', 1).uriToString()).toEqual('https://user:pass@big.example.com/path/new-to/file.xml');
+      expect(uri.path.replace('new-to', 1).toString(true)).toEqual('https://user:pass@big.example.com/path/new-to/file.xml');
+    });
+
+    it('should support patch chaining', () => {
+      let url = 'https://user:pass@big.example.com/path/to/file.xml';
+      let uri = new Uri(url);
+
+      expect(uri.path.replace('new-path', 0).replace('new-to', 1).toString(true)).toEqual('https://user:pass@big.example.com/new-path/new-to/file.xml');
     });
 
   });
@@ -142,7 +149,7 @@ describe('Uri', () => {
     expect(uri.query.add({foo: 'bar'}).toString()).toEqual('context=foo&credentials=bar&foo=bar');
     expect(uri.query.add({foo: 'bar'}).merge({foo: 'bars'}).toString()).toEqual('context=foo&credentials=bar&foo=bars');
     expect(uri.query.clear().add({foo: 'bar'}).merge({foo: 'bars'}).toString()).toEqual('foo=bars');
-    expect(uri.query.clear().add({foo: 'bar'}).merge({foo: 'bars'}).uriToString()).toEqual('https://user:pass@big.example.com/path/to/file.xml?foo=bars');
+    expect(uri.query.clear().add({foo: 'bar'}).merge({foo: 'bars'}).toString(true)).toEqual('https://user:pass@big.example.com/path/to/file.xml?foo=bars');
   });
 
 });

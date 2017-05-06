@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/Uri.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/robhicks/Uri.git" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Path.js~Path.html">Path</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Query.js~Query.html">Query</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/StringBuilder.js~StringBuilder.html">StringBuilder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Uri.js~Uri.html">Uri</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/Uri.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Path from &apos;./Path.js&apos;;
+import Query from &apos;./Query.js&apos;;
+import StringBuilder from &apos;./StringBuilder.js&apos;;
+
+/**
+ * Uri - manipulate URLs
+ */
+class Uri {
+  /**
+   * @param {string} uri - a URI string
+   * @return {instance} - return Uri instance for chaining
+   */
+  constructor(uri) {
+    this.uriRegEx = /^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
+    this.authRegEx = /^([^\@]+)\@/;
+    this.portRegEx = /:(\d+)$/;
+    this.qRegEx = /^([^=]+)(?:=(.*))?$/;
+    return this.parse(uri);
+  }
+
+  /**
+   * @param {string} authority - username password part of URL
+   * @return {instance} - returns Uri instance for chaining
+   */
+  authority(authority = &apos;&apos;) {
+    if (authority !== &apos;&apos;) {
+      let auth = authority.match(this.authRegEx);
+      this._authority = authority;
+      if (auth) {
+        authority = authority.replace(this.authRegEx, &apos;&apos;);
+        this.userInfo(auth[1]);
+      }
+      let port = authority.match(this.portRegEx);
+      if(port) {
+        authority = authority.replace(this.portRegEx, &apos;&apos;);
+        this.port(port[1]);
+      }
+      this.host(authority);
+      return this;
+    } else {
+      let userinfo = this.userInfo();
+      if (userinfo) authority = userinfo + &apos;@&apos;;
+      authority += this.host();
+      let port = this.port();
+      if (port) authority += &apos;:&apos; + port;
+      return authority;
+    }
+  }
+
+  /**
+   * @param {string} f - string representation of fragment
+   * @return {instance} - returns Uri instance for chaining
+   */
+  fragment(f = &apos;&apos;) {
+    return this.gs(f, &apos;_fragment&apos;);
+  }
+
+  gs(val, tar, fn) {
+    if (typeof val !== &apos;undefined&apos;) {
+      this[tar] = val;
+      return this;
+    }
+    return fn ? fn(this[tar]) : this[tar] ? this[tar] : &apos;&apos;;
+  }
+
+  /**
+   * @param {string} f - string representation of host
+   * @return {instance} - returns Uri instance for chaining
+   */
+  host(f) {
+    return this.gs(f, &apos;_host&apos;);
+  }
+
+  /**
+   * @param {string} uri - URL
+   * @return {instance} - returns Uri instance for chaining
+   */
+  parse(uri) {
+    let f = uri ? uri.match(this.uriRegEx) : [];
+    this.path = new Path(f[5], this);
+    this.scheme(f[2]);
+    this.authority(f[4]);
+    this.fragment(f[9]);
+    this.query = new Query(f[7], this);
+    return this;
+  }
+
+  /**
+   * @param {string} f - port part of URL
+   * @return {instance} - returns Uri instance for chaining
+   */
+  port(f) {
+    return this.gs(f, &apos;_port&apos;);
+  }
+
+  /**
+   * @param {string} f - protocol part of URL
+   * @return {instance} - returns Uri instance for chaining
+   */
+  protocol(f) {
+    return this.scheme.toLowerCase();
+  }
+
+  /**
+   * @param {string} f - protocol scheme
+   * @return {instance} - returns Uri instance for chaining
+   */
+  scheme(f) {
+    return this.gs(f, &apos;_scheme&apos;);
+  }
+
+  /**
+   * @param {string} f - user info part of URL
+   * @return {instance} - returns Uri instance for chaining
+   */
+  userInfo(f) {
+    return this.gs(f, &apos;_userinfo&apos;, (r) =&gt; {
+      return r ? encodeURI(r) : r;
+    });
+  }
+
+  /**
+   * @return {string} - returns string URL
+   */
+  toString() {
+    let q = this.query.toString();
+    let p = this.path.toString();
+    let f = this.fragment();
+    let s = this.scheme();
+    let str = new StringBuilder();
+    return str.append(s ? s + &apos;://&apos; : &quot;&quot;).append(this.authority()).append(&apos;/&apos;).append(p).append(q !== &apos;&apos; ? &apos;?&apos; : &apos;&apos;).append(q).toString();
+  }
+
+
+}
+
+export default Uri;
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
