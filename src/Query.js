@@ -1,6 +1,7 @@
 export default class Query {
   constructor(f, ctx = {}) {
     Object.assign(this, ctx);
+    this.ctx = ctx;
     this.set(f);
     return this;
   }
@@ -125,5 +126,9 @@ export default class Query {
       pairs.push(encodeURIComponent(n[i]) + '=' + encodeURIComponent(v[i]));
     }
     return pairs.join('&');
+   }
+
+   uriToString() {
+     return this.ctx.toString();
    }
 }

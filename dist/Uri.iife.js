@@ -4,9 +4,21 @@ var Uri = (function () {
 var Path = function Path(f, ctx) {
   if ( ctx === void 0 ) ctx = {};
 
-  Object.assign(this, ctx);
+  this.ctx = ctx;
   this._path = [];
   return this.parse(f);
+};
+
+Path.prototype.append = function append (s) {
+  this._path.push(s);
+  return this;
+};
+
+Path.prototype.delete = function delete$1 (loc) {
+  if (!loc) {
+    this._path.pop();
+    return this;
+  }
 };
 
 Path.prototype.get = function get () {
@@ -26,20 +38,20 @@ Path.prototype.parse = function parse (f) {
   return this;
 };
 
-Path.prototype.replace = function replace (f) {
+Path.prototype.replace = function replace (f, loc) {
+  if (loc === 'file') {
+    this._path.splice(this._path.length - 1, 1, f);
+    return this;
+  } else if (Number.isInteger(loc)) {
+    this._path.splice(loc, 1, f);
+    return this;
+  }
   return this.parse(f);
 };
 
-Path.prototype.removeFilename = function removeFilename () {
-  this._path.splice(this._path.length - 1, 1);
-  return this;
+Path.prototype.uriToString = function uriToString () {
+  return this.ctx.toString();
 };
-
-Path.prototype.replaceFilename = function replaceFilename (n) {
-  this._path.splice(this._path.length - 1, 1, n);
-  return this;
-};
-
 
 Path.prototype.toString = function toString () {
   return Array.isArray(this._path) ? this._path.join('/') : '';
@@ -49,6 +61,7 @@ var Query = function Query(f, ctx) {
   if ( ctx === void 0 ) ctx = {};
 
   Object.assign(this, ctx);
+  this.ctx = ctx;
   this.set(f);
   return this;
 };
@@ -186,6 +199,10 @@ Query.prototype.toString = function toString () {
   return pairs.join('&');
  };
 
+ Query.prototype.uriToString = function uriToString () {
+   return this.ctx.toString();
+ };
+
 var StringBuilder = function StringBuilder(string) {
   if (!string || typeof string === 'undefined') { this.string = String(""); }
   else { this.string = String(string); }
@@ -292,7 +309,7 @@ Uri.prototype.toString = function toString () {
   var f = this.fragment();
   var s = this.scheme();
   var str = new StringBuilder();
-  return str.append(s ? s + '://' : "").append(this.authority()).append('/').append(p).append('?').append(q).toString();
+  return str.append(s ? s + '://' : "").append(this.authority()).append('/').append(p).append(q !== '' ? '?' : '').append(q).toString();
 };
 
 return Uri;

@@ -86,7 +86,7 @@ class Uri {
     let f = this.fragment();
     let s = this.scheme();
     let str = new StringBuilder();
-    return str.append(s ? s + '://' : "").append(this.authority()).append('/').append(p).append('?').append(q).toString();
+    return str.append(s ? s + '://' : "").append(this.authority()).append('/').append(p).append(q !== '' ? '?' : '').append(q).toString();
   }
 
 

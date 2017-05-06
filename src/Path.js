@@ -1,8 +1,20 @@
 export default class Path {
   constructor(f, ctx = {}) {
-    Object.assign(this, ctx);
+    this.ctx = ctx;
     this._path = [];
     return this.parse(f);
+  }
+
+  append(s) {
+    this._path.push(s);
+    return this;
+  }
+
+  delete(loc) {
+    if (!loc) {
+      this._path.pop();
+      return this;
+    }
   }
 
   get() {
@@ -20,20 +32,20 @@ export default class Path {
     return this;
   }
 
-  replace(f) {
+  replace(f, loc) {
+    if (loc === 'file') {
+      this._path.splice(this._path.length - 1, 1, f);
+      return this;
+    } else if (Number.isInteger(loc)) {
+      this._path.splice(loc, 1, f);
+      return this;
+    }
     return this.parse(f);
   }
 
-  removeFilename() {
-    this._path.splice(this._path.length - 1, 1);
-    return this;
+  uriToString() {
+    return this.ctx.toString();
   }
-
-  replaceFilename(n) {
-    this._path.splice(this._path.length - 1, 1, n);
-    return this;
-  }
-
 
   toString() {
     return Array.isArray(this._path) ? this._path.join('/') : '';
