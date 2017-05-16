@@ -95,6 +95,13 @@ describe('Uri', () => {
       expect(uri.query.toString()).toBe('foo=bar');
     });
 
+    it('should return a url template query string', () => {
+      let url = 'https://user:pass@big.example.com/path/to/file.xml{?userid,name}';
+      let uri = new Uri(url);
+
+      expect(uri.query.getUrlTemplateQuery()).toEqual('userid,name');
+    });
+
     it('should clear to the query string', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
       let uri = new Uri(url);

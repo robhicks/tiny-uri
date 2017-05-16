@@ -1,6 +1,6 @@
 {
   "name": "",
-  "version": "1.0.0",
+  "version": "2.1.0",
   "description": "Lightweight Javascript library for handling URLs",
   "main": "dist/Uri.iife.js",
   "ignore": [
@@ -11,7 +11,7 @@
     "test",
     "tests"
   ],
-  "keywords": "Javascript, URLs, URI, Lightweight", 
+  "keywords": "Javascript, URLs, URI, Lightweight",
   "authors": "rob@hixfamily.org",
   "license": "MIT"
 }

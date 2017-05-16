@@ -1,5 +1,5 @@
 const buble = require('rollup-plugin-buble');
-const uglify = require('rollup-plugin-uglify');
+const uglify = require('rollup-plugin-uglify-es');
 
 module.exports = {
 	entry: 'src/Uri.js',
@@ -7,7 +7,8 @@ module.exports = {
 	globals: {
 	},
 	plugins: [
-		buble()
+		buble(),
+		uglify()
 	],
 	targets: [
 		{

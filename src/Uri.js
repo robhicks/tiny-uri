@@ -15,6 +15,7 @@ class Uri {
     this.authRegEx = /^([^\@]+)\@/;
     this.portRegEx = /:(\d+)$/;
     this.qRegEx = /^([^=]+)(?:=(.*))?$/;
+    this.urlTempQueryRegEx = /\{\?(.*?)\}/;
     return this.parse(uri);
   }
 
@@ -77,11 +78,13 @@ class Uri {
    */
   parse(uri) {
     let f = uri ? uri.match(this.uriRegEx) : [];
+    let t = uri ? uri.match(this.urlTempQueryRegEx) : [];
     this.path = new Path(f[5], this);
     this.scheme(f[2]);
     this.authority(f[4]);
     this.fragment(f[9]);
     this.query = new Query(f[7], this);
+    if (t) this.query.setUrlTemplateQuery(t[1]);
     return this;
   }
 
@@ -128,7 +131,8 @@ class Uri {
     let f = this.fragment();
     let s = this.scheme();
     let str = new StringBuilder();
-    return str.append(s ? s + '://' : "").append(this.authority()).append('/').append(p).append(q !== '' ? '?' : '').append(q).toString();
+    let retStr = str.append(s ? s + '://' : "").append(this.authority()).append('/').append(p).append(q !== '' ? '?' : '').append(q).toString();
+    return retStr.replace('/?', '?');
   }
 
 

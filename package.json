@@ -1,6 +1,6 @@
 {
   "name": "Uri",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Lightweight Javascript library for handling URLs",
   "keywords": [
     "Lightweight",
@@ -10,6 +10,7 @@
     "URLs"
   ],
   "repository": "https://github.com/robhicks/Uri.git",
+  "main": "dist/Uri.cjs.js",
   "module": "dist/Uri.es.js",
   "scripts": {
     "build": "rollup -cw",
@@ -31,7 +32,7 @@
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-json": "^2.1.0",
     "rollup-plugin-node-resolve": "^2.0.0",
-    "rollup-plugin-uglify": "^1.0.1",
+    "rollup-plugin-uglify-es": "git+https://github.com/robhicks/rollup-plugin-uglify-es.git",
     "rollup-watch": "^3.2.2",
     "yarn": "^0.21.3"
   },

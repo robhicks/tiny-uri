@@ -43,4 +43,5 @@ export default class StringBuilder {
     this.string = left + val + right;
     return this;
   }
+
 }

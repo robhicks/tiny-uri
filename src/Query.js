@@ -69,6 +69,10 @@ export default class Query {
     return dict;
   }
 
+  getUrlTemplateQuery() {
+    return this._urlTemplateQueryString;
+  }
+
   /**
    * Merge with the query string - replaces query string values if they exist
    * @param {object} obj {name: 'value'}
@@ -146,6 +150,15 @@ export default class Query {
       this.merge(obj);
     }
     return this;
+  }
+
+  /**
+   * Set the url template query string vale
+   * @param {string} url-template query string
+   * @return {instance} for chaining
+   */
+  setUrlTemplateQuery(s) {
+    this._urlTemplateQueryString = s;
   }
 
   /**
