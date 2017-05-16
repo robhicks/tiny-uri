@@ -1,6 +1,6 @@
 {
-  "name": "",
-  "version": "2.1.0",
+  "name": "Uri",
+  "version": "2.1.1",
   "description": "Lightweight Javascript library for handling URLs",
   "main": "dist/Uri.iife.js",
   "ignore": [
