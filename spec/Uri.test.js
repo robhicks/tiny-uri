@@ -12,6 +12,16 @@ describe('Uri', () => {
     expect(uri.query.toString()).toBe('context=foo&credentials=bar');
   });
 
+  it('should parse a url with url template tags into its parts', () => {
+    let url = 'https://user:pass@big.example.com{?includeUser,redirect}';
+    let uri = new Uri(url);
+    expect(uri.scheme()).toBe('https');
+    expect(uri.host()).toBe('big.example.com');
+    expect(uri.authority()).toBe('user:pass@big.example.com');
+    expect(uri.path.toString()).toBe('');
+    expect(uri.query.toString()).toBe('');
+  });
+
   it('should parse a url into its parts even if query string not provided', () => {
     let url = 'https://user:pass@big.example.com/path/to/file.xml';
     let uri = new Uri(url);

@@ -36,7 +36,7 @@ class Uri {
         authority = authority.replace(this.portRegEx, '');
         this.port(port[1]);
       }
-      this.host(authority);
+      this.host(authority.replace('{', ''));
       return this;
     } else {
       let userinfo = this.userInfo();
