@@ -38,6 +38,12 @@ describe('Uri', () => {
     expect(uri.toString()).toBe(url);
   });
 
+  it('should convert the uri to a string without a trailing slash', () => {
+    let url = 'https://big.example.com/';
+    let uri = new Uri(url);
+    expect(uri.toString()).toBe('https://big.example.com');
+  });
+
   describe('Path', () => {
     it('should return the path', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml';
@@ -112,6 +118,13 @@ describe('Uri', () => {
       expect(uri.query.getUrlTemplateQuery()).toEqual('userid,name');
     });
 
+    it('should add a query string properly on a naked host', () => {
+      let url = 'https://big.example.com';
+      let uri = new Uri(url);
+      uri.query.add({foo: 'bar'});
+      expect(uri.toString()).toEqual('https://big.example.com?foo=bar');
+    });
+
     it('should clear to the query string', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
       let uri = new Uri(url);
@@ -138,6 +151,7 @@ describe('Uri', () => {
       uri.query.clear();
       expect(uri.toString()).toEqual('https://user:pass@big.example.com/path/to/file.xml');
     });
+
   });
 
   it('should change the host', () => {

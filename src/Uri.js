@@ -131,8 +131,15 @@ class Uri {
     let f = this.fragment();
     let s = this.scheme();
     let str = new StringBuilder();
-    let retStr = str.append(s ? s + '://' : "").append(this.authority()).append('/').append(p).append(q !== '' ? '?' : '').append(q).toString();
-    return retStr.replace('/?', '?');
+    let retStr = str.append(s ? s + '://' : "")
+      .append(this.authority())
+      .append('/').append(p)
+      .append(q !== '' ? '?' : '')
+      .append(q)
+      .toString()
+      .replace('/?', '?')
+      .replace(/\/$/, '');
+    return retStr;
   }
 
 
