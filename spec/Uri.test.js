@@ -10,6 +10,7 @@ describe('Uri', () => {
     expect(uri.authority()).toBe('user:pass@big.example.com');
     expect(uri.path.toString()).toBe('path/to/file.xml');
     expect(uri.query.toString()).toBe('context=foo&credentials=bar');
+    // expect(uri.query.get()).toBe('foo')
   });
 
   it('should parse a url with url template tags into its parts', () => {
@@ -56,49 +57,49 @@ describe('Uri', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml';
       let uri = new Uri(url);
 
-      expect(uri.path.replace('different/path/to/file.json').toString()).toEqual('different/path/to/file.json');
+      expect(uri.path.replace('different/path/to/file.json').path.toString()).toEqual('different/path/to/file.json');
     });
 
     it('should replace the file part of the path', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml';
       let uri = new Uri(url);
 
-      expect(uri.path.replace('file.json', 'file').toString()).toEqual('path/to/file.json');
+      expect(uri.path.replace('file.json', 'file').path.toString()).toEqual('path/to/file.json');
     });
 
     it('should remove the last segment of the path', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml';
       let uri = new Uri(url);
 
-      expect(uri.path.delete().toString()).toEqual('path/to');
+      expect(uri.path.delete().path.toString()).toEqual('path/to');
     });
 
     it('should replace the first segment of the path', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml';
       let uri = new Uri(url);
 
-      expect(uri.path.replace('new-path', 0).toString()).toEqual('new-path/to/file.xml');
+      expect(uri.path.replace('new-path', 0).path.toString()).toEqual('new-path/to/file.xml');
     });
 
     it('should replace the second segment of the path', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml';
       let uri = new Uri(url);
 
-      expect(uri.path.replace('new-to', 1).toString()).toEqual('path/new-to/file.xml');
+      expect(uri.path.replace('new-to', 1).path.toString()).toEqual('path/new-to/file.xml');
     });
 
     it('should return the uri as a string', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml';
       let uri = new Uri(url);
 
-      expect(uri.path.replace('new-to', 1).toString(true)).toEqual('https://user:pass@big.example.com/path/new-to/file.xml');
+      expect(uri.path.replace('new-to', 1).path.toString(true)).toEqual('https://user:pass@big.example.com/path/new-to/file.xml');
     });
 
     it('should support patch chaining', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml';
       let uri = new Uri(url);
 
-      expect(uri.path.replace('new-path', 0).replace('new-to', 1).toString(true)).toEqual('https://user:pass@big.example.com/new-path/new-to/file.xml');
+      expect(uri.path.replace('new-path', 0).path.replace('new-to', 1).path.toString(true)).toEqual('https://user:pass@big.example.com/new-path/new-to/file.xml');
     });
 
   });
@@ -128,7 +129,7 @@ describe('Uri', () => {
     it('should clear to the query string', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
       let uri = new Uri(url);
-      expect(uri.query.clear().toString()).toBe('');
+      expect(uri.query.clear().query.toString()).toBe('');
     });
 
     it('should append to the query string', () => {
@@ -177,10 +178,10 @@ describe('Uri', () => {
     expect(Array.isArray(uri.path.get())).toEqual(true);
     expect(uri.path.toString()).toEqual('path/to/file.xml');
     expect(uri.query).toEqual(jasmine.any(Object));
-    expect(uri.query.add({foo: 'bar'}).toString()).toEqual('context=foo&credentials=bar&foo=bar');
-    expect(uri.query.add({foo: 'bar'}).merge({foo: 'bars'}).toString()).toEqual('context=foo&credentials=bar&foo=bars');
-    expect(uri.query.clear().add({foo: 'bar'}).merge({foo: 'bars'}).toString()).toEqual('foo=bars');
-    expect(uri.query.clear().add({foo: 'bar'}).merge({foo: 'bars'}).toString(true)).toEqual('https://user:pass@big.example.com/path/to/file.xml?foo=bars');
+    expect(uri.query.add({foo: 'bar'}).query.toString()).toEqual('context=foo&credentials=bar&foo=bar');
+    expect(uri.query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString()).toEqual('context=foo&credentials=bar&foo=bars');
+    expect(uri.query.clear().query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString()).toEqual('foo=bars');
+    expect(uri.query.clear().query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString(true)).toEqual('https://user:pass@big.example.com/path/to/file.xml?foo=bars');
   });
 
 });

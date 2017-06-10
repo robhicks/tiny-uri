@@ -19,7 +19,7 @@ export default class Path {
    */
   append(s) {
     this._path.push(s);
-    return this;
+    return this.ctx;
   }
 
   /**
@@ -30,7 +30,7 @@ export default class Path {
   delete(loc) {
     if (!loc) {
       this._path.pop();
-      return this;
+      return this.ctx;
     }
   }
 
@@ -67,12 +67,13 @@ export default class Path {
   replace(f, loc) {
     if (loc === 'file') {
       this._path.splice(this._path.length - 1, 1, f);
-      return this;
+      return this.ctx;
     } else if (Number.isInteger(loc)) {
       this._path.splice(loc, 1, f);
-      return this;
+      return this.ctx;
     }
-    return this.parse(f);
+    this.parse(f);
+    return this.ctx;
   }
 
   /**

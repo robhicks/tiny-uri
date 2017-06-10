@@ -21,7 +21,7 @@ export default class Query {
    */
   add(obj = {}) {
     this._query = this._convert(obj, this._query[0], this._query[1]);
-    return this;
+    return this.ctx;
   }
 
   /**
@@ -30,7 +30,7 @@ export default class Query {
    */
   clear() {
     this._query = [[], []];
-    return this;
+    return this.ctx;
   }
 
   _convert(obj, p = [], q = []) {
@@ -107,7 +107,7 @@ export default class Query {
       }
     }
     this._query = this._convert(obj, this._query[0], this._query[1]);
-    return this;
+    return this.ctx;
   }
 
   _parse(q = '') {
@@ -149,7 +149,7 @@ export default class Query {
       obj[args[0]] = args[1];
       this.merge(obj);
     }
-    return this;
+    return this.ctx;
   }
 
   /**
