@@ -1,17 +1,17 @@
-Uri
+uri-
 ===
 
-Uri is yet another Javascript library for working with URLs. It offers a (fluent interface)[https://en.wikipedia.org/wiki/Fluent_interface],
+uri- is yet another Javascript library for working with URLs. It offers a (fluent interface)[https://en.wikipedia.org/wiki/Fluent_interface],
 method chaining, and sensible means of manipulating Url parts and a file size of less than 2K, gzipped.
 
 # Installation
 
 ```shell
-npm install https://github.com/robhicks/Uri.git
+npm install https://github.com/robhicks/uri-.git
 
 # or
 
-yarn add https://github.com/robhicks/Uri.git
+yarn add https://github.com/robhicks/uri-.git
 
 ```
 
@@ -19,7 +19,7 @@ yarn add https://github.com/robhicks/Uri.git
 
 You can use the library in the browser or on NodeJs.
 
-In the browser you can load dist/Uri.iife.js in
+In the browser you can load dist/uri-.iife.js in
 a script tag, or if you are using an es6 aware bundler like RollupJs, you can import it into your
 entry file.
 
@@ -109,7 +109,7 @@ console.log('query', uri.query.toString()); // hello=universe&goodby=world
 
 ## Chaining Methods
 
-You can chain Uri, Path and Query methods. 
+You can chain Uri, Path and Query methods.
 
 ```Javascript
 expect(uri.scheme().toString()).toBe('https');

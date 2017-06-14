@@ -1,8 +1,8 @@
 {
   "name": "uri-",
-  "version": "3.0.1",
+  "version": "3.0.3",
   "description": "Lightweight Javascript library for handling URLs",
-  "main": "dist/Uri.iife.js",
+  "main": "dist/uri-.iife.js",
   "ignore": [
     "**/.*",
     "node_modules",

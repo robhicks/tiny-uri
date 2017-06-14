@@ -12,15 +12,15 @@ module.exports = {
 	],
 	targets: [
 		{
-			dest: 'dist/Uri.cjs.js',
+			dest: 'dist/uri-.cjs.js',
 			format: 'cjs',
 		},
 		{
-			dest: 'dist/Uri.es.js',
+			dest: 'dist/uri-.es.js',
 			format: 'es',
 		},
 		{
-			dest: 'dist/Uri.iife.js',
+			dest: 'dist/uri-.iife.js',
 			format: 'iife',
 			moduleName: 'Uri'
 		}

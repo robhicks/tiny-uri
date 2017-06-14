@@ -1,6 +1,6 @@
 {
   "name": "uri-",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Lightweight Javascript library for handling URLs",
   "keywords": [
     "Lightweight",
@@ -9,9 +9,9 @@
     "es2015",
     "URLs"
   ],
-  "repository": "https://github.com/robhicks/Uri.git",
-  "main": "dist/Uri.cjs.js",
-  "module": "dist/Uri.es.js",
+  "repository": "https://github.com/robhicks/uri-.git",
+  "main": "dist/uri-.cjs.js",
+  "module": "dist/uri-.es.js",
   "scripts": {
     "build": "rollup -cw",
     "dev": "rollup -cw",
