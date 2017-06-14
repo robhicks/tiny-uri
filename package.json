@@ -1,6 +1,6 @@
 {
-  "name": "Uri",
-  "version": "3.0.1",
+  "name": "uri-",
+  "version": "3.0.2",
   "description": "Lightweight Javascript library for handling URLs",
   "keywords": [
     "Lightweight",

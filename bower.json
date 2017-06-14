@@ -1,5 +1,5 @@
 {
-  "name": "Uri",
+  "name": "uri-",
   "version": "3.0.1",
   "description": "Lightweight Javascript library for handling URLs",
   "main": "dist/Uri.iife.js",
