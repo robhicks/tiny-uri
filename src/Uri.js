@@ -79,9 +79,9 @@ class Uri {
   parse(uri) {
     let f = uri ? uri.match(this.uriRegEx) : [];
     let t = uri ? uri.match(this.urlTempQueryRegEx) : [];
-    this.path = new Path(f[5], this);
     this.scheme(f[2]);
     this.authority(f[4]);
+    this.path = new Path(f[5].replace(/{$/, ''), this);
     this.fragment(f[9]);
     this.query = new Query(f[7], this);
     if (t) this.query.setUrlTemplateQuery(t[1]);

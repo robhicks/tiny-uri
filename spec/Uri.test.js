@@ -14,13 +14,16 @@ describe('Uri', () => {
   });
 
   it('should parse a url with url template tags into its parts', () => {
-    let url = 'https://user:pass@big.example.com{?includeUser,redirect}';
+    let url = 'https://user:pass@big.example.com/quotetools/getHistoryDownload/{user}/download.csv{?webmasterId,startDay,startMonth,startYear,endDay,endMonth,endYear,isRanged,symbol}';
     let uri = new Uri(url);
     expect(uri.scheme()).toBe('https');
     expect(uri.host()).toBe('big.example.com');
     expect(uri.authority()).toBe('user:pass@big.example.com');
-    expect(uri.path.toString()).toBe('');
+    expect(uri.path.toString()).toBe('quotetools/getHistoryDownload/{user}/download.csv');
+    expect(Array.isArray(uri.path.get())).toBe(true);
+    expect(uri.path.get()).toEqual(['quotetools', 'getHistoryDownload', '{user}', 'download.csv']);
     expect(uri.query.toString()).toBe('');
+    expect(uri.query.getUrlTemplateQuery()).toBe('webmasterId,startDay,startMonth,startYear,endDay,endMonth,endYear,isRanged,symbol');
   });
 
   it('should parse a url into its parts even if query string not provided', () => {
