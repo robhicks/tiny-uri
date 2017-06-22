@@ -142,6 +142,9 @@ class TinyUri {
     return retStr;
   }
 
+  static clone(uri) {
+    return new TinyUri(uri.toString());
+  }
 
 }
 

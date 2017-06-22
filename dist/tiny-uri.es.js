@@ -451,4 +451,8 @@ TinyUri.prototype.toString = function toString () {
   return retStr;
 };
 
+TinyUri.clone = function clone (uri) {
+  return new TinyUri(uri.toString());
+};
+
 export default TinyUri;
