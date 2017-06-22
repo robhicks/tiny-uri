@@ -5,7 +5,7 @@ import StringBuilder from './StringBuilder.js';
 /**
  * Uri - manipulate URLs
  */
-class Uri {
+class TinyUri {
   /**
    * @param {string} uri - a URI string
    * @return {instance} - return Uri instance for chaining
@@ -145,4 +145,4 @@ class Uri {
 
 }
 
-export default Uri;
+export default TinyUri;

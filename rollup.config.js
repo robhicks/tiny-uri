@@ -2,27 +2,26 @@ const buble = require('rollup-plugin-buble');
 const uglify = require('rollup-plugin-uglify-es');
 
 module.exports = {
-	entry: 'src/Uri.js',
+	entry: 'src/TinyUri.js',
 	external: [],
 	globals: {
 	},
 	plugins: [
-		buble(),
-		uglify()
+		buble()
 	],
 	targets: [
 		{
-			dest: 'dist/uri-.cjs.js',
+			dest: 'dist/tiny-uri.cjs.js',
 			format: 'cjs',
 		},
 		{
-			dest: 'dist/uri-.es.js',
+			dest: 'dist/tiny-uri.es.js',
 			format: 'es',
 		},
 		{
-			dest: 'dist/uri-.iife.js',
+			dest: 'dist/tiny-uri.iife.js',
 			format: 'iife',
-			moduleName: 'Uri'
+			moduleName: 'TinyUri'
 		}
 	]
 };

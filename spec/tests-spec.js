@@ -2,4 +2,4 @@ require('reify');
 
 global.nock = require('nock');
 
-require('./uri-.test.js');
+require('./tiny-uri.test.js');

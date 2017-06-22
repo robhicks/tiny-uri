@@ -1,8 +1,8 @@
 {
-  "name": "uri-",
-  "version": "3.0.3",
+  "name": "tiny-uri",
+  "version": "4.0.0",
   "description": "Lightweight Javascript library for handling URLs",
-  "main": "dist/uri-.iife.js",
+  "main": "dist/tiny-uri.iife.js",
   "ignore": [
     "**/.*",
     "node_modules",
