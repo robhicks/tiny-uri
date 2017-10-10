@@ -48,6 +48,20 @@ describe('TinyUri', () => {
     expect(uri.toString()).to.be.equal('https://big.example.com');
   });
 
+  it('should change the host', () => {
+    let url = 'https://big.example.com/';
+    let uri = new TinyUri(url);
+    uri.host(uri.host() === 'big.example.com' ? 'small.example.com' : uri.host());
+    expect(uri.toString()).to.be.equal('https://small.example.com');
+  });
+
+  it('should change the host', () => {
+    let url = 'https://small.example.com/';
+    let uri = new TinyUri(url);
+    uri.host(uri.host() === 'big.example.com' ? 'small.example.com' : uri.host());
+    expect(uri.toString()).to.be.equal('https://small.example.com');
+  });
+
   describe('Path', () => {
     it('should return the path', () => {
       let url = 'https://user:pass@big.example.com/path/to/file.xml';
