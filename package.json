@@ -1,6 +1,6 @@
 {
   "name": "tiny-uri",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Lightweight Javascript library for handling URLs",
   "keywords": [
     "Lightweight",
@@ -16,25 +16,24 @@
     "build": "rollup -cw",
     "dev": "rollup -cw",
     "docs": "esdoc -c .esdoc.json",
-    "jasmine": "jasmine-node spec --color --verbose --autotest --watch src --watch spec",
-    "test": "jasmine-node spec"
+    "mocha": "mocha -u bdd -R spec -t 5000  --watch test/tests.js",
+    "test": "mocha -u bdd -R spec -t 5000 test/tests.js"
   },
   "author": "rob@hixfamily.org",
   "license": "MIT",
   "devDependencies": {
     "esdoc": "^0.5.2",
-    "jasmine": "^2.6.0",
-    "jasmine-node": "^1.14.5",
-    "jasmine-spec-reporter": "^4.0.0",
+    "mocha": "^4.0.1",
     "nock": "^9.0.13",
-    "reify": "^0.8.2",
+    "reify": "^0.8.4",
     "rollup": "^0.41.4",
     "rollup-plugin-buble": "^0.15.0",
     "rollup-plugin-json": "^2.1.0",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-uglify-es": "git+https://github.com/robhicks/rollup-plugin-uglify-es.git",
     "rollup-watch": "^3.2.2",
-    "yarn": "^0.21.3"
+    "sinon": "^4.0.1",
+    "sinon-chai": "^2.14.0"
   },
   "dependencies": {}
 }

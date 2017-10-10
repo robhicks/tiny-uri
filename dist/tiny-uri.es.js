@@ -51,6 +51,7 @@ Path.prototype.parse = function parse (f) {
   var split = path.split('/');
   if (Array.isArray(split)) {
     if(path.match(/^\//)) { split.shift(); }
+    if (split[0] === '') { split.shift(); }
     if (split.length > 1 && path.match(/\/$/)) { split.pop(); }
     this._path = split;
   }
