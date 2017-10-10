@@ -306,7 +306,6 @@ StringBuilder.prototype.append = function append (val) {
  * @return {instance} for chaining
  */
 StringBuilder.prototype.insert = function insert (pos, val) {
-  var length = this.string.length;
   var left = this.string.slice(0, pos);
   var right = this.string.slice(pos);
   this.string = left + val + right;
