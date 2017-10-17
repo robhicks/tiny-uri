@@ -67,7 +67,7 @@ console.log('query', uri.query.toString()); // hello=world
 ```JavaScript
 let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
-uri.path.set({goodby: 'world'});
+uri.query.set({goodby: 'world'});
 
 console.log('query', uri.query.toString()); // goodby=world
 
@@ -78,7 +78,7 @@ console.log('query', uri.query.toString()); // goodby=world
 ```JavaScript
 let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
-uri.path.clear();
+uri.query.clear();
 
 console.log('query', uri.query.toString()); //
 ```
@@ -88,7 +88,7 @@ console.log('query', uri.query.toString()); //
 ```JavaScript
 let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
-uri.path.add({goodby: 'world'});
+uri.query.add({goodby: 'world'});
 
 console.log('query', uri.query.toString()); // hello=world&goodby=world
 
@@ -100,8 +100,8 @@ console.log('query', uri.query.toString()); // hello=world&goodby=world
 let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
 uri.
-  path.add({goodby: 'world'})
-  path.merge({hello: 'universe'})
+  query.add({goodby: 'world'})
+  query.merge({hello: 'universe'})
 
 console.log('query', uri.query.toString()); // hello=universe&goodby=world
 

@@ -1,6 +1,5 @@
 const buble = require('rollup-plugin-buble');
-const babili = require('rollup-plugin-babili');
-const uglify = require('rollup-plugin-uglify');
+const uglify = require('rollup-plugin-uglify-es');
 const path = require('path');
 const root = process.cwd();
 
@@ -43,19 +42,19 @@ export default [
 	{
     input: entry,
     plugins: [
-      buble()
     ],
     output: {
-      file: path.resolve(root, 'dist', 'tiny-uri.es.js'),
+      file: path.resolve(root, 'dist', 'tiny-uri.mjs'),
       format: 'es'
     }
   },
 	{
     input: entry,
     plugins: [
+			uglify()
     ],
     output: {
-      file: path.resolve(root, 'dist', 'tiny-uri.mjs'),
+      file: path.resolve(root, 'dist', 'tiny-uri.min.mjs'),
       format: 'es'
     }
   }
