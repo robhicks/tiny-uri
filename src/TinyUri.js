@@ -38,14 +38,13 @@ class TinyUri {
       }
       this.host(authority.replace('{', ''));
       return this;
-    } else {
-      let userinfo = this.userInfo();
-      if (userinfo) authority = userinfo + '@';
-      authority += this.host();
-      let port = this.port();
-      if (port) authority += ':' + port;
-      return authority;
     }
+    let userinfo = this.userInfo();
+    if (userinfo) authority = userinfo + '@';
+    authority += this.host();
+    let port = this.port();
+    if (port) authority += ':' + port;
+    return authority;
   }
 
   /**
@@ -101,7 +100,7 @@ class TinyUri {
    * @return {instance} - returns Uri instance for chaining
    */
   protocol(f) {
-    return this.scheme.toLowerCase();
+    return (this._scheme || '').toLowerCase();
   }
 
   /**
