@@ -341,21 +341,20 @@ TinyUri.prototype.authority = function authority (authority) {
       authority = authority.replace(this.authRegEx, '');
       this.userInfo(auth[1]);
     }
-    var port = authority.match(this.portRegEx);
-    if(port) {
+    var port$1 = authority.match(this.portRegEx);
+    if(port$1) {
       authority = authority.replace(this.portRegEx, '');
-      this.port(port[1]);
+      this.port(port$1[1]);
     }
     this.host(authority.replace('{', ''));
     return this;
-  } else {
-    var userinfo = this.userInfo();
-    if (userinfo) { authority = userinfo + '@'; }
-    authority += this.host();
-    var port$1 = this.port();
-    if (port$1) { authority += ':' + port$1; }
-    return authority;
   }
+  var userinfo = this.userInfo();
+  if (userinfo) { authority = userinfo + '@'; }
+  authority += this.host();
+  var port = this.port();
+  if (port) { authority += ':' + port; }
+  return authority;
 };
 
 /**
@@ -413,7 +412,7 @@ TinyUri.prototype.port = function port (f) {
  * @return {instance} - returns Uri instance for chaining
  */
 TinyUri.prototype.protocol = function protocol (f) {
-  return this.scheme.toLowerCase();
+  return (this._scheme || '').toLowerCase();
 };
 
 /**
