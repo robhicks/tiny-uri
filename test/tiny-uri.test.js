@@ -10,7 +10,16 @@ describe('TinyUri', () => {
     expect(uri.authority()).to.be.equal('user:pass@big.example.com');
     expect(uri.path.toString()).to.be.equal('path/to/file.xml');
     expect(uri.query.toString()).to.be.equal('context=foo&credentials=bar');
-    // expect(uri.query.get()).to.be.equal('foo')
+  });
+
+  it('should parse a relative url into its parts', () => {
+    let url = 'path/to/file.xml?context=foo&credentials=bar';
+    let uri = new TinyUri(url);
+    expect(uri.scheme()).to.be.equal('');
+    expect(uri.host()).to.be.equal('');
+    expect(uri.authority()).to.be.equal('');
+    expect(uri.path.toString()).to.be.equal('path/to/file.xml');
+    expect(uri.query.toString()).to.be.equal('context=foo&credentials=bar');
   });
 
   it('should parse a url with url template tags into its parts', () => {
