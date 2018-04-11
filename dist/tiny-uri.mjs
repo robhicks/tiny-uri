@@ -205,7 +205,7 @@ class Query {
     let pairs = q.split(/&|;/);
 
     for (let j = 0; j < pairs.length; j++) {
-      let name, value, pair = pairs[j], nPair = pair.match(this.qRegEx);
+      let pair = pairs[j], nPair = pair.match(this.qRegEx);
 
       if(nPair && typeof nPair[nPair.length -1] !== 'undefined') {
         nPair.shift();
@@ -307,6 +307,7 @@ class StringBuilder {
    * @return {instance} for chaining
    */
   insert(pos, val) {
+    let length = this.string.length;
     let left = this.string.slice(0, pos);
     let right = this.string.slice(pos);
     this.string = left + val + right;
@@ -393,9 +394,9 @@ class TinyUri {
     let t = uri ? uri.match(this.urlTempQueryRegEx) : [];
     this.scheme(f[2]);
     this.authority(f[4]);
-    this.path = new Path(f[5].replace(/{$/, ''), this);
+    this.path = new Path(f[5] ? f[5].replace(/{$/, '') : '', this);
     this.fragment(f[9]);
-    this.query = new Query(f[7], this);
+    this.query = new Query(f[7] ? f[7] : '', this);
     if (t) this.query.setUrlTemplateQuery(t[1]);
     return this;
   }

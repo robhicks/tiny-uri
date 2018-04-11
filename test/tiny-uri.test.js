@@ -12,6 +12,16 @@ describe('TinyUri', () => {
     expect(uri.query.toString()).to.be.equal('context=foo&credentials=bar');
   });
 
+  it('should parse an empty string url without blowing up', () => {
+    let url = '';
+    let uri = new TinyUri(url);
+    expect(uri.scheme()).to.be.equal('');
+    expect(uri.host()).to.be.equal('');
+    expect(uri.authority()).to.be.equal('');
+    expect(uri.path.toString()).to.be.equal('');
+    expect(uri.query.toString()).to.be.equal('');
+  });
+
   it('should parse a relative url into its parts', () => {
     let url = 'path/to/file.xml?context=foo&credentials=bar';
     let uri = new TinyUri(url);

@@ -11,8 +11,8 @@ export default [
     plugins: [
       buble()
     ],
-    name: 'TinyUri',
     output: {
+			name: 'TinyUri',
       file: path.resolve(root, 'dist', 'tiny-uri.iife.js'),
       format: 'iife'
     }
@@ -23,8 +23,8 @@ export default [
       buble(),
 			uglify()
     ],
-    name: 'TinyUri',
     output: {
+			name: 'TinyUri',
       file: path.resolve(root, 'dist', 'tiny-uri.iife.min.js'),
       format: 'iife'
     }
