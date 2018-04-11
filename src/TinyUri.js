@@ -80,9 +80,9 @@ class TinyUri {
     let t = uri ? uri.match(this.urlTempQueryRegEx) : [];
     this.scheme(f[2]);
     this.authority(f[4]);
-    this.path = new Path(f[5].replace(/{$/, ''), this);
+    this.path = new Path(f[5] ? f[5].replace(/{$/, '') : '', this);
     this.fragment(f[9]);
-    this.query = new Query(f[7], this);
+    this.query = new Query(f[7] ? f[7] : '', this);
     if (t) this.query.setUrlTemplateQuery(t[1]);
     return this;
   }
