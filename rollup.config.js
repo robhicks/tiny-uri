@@ -9,7 +9,6 @@ export default [
 	{
     input: entry,
     plugins: [
-      buble()
     ],
     output: {
 			name: 'TinyUri',
@@ -20,7 +19,6 @@ export default [
 	{
     input: entry,
     plugins: [
-      buble(),
 			uglify()
     ],
     output: {
@@ -32,7 +30,6 @@ export default [
 	{
     input: entry,
     plugins: [
-      buble()
     ],
     output: {
       file: path.resolve(root, 'dist', 'tiny-uri.cjs.js'),
