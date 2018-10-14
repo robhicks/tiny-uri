@@ -1,3 +1,5 @@
+import { qRegEx } from './regex.js';
+
 /**
  * Class to manage query part of URL
  */
@@ -8,8 +10,8 @@ export default class Query {
    * @return {instance} for chaining
    */
   constructor(f, ctx = {}) {
-    Object.assign(this, ctx);
     this.ctx = ctx;
+    this.model = ctx.model;
     this.set(f);
     return this;
   }
@@ -20,7 +22,7 @@ export default class Query {
    * @return {instance} for chaining
    */
   add(obj = {}) {
-    this._query = this._convert(obj, this._query[0], this._query[1]);
+    this.model.query = this._convert(obj, this.model.query[0], this.model.query[1]);
     return this.ctx;
   }
 
@@ -29,7 +31,7 @@ export default class Query {
    * @return {instance} for chaining
    */
   clear() {
-    this._query = [[], []];
+    this.model.query = [[], []];
     return this.ctx;
   }
 
@@ -55,7 +57,7 @@ export default class Query {
    */
   get() {
     let dict = {};
-    let obj = this._query;
+    let obj = this.model.query;
 
     for (let i = 0; i < obj[0].length; i++) {
       let k = obj[0][i];
@@ -79,8 +81,8 @@ export default class Query {
    * @return {instance} for chaining
    */
   merge(obj) {
-    let p = this._query[0];
-    let q = this._query[1];
+    let p = this.model.query[0];
+    let q = this.model.query[1];
     for (let key in obj) {
       let kset = false;
 
@@ -106,7 +108,7 @@ export default class Query {
         }
       }
     }
-    this._query = this._convert(obj, this._query[0], this._query[1]);
+    this.model.query = this._convert(obj, this.model.query[0], this.model.query[1]);
     return this.ctx;
   }
 
@@ -115,7 +117,7 @@ export default class Query {
     let pairs = q.split(/&|;/);
 
     for (let j = 0; j < pairs.length; j++) {
-      let name, value, pair = pairs[j], nPair = pair.match(this.qRegEx);
+      let name, value, pair = pairs[j], nPair = pair.match(qRegEx);
 
       if(nPair && typeof nPair[nPair.length -1] !== 'undefined') {
         nPair.shift();
@@ -138,9 +140,9 @@ export default class Query {
 
     if (args.length === 1) {
       if (typeof args[0] === 'object') {
-        this._query = this._convert(args[0]);
+        this.model.query = this._convert(args[0]);
       } else {
-        this._query = this._parse(args[0]);
+        this.model.query = this._parse(args[0]);
       }
     } else if (args.length === 0) {
       this.clear();
@@ -169,8 +171,8 @@ export default class Query {
   toString(uri) {
     if (uri) return this.ctx.toString();
     let pairs = [];
-    let n = this._query[0];
-    let v = this._query[1];
+    let n = this.model.query[0];
+    let v = this.model.query[1];
 
     for(let i = 0; i < n.length; i++) {
       pairs.push(encodeURIComponent(n[i]) + '=' + encodeURIComponent(v[i]));
