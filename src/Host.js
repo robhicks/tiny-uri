@@ -12,8 +12,10 @@ export default class Host {
 
   set(host) {
     const h = host.split('@');
-    if (h[0] && h[0].includes(':')) this.model.host = h[0].split(':')[0];
-    else if (h.length > 1) {
+    if (h[0] && h[0].includes(':')) {
+      this.model.host = h[0].split(':')[0];
+    }
+    if (h[1]) {
       const i = h[1].split(':');
       if (i.length > 0) this.model.host = i[0];
       else this.model.host = h[1];

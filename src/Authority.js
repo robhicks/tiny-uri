@@ -12,9 +12,10 @@ export default class Authority {
 
   get() {
     const str = new StringBuilder();
-    str.append(this.model.user).append('@').append(this.model.host);
+    if (this.model.user) str.append(this.model.user).append('@');
+    if (this.model.host) str.append(this.model.host);
     if (this.model.port) str.append(':').append(this.model.port);
-    this.model.authority = str.toString();
+    if (str.toString() !== '') this.model.authority = str.toString();
     return this.model.authority;
   }
 
@@ -40,6 +41,6 @@ export default class Authority {
 
   toString(uri) {
     if (uri) return this.ctx.toString();
-    return this.model.user ? new StringBuilder().append(btoa(this.model.user)).append('@').append(this.model.host) : null;
+    return this.get();
   }
 }
