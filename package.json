@@ -1,6 +1,6 @@
 {
   "name": "tiny-uri",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Lightweight Javascript library for handling URLs",
   "keywords": [
     "Lightweight",
@@ -16,7 +16,6 @@
     "dev": "rollup -cw",
     "docs": "esdoc -c .esdoc.json",
     "mocha": "mocha -u bdd -R spec -t 5000 --watch test/tests.js",
-    "postinstall": "rollup -c",
     "test": "mocha -u bdd -R spec -t 5000 test/tests.js"
   },
   "author": "rob@hixfamily.org",
@@ -37,5 +36,7 @@
     "sinon": "^7.0.0",
     "sinon-chai": "^3.2.0"
   },
-  "dependencies": {}
+  "dependencies": {
+
+  }
 }
