@@ -2,7 +2,7 @@ tiny-uri
 =======
 
 tiny-uri is yet another Javascript library for working with URLs. It offers a (fluent interface)[https://en.wikipedia.org/wiki/Fluent_interface],
-method chaining, and sensible means of manipulating Url parts and a file size of less than 2K, gzipped.
+method chaining, and sensible means of manipulating Url parts and a file size of less than 5K, gzipped.
 
 # Installation
 
