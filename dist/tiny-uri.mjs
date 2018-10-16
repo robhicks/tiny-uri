@@ -64,6 +64,11 @@ class Authority {
   }
 
   get() {
+    const str = new StringBuilder();
+    if (this.model.user) str.append(this.model.user).append('@');
+    if (this.model.host) str.append(this.model.host);
+    if (this.model.port) str.append(':').append(this.model.port);
+    if (str.toString() !== '') this.model.authority = str.toString();
     return this.model.authority;
   }
 
@@ -71,13 +76,12 @@ class Authority {
     if (authority === this.model.host) return this.ctx;
     const str = new StringBuilder();
     const s = authority.split('@');
-    console.log('s', s);
     this.model.user = s[0];
 
     if (authRegEx.test(authority)) str.append(authority);
     else {
       try {
-        this.model.user = atob(this.model.user);
+        if (!this.model.user.includes(':')) this.model.user = atob(this.model.user);
         str.append(this.model.user).append('@').append(this.model.host);
         if (this.model.port) str.append(':').append(this.model.port);
       } catch(err) {
@@ -90,7 +94,11 @@ class Authority {
 
   toString(uri) {
     if (uri) return this.ctx.toString();
-    return this.model.user ? new StringBuilder().append(btoa(this.model.user)).append('@').append(this.model.host) : null;
+    const str = new StringBuilder();
+    if (this.model.user) str.append(btoa(this.model.user)).append('@');
+    if (this.model.host) str.append(this.model.host);
+    if (this.model.port) str.append(':').append(this.model.port);
+    return str.toString();
   }
 }
 
@@ -133,7 +141,10 @@ class Host {
 
   set(host) {
     const h = host.split('@');
-    if (h.length > 1) {
+    if (h[0] && h[0].includes(':')) {
+      this.model.host = h[0].split(':')[0];
+    }
+    if (h[1]) {
       const i = h[1].split(':');
       if (i.length > 0) this.model.host = i[0];
       else this.model.host = h[1];

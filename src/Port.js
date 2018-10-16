@@ -9,7 +9,6 @@ export default class Port {
   }
 
   get() {
-    console.log('this.model.port', this.model.port);
     return this.model.port;
   }
 

@@ -22,19 +22,20 @@
   "author": "rob@hixfamily.org",
   "license": "MIT",
   "devDependencies": {
-    "esdoc": "^1.0.4",
-    "mocha": "^5.0.5",
-    "nock": "^9.0.13",
-    "reify": "^0.15.1",
-    "rollup": "^0.57.1",
-    "rollup-plugin-buble": "^0.19.2",
-    "rollup-plugin-json": "^2.1.0",
-    "rollup-plugin-node-resolve": "^3.3.0",
-    "rollup-plugin-uglify": "^3.0.0",
-    "rollup-plugin-uglify-es": "https://robhicks55@bitbucket.org/robhicks55/rollup-plugin-uglify-es.git",
+    "esdoc": "^1.1.0",
+    "eslint": "^5.7.0",
+    "mocha": "^5.2.0",
+    "nock": "^10.0.1",
+    "reify": "^0.18.1",
+    "rollup": "^0.66.6",
+    "rollup-plugin-buble": "^0.19.4",
+    "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-terser-js": "git+https://bitbucket.org/robhicks55/rollup-plugin-terser-js.git",
+    "rollup-plugin-uglify": "^6.0.0",
     "rollup-watch": "^4.3.1",
-    "sinon": "^4.0.1",
-    "sinon-chai": "^3.0.0"
+    "sinon": "^7.0.0",
+    "sinon-chai": "^3.2.0"
   },
   "dependencies": {}
 }

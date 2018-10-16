@@ -41,6 +41,10 @@ export default class Authority {
 
   toString(uri) {
     if (uri) return this.ctx.toString();
-    return this.get();
+    const str = new StringBuilder();
+    if (this.model.user) str.append(btoa(this.model.user)).append('@');
+    if (this.model.host) str.append(this.model.host);
+    if (this.model.port) str.append(':').append(this.model.port);
+    return str.toString();
   }
 }
