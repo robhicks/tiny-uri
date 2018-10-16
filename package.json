@@ -13,10 +13,10 @@
   "main": "dist/tiny-uri.cjs.js",
   "module": "dist/tiny-uri.mjs",
   "scripts": {
-    "build": "rollup -cw",
     "dev": "rollup -cw",
     "docs": "esdoc -c .esdoc.json",
     "mocha": "mocha -u bdd -R spec -t 5000 --watch test/tests.js",
+    "postinstall": "rollup -c",
     "test": "mocha -u bdd -R spec -t 5000 test/tests.js"
   },
   "author": "rob@hixfamily.org",
