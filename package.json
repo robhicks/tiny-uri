@@ -16,7 +16,9 @@
     "dev": "rollup -cw",
     "docs": "esdoc -c .esdoc.json",
     "mocha": "mocha -u bdd -R spec -t 5000 --watch test/tests.js",
-    "test": "mocha -u bdd -R spec -t 5000 test/tests.js"
+    "sauce": "node mocha-sauce-test-runner.js",
+    "node": "mocha -u bdd -R spec -t 5000 test/tests.js",
+    "test": "run-s node sauce"
   },
   "author": "rob@hixfamily.org",
   "license": "MIT",
@@ -24,19 +26,21 @@
     "esdoc": "^1.1.0",
     "eslint": "^5.7.0",
     "mocha": "^5.2.0",
+    "mocha-sauce": "git+https://github.com/pbakaus/mocha-sauce.git",
     "nock": "^10.0.1",
+    "npm-run-all": "^4.1.3",
     "reify": "^0.18.1",
     "rollup": "^0.66.6",
     "rollup-plugin-buble": "^0.19.4",
     "rollup-plugin-json": "^3.1.0",
+    "rollup-plugin-live-server": "^1.0.0",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-terser-js": "git+https://bitbucket.org/robhicks55/rollup-plugin-terser-js.git",
     "rollup-plugin-uglify": "^6.0.0",
     "rollup-watch": "^4.3.1",
     "sinon": "^7.0.0",
-    "sinon-chai": "^3.2.0"
+    "sinon-chai": "^3.2.0",
+    "static-server": "^2.2.1"
   },
-  "dependencies": {
-
-  }
+  "dependencies": {}
 }
