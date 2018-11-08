@@ -2,7 +2,7 @@ const MochaSauce = require("mocha-sauce");
 const StaticServer = require('static-server');
 const exec = require('child_process').exec;
 const port = 8080;
-const host = 'localhost';
+const host = '127.0.0.1';
 
 const server = new StaticServer({
   rootPath: '.',
