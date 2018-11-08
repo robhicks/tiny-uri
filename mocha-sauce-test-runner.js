@@ -1,7 +1,7 @@
 const MochaSauce = require("mocha-sauce");
 const StaticServer = require('static-server');
 const exec = require('child_process').exec;
-const port = 8001;
+const port = 8080;
 const host = 'localhost';
 
 const server = new StaticServer({
@@ -17,15 +17,20 @@ const server = new StaticServer({
 
 server.start(() => console.log(`test server running on port: ${port}`));
 
+const url = `http://${host}:${port}/mocha.html`;
+console.log('url', url);
+
 // configure
 const sauce = new MochaSauce({
-	name: "idx-esm-utils", // your project name
+	name: "tiny-uri", // your project name
 	username: process.env.SAUCE_USERNAME, // Sauce username
 	accessKey: process.env.SAUCE_ACCESS_KEY, // Sauce access key
 	host, // using Sauce Connect
 	port: 4445,
-	url: `http://${host}:${port}/demo/mocha.html` // point to the site running your mocha tests
+	url // point to the site running your mocha tests
 });
+
+sauce.record(true);
 
 // setup what browsers to test with
 sauce.browser({ browserName: "chrome", platform: "Windows 10" });
