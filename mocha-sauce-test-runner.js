@@ -26,7 +26,7 @@ const sauce = new MochaSauce({
 	username: process.env.SAUCE_USERNAME, // Sauce username
 	accessKey: process.env.SAUCE_ACCESS_KEY, // Sauce access key
 	host, // using Sauce Connect
-	port: 4445,
+	port: 443,
 	url // point to the site running your mocha tests
 });
 
