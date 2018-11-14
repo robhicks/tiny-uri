@@ -1,7 +1,7 @@
 const { MochaSauceRunner } = require("mocha-sauce-connect");
 const StaticServer = require('static-server');
 const port = 8001;
-const host = '0.0.0.0';
+const host = 'localhost';
 
 const server = new StaticServer({
   rootPath: '.',
