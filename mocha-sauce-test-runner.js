@@ -1,7 +1,6 @@
-const MochaSauce = require("mocha-sauce");
+const { MochaSauceRunner } = require("mocha-sauce-connect");
 const StaticServer = require('static-server');
-const exec = require('child_process').exec;
-const port = 8080;
+const port = 8001;
 const host = '0.0.0.0';
 
 const server = new StaticServer({
@@ -21,7 +20,7 @@ const url = `http://${host}:${port}/mocha.html`;
 console.log('url', url);
 
 // configure
-const sauce = new MochaSauce({
+const sauce = new MochaSauceRunner({
 	name: "tiny-uri", // your project name
 	username: process.env.SAUCE_USERNAME, // Sauce username
 	accessKey: process.env.SAUCE_ACCESS_KEY, // Sauce access key
@@ -50,6 +49,8 @@ sauce.on('start', function(browser) {
 sauce.on('end', function(browser, res) {
   console.log('  end : %s %s : %d failures', browser.browserName, browser.platform, res.failures);
 });
+
+sauce.on('error', err => console.log('err', err));
 
 sauce.start((err, res) => {
   if (err) {

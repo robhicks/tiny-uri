@@ -1,32 +1,13 @@
 {
-  "name": "tiny-uri",
-  "version": "6.0.2",
-  "description": "Lightweight Javascript library for handling URLs",
-  "keywords": [
-    "Lightweight",
-    "Javascript",
-    "library",
-    "es2015",
-    "URLs"
-  ],
-  "repository": "https://github.com/robhicks/tiny-uri.git",
-  "main": "dist/tiny-uri.cjs.js",
-  "module": "dist/tiny-uri.mjs",
-  "scripts": {
-    "dev": "rollup -cw",
-    "docs": "esdoc -c .esdoc.json",
-    "mocha": "mocha -u bdd -R spec -t 5000 --watch test/tests.js",
-    "sauce": "node mocha-sauce-test-runner.js",
-    "node": "mocha -u bdd -R spec -t 5000 test/tests.js",
-    "test": "run-s node sauce"
-  },
   "author": "rob@hixfamily.org",
-  "license": "MIT",
+  "dependencies": {},
+  "description": "Lightweight Javascript library for handling URLs",
   "devDependencies": {
     "esdoc": "^1.1.0",
     "eslint": "^5.7.0",
     "mocha": "^5.2.0",
     "mocha-sauce": "git+https://github.com/pbakaus/mocha-sauce.git",
+    "mocha-sauce-connect": "git+https://github.com/robhicks/mocha-sauce-connect.git",
     "nock": "^10.0.1",
     "npm-run-all": "^4.1.3",
     "reify": "^0.18.1",
@@ -42,5 +23,25 @@
     "sinon-chai": "^3.2.0",
     "static-server": "^2.2.1"
   },
-  "dependencies": {}
+  "keywords": [
+    "Lightweight",
+    "Javascript",
+    "library",
+    "es2015",
+    "URLs"
+  ],
+  "license": "MIT",
+  "main": "dist/tiny-uri.cjs.js",
+  "module": "dist/tiny-uri.mjs",
+  "name": "tiny-uri",
+  "repository": "https://github.com/robhicks/tiny-uri.git",
+  "scripts": {
+    "dev": "rollup -cw",
+    "docs": "esdoc -c .esdoc.json",
+    "mocha": "mocha -u bdd -R spec -t 5000 --watch test/tests.js",
+    "node": "mocha -u bdd -R spec -t 5000 test/tests.js",
+    "sauce": "node mocha-sauce-test-runner.js",
+    "test": "run-s node sauce"
+  },
+  "version": "6.0.2"
 }
