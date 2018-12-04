@@ -277,4 +277,25 @@ describe('TinyUri', () => {
     expect(uri.query.toString()).to.equal('hello=world&foo=bar');
   });
 
+  it(`should demonstrate chaining of an insane amount of instances`, () => {
+    const url = 'http://www.example.org:5000/path/to/foo/index.html?hello=world';
+    for (let i = 0; i < 10000; i++) {
+      const uri = new TinyUri(url);
+      uri
+        .authority.set('rob:password')
+        .scheme.set('https')
+        .host.set('big.dog.example.org')
+        .port.set(8080)
+        .path.set('path/to/bar/index.html')
+        .query.merge({foo: 'bar'});
+
+      expect(uri.scheme.get()).to.be.equal('https');
+      expect(uri.port.get()).to.be.equal('8080');
+      expect(uri.host.get()).to.be.equal('big.dog.example.org');
+      expect(uri.authority.get()).to.equal('rob:password@big.dog.example.org:8080');
+      expect(uri.path.toString()).to.equal('path/to/bar/index.html');
+      expect(uri.query.toString()).to.equal('hello=world&foo=bar');
+    }
+  });
+
 });

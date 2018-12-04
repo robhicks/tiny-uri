@@ -5,6 +5,7 @@
   "devDependencies": {
     "esdoc": "^1.1.0",
     "eslint": "^5.7.0",
+    "jsuri": "^1.3.1",
     "mocha": "^5.2.0",
     "mocha-sauce": "git+https://github.com/pbakaus/mocha-sauce.git",
     "mocha-sauce-connect": "git+https://github.com/robhicks/mocha-sauce-connect.git",
@@ -21,7 +22,8 @@
     "rollup-watch": "^4.3.1",
     "sinon": "^7.0.0",
     "sinon-chai": "^3.2.0",
-    "static-server": "^2.2.1"
+    "static-server": "^2.2.1",
+    "urijs": "^1.19.1"
   },
   "keywords": [
     "Lightweight",
@@ -43,5 +45,5 @@
     "sauce": "node mocha-sauce-test-runner.js",
     "test": "run-p node sauce"
   },
-  "version": "6.0.2"
+  "version": "6.0.3"
 }
