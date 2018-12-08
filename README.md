@@ -125,3 +125,5 @@ expect(uri.query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString()).
 expect(uri.query.clear().query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString()).toEqual('foo=bars');
 expect(uri.query.clear().query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString(true)).toEqual('https://user:pass@big.example.com/path/to/file.xml?foo=bars');
 ```
+
+# Development
