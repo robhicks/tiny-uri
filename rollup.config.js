@@ -6,7 +6,7 @@ const server = require("rollup-plugin-live-server");
 
 let entry = path.resolve(root, "src", "TinyUri.js");
 
-export default [
+const tasks = [
   {
     input: entry,
     plugins: [],
@@ -35,6 +35,17 @@ export default [
   },
   {
     input: entry,
+    plugins: [terser()],
+    output: {
+      file: path.resolve(root, "dist", "tiny-uri.min.mjs"),
+      format: "es"
+    }
+  }
+];
+
+if (process.env.server) {
+  tasks.push({
+    input: entry,
     plugins: [
       server({
         port: 8001,
@@ -54,13 +65,15 @@ export default [
       file: path.resolve(root, "dist", "tiny-uri.mjs"),
       format: "es"
     }
-  },
-  {
+  });
+} else {
+  tasks.push({
     input: entry,
-    plugins: [terser()],
     output: {
-      file: path.resolve(root, "dist", "tiny-uri.min.mjs"),
+      file: path.resolve(root, "dist", "tiny-uri.mjs"),
       format: "es"
     }
-  }
-];
+  });
+}
+
+export default tasks;

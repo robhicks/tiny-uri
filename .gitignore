@@ -15,4 +15,3 @@ build
 rollup.build.css
 .reify-cache
 yarn-error.log
-package-lock.json
