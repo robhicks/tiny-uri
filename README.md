@@ -7,11 +7,11 @@ method chaining, and sensible means of manipulating Url parts and a file size of
 # Installation
 
 ```shell
-npm install https://github.com/robhicks/tiny-uri.git
+npm install tiny-uri
 
 # or
 
-yarn add https://github.com/robhicks/tiny-uri.git
+yarn add tiny-uri
 
 ```
 
@@ -20,8 +20,7 @@ yarn add https://github.com/robhicks/tiny-uri.git
 You can use the library in the browser or on NodeJs.
 
 In the browser you can load dist/tiny-uri.iife.js in
-a script tag, or if you are using an es6 aware bundler like RollupJs, you can import it into your
-entry file.
+a script tag, or if you are using a browser that supports es6 modules, or are using an es6 module aware bundler like Rollup, you can import it with ```import TinyUri from 'tiny-uri'```.
 
 In NodeJs, require it as usual.
 
