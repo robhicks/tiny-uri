@@ -1,0 +1,17 @@
+{
+  "name": "tiny-uri",
+  "version": "6.0.3",
+  "description": "Lightweight Javascript library for handling URLs",
+  "main": "dist/tiny-uri.iife.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "spec",
+    "test",
+    "tests"
+  ],
+  "keywords": "Javascript, URLs, URI, Lightweight",
+  "authors": "rob@hixfamily.org",
+  "license": "MIT"
+}
