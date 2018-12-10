@@ -2,6 +2,7 @@ const { MochaSauceRunner } = require("mocha-sauce-connect");
 const StaticServer = require('static-server');
 const port = 8001;
 const host = 'localhost';
+const istanbul = require('istanbul');
 
 const server = new StaticServer({
   rootPath: '.',
@@ -51,11 +52,15 @@ runner.on('end', function(browser, res) {
 
 runner.on('error', err => console.log('err', err));
 
-runner.start((err, res) => {
-  if (err) {
+runner.start()
+  .then(collector => {
+    const reporter = new istanbul.Reporter();
+    reporter.add('lcovonly');
+    reporter.write(collector, true, () => {
+      process.exit(0);
+    });
+  })
+  .catch(err => {
     console.log('err', err);
     process.exit(1);
-  } else {
-    process.exit(0);
-  }
-});
+  });

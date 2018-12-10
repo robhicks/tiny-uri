@@ -3,16 +3,11 @@ node_js:
   - 10
 env:
   global:
+    - CC_TEST_REPORTER_ID=$CC_TEST_REPORTER_ID
     - SAUCE_USERNAME=$SAUCE_USERNAME
     - SAUCE_ACCESS_KEY=$SAUCE_ACCESS_KEY
 addons:
   sauce_connect: true
-  chrome: stable
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
 branches:
   only:
     - master
@@ -22,3 +17,12 @@ before_install:
   - echo -e "machine github.com\n  login $CI_USER_TOKEN" >> ~/.netrc
 dist: trusty
 sudo: false
+before_script:
+  - npm install nyc
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - nyc --reporter=lcov npm run test
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

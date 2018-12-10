@@ -3,6 +3,7 @@ const path = require("path");
 const root = process.cwd();
 const terser = require("rollup-plugin-terser-js");
 const server = require("rollup-plugin-live-server");
+const istanbul = require('rollup-plugin-istanbul');
 
 let entry = path.resolve(root, "src", "TinyUri.js");
 
@@ -38,6 +39,18 @@ const tasks = [
     plugins: [terser()],
     output: {
       file: path.resolve(root, "dist", "tiny-uri.min.mjs"),
+      format: "es"
+    }
+  },
+  {
+    input: entry,
+    plugins: [
+      istanbul({
+        exclude: ['test/**/*.js']
+      })
+    ],
+    output: {
+      file: path.resolve(root, "dist", "tiny-uri.instrumented.mjs"),
       format: "es"
     }
   }
