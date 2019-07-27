@@ -8,10 +8,8 @@ export default class Path {
    */
   constructor(f, ctx = {}) {
     this.ctx = ctx;
-    this.model = ctx.model;
-    this.model.path = [];
-    if (f) this.parse(f);
-    return this;
+    this._path = [];
+    return this.parse(f);
   }
 
   /**
@@ -20,7 +18,7 @@ export default class Path {
    * @return {instance} for chaining
    */
   append(s) {
-    this.model.path.push(s);
+    this._path.push(s);
     return this.ctx;
   }
 
@@ -31,7 +29,7 @@ export default class Path {
    */
   delete(loc) {
     if (!loc) {
-      this.model.path.pop();
+      this._path.pop();
       return this.ctx;
     }
   }
@@ -41,7 +39,7 @@ export default class Path {
    * @return {array} path as array
    */
   get() {
-    return this.model.path;
+    return this._path;
   }
 
   /**
@@ -56,8 +54,9 @@ export default class Path {
       if(path.match(/^\//)) split.shift();
       if (split[0] === '') split.shift();
       if (split.length > 1 && path.match(/\/$/)) split.pop();
-      this.model.path = split;
+      this._path = split;
     }
+    return this;
   }
 
   /**
@@ -68,18 +67,13 @@ export default class Path {
    */
   replace(f, loc) {
     if (loc === 'file') {
-      this.model.path.splice(this.model.path.length - 1, 1, f);
+      this._path.splice(this._path.length - 1, 1, f);
       return this.ctx;
     } else if (Number.isInteger(loc)) {
-      this.model.path.splice(loc, 1, f);
+      this._path.splice(loc, 1, f);
       return this.ctx;
     }
     this.parse(f);
-    return this.ctx;
-  }
-
-  set(path) {
-    this.parse(path);
     return this.ctx;
   }
 
@@ -90,6 +84,6 @@ export default class Path {
    */
   toString(uri) {
     if (uri) return this.ctx.toString();
-    return Array.isArray(this.model.path) ? this.model.path.join('/') : '';
+    return Array.isArray(this._path) ? this._path.join('/') : '';
   }
 }

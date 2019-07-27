@@ -1,30 +1,10 @@
-const buble = require("rollup-plugin-buble");
+import {terser} from 'rollup-plugin-terser';
 const path = require("path");
 const root = process.cwd();
-const terser = require("rollup-plugin-terser-js");
-const server = require("rollup-plugin-live-server");
 
-let entry = path.resolve(root, "src", "TinyUri.js");
+const entry = path.resolve(root, "src", "TinyUri.js");
 
 export default [
-  {
-    input: entry,
-    plugins: [],
-    output: {
-      name: "TinyUri",
-      file: path.resolve(root, "dist", "tiny-uri.iife.js"),
-      format: "iife"
-    }
-  },
-  {
-    input: entry,
-    plugins: [terser()],
-    output: {
-      name: "TinyUri",
-      file: path.resolve(root, "dist", "tiny-uri.iife.min.js"),
-      format: "iife"
-    }
-  },
   {
     input: entry,
     plugins: [],
@@ -35,21 +15,7 @@ export default [
   },
   {
     input: entry,
-    plugins: [
-      server({
-        port: 8001,
-        host: "0.0.0.0",
-        root: ".",
-        file: "mocha.html",
-        mount: [
-          ["/dist", "./dist"],
-          ["/src", "./src"],
-          ["/node_modules", "./node_modules"]
-        ],
-        open: false,
-        wait: 500
-      })
-    ],
+    plugins: [],
     output: {
       file: path.resolve(root, "dist", "tiny-uri.mjs"),
       format: "es"
