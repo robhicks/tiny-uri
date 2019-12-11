@@ -1,5 +1,4 @@
-const buble = require('rollup-plugin-buble');
-const uglify = require('rollup-plugin-uglify-es');
+import { terser } from 'rollup-plugin-terser';
 const path = require('path');
 const root = process.cwd();
 
@@ -19,7 +18,7 @@ export default [
 	{
     input: entry,
     plugins: [
-			uglify()
+			terser()
     ],
     output: {
 			name: 'TinyUri',
@@ -48,7 +47,7 @@ export default [
 	{
     input: entry,
     plugins: [
-			uglify()
+			terser()
     ],
     output: {
       file: path.resolve(root, 'dist', 'tiny-uri.min.mjs'),
