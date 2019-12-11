@@ -15,7 +15,9 @@ export default [
   },
   {
     input: entry,
-    plugins: [],
+    plugins: [
+			terser()
+    ],
     output: {
       file: path.resolve(root, "dist", "tiny-uri.mjs"),
       format: "es"
@@ -25,8 +27,27 @@ export default [
     input: entry,
     plugins: [terser()],
     output: {
-      file: path.resolve(root, "dist", "tiny-uri.min.mjs"),
-      format: "es"
+      file: path.resolve(root, 'dist', 'tiny-uri.cjs.js'),
+      format: 'cjs'
+    }
+  },
+	{
+    input: entry,
+    plugins: [
+    ],
+    output: {
+      file: path.resolve(root, 'dist', 'tiny-uri.mjs'),
+      format: 'es'
+    }
+  },
+	{
+    input: entry,
+    plugins: [
+			terser()
+    ],
+    output: {
+      file: path.resolve(root, 'dist', 'tiny-uri.min.mjs'),
+      format: 'es'
     }
   }
 ];
