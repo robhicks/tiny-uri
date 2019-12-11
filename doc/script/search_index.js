@@ -1,356 +1,320 @@
 window.esdocSearchIndex = [
   [
-    "uri/src/path.js~path",
+    "tiny-uri/src/path.js~path",
     "class/src/Path.js~Path.html",
-    "<span>Path</span> <span class=\"search-result-import-path\">Uri/src/Path.js</span>",
+    "<span>Path</span> <span class=\"search-result-import-path\">tiny-uri/src/Path.js</span>",
     "class"
   ],
   [
-    "uri/src/query.js~query",
+    "tiny-uri/src/query.js~query",
     "class/src/Query.js~Query.html",
-    "<span>Query</span> <span class=\"search-result-import-path\">Uri/src/Query.js</span>",
+    "<span>Query</span> <span class=\"search-result-import-path\">tiny-uri/src/Query.js</span>",
     "class"
   ],
   [
-    "uri/src/stringbuilder.js~stringbuilder",
+    "tiny-uri/src/stringbuilder.js~stringbuilder",
     "class/src/StringBuilder.js~StringBuilder.html",
-    "<span>StringBuilder</span> <span class=\"search-result-import-path\">Uri/src/StringBuilder.js</span>",
+    "<span>StringBuilder</span> <span class=\"search-result-import-path\">tiny-uri/src/StringBuilder.js</span>",
     "class"
   ],
   [
-    "uri/src/uri.js~uri",
-    "class/src/Uri.js~Uri.html",
-    "<span>Uri</span> <span class=\"search-result-import-path\">Uri/src/Uri.js</span>",
+    "tiny-uri/src/tinyuri.js~tinyuri",
+    "class/src/TinyUri.js~TinyUri.html",
+    "<span>TinyUri</span> <span class=\"search-result-import-path\">tiny-uri/src/TinyUri.js</span>",
     "class"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~array",
+    "tiny-uri/src/encode.js~base64decode",
+    "variable/index.html#static-variable-base64Decode",
+    "<span>base64Decode</span> <span class=\"search-result-import-path\">tiny-uri/src/encode.js</span>",
+    "variable"
+  ],
+  [
+    "tiny-uri/src/encode.js~base65encode",
+    "variable/index.html#static-variable-base65Encode",
+    "<span>base65Encode</span> <span class=\"search-result-import-path\">tiny-uri/src/encode.js</span>",
+    "variable"
+  ],
+  [
+    "src/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
-    "BuiltinExternal/ECMAScriptExternal.js~Array",
+    "src/.external-ecmascript.js~Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~arraybuffer",
+    "src/.external-ecmascript.js~arraybuffer",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ArrayBuffer",
-    "BuiltinExternal/ECMAScriptExternal.js~ArrayBuffer",
+    "src/.external-ecmascript.js~ArrayBuffer",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~boolean",
+    "src/.external-ecmascript.js~boolean",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
-    "BuiltinExternal/ECMAScriptExternal.js~Boolean",
+    "src/.external-ecmascript.js~Boolean",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~dataview",
+    "src/.external-ecmascript.js~dataview",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DataView",
-    "BuiltinExternal/ECMAScriptExternal.js~DataView",
+    "src/.external-ecmascript.js~DataView",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~date",
+    "src/.external-ecmascript.js~date",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date",
-    "BuiltinExternal/ECMAScriptExternal.js~Date",
+    "src/.external-ecmascript.js~Date",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~error",
+    "src/.external-ecmascript.js~error",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error",
-    "BuiltinExternal/ECMAScriptExternal.js~Error",
+    "src/.external-ecmascript.js~Error",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~evalerror",
+    "src/.external-ecmascript.js~evalerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/EvalError",
-    "BuiltinExternal/ECMAScriptExternal.js~EvalError",
+    "src/.external-ecmascript.js~EvalError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~float32array",
+    "src/.external-ecmascript.js~float32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float32Array",
-    "BuiltinExternal/ECMAScriptExternal.js~Float32Array",
+    "src/.external-ecmascript.js~Float32Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~float64array",
+    "src/.external-ecmascript.js~float64array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Float64Array",
-    "BuiltinExternal/ECMAScriptExternal.js~Float64Array",
+    "src/.external-ecmascript.js~Float64Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~function",
+    "src/.external-ecmascript.js~function",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
-    "BuiltinExternal/ECMAScriptExternal.js~Function",
+    "src/.external-ecmascript.js~Function",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~generator",
+    "src/.external-ecmascript.js~generator",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator",
-    "BuiltinExternal/ECMAScriptExternal.js~Generator",
+    "src/.external-ecmascript.js~Generator",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~generatorfunction",
+    "src/.external-ecmascript.js~generatorfunction",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/GeneratorFunction",
-    "BuiltinExternal/ECMAScriptExternal.js~GeneratorFunction",
+    "src/.external-ecmascript.js~GeneratorFunction",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~infinity",
+    "src/.external-ecmascript.js~infinity",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity",
-    "BuiltinExternal/ECMAScriptExternal.js~Infinity",
+    "src/.external-ecmascript.js~Infinity",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~int16array",
+    "src/.external-ecmascript.js~int16array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int16Array",
-    "BuiltinExternal/ECMAScriptExternal.js~Int16Array",
+    "src/.external-ecmascript.js~Int16Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~int32array",
+    "src/.external-ecmascript.js~int32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int32Array",
-    "BuiltinExternal/ECMAScriptExternal.js~Int32Array",
+    "src/.external-ecmascript.js~Int32Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~int8array",
+    "src/.external-ecmascript.js~int8array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Int8Array",
-    "BuiltinExternal/ECMAScriptExternal.js~Int8Array",
+    "src/.external-ecmascript.js~Int8Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~internalerror",
+    "src/.external-ecmascript.js~internalerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/InternalError",
-    "BuiltinExternal/ECMAScriptExternal.js~InternalError",
+    "src/.external-ecmascript.js~InternalError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~json",
+    "src/.external-ecmascript.js~json",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON",
-    "BuiltinExternal/ECMAScriptExternal.js~JSON",
+    "src/.external-ecmascript.js~JSON",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~map",
+    "src/.external-ecmascript.js~map",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map",
-    "BuiltinExternal/ECMAScriptExternal.js~Map",
+    "src/.external-ecmascript.js~Map",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~nan",
+    "src/.external-ecmascript.js~nan",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/NaN",
-    "BuiltinExternal/ECMAScriptExternal.js~NaN",
+    "src/.external-ecmascript.js~NaN",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~number",
+    "src/.external-ecmascript.js~number",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
-    "BuiltinExternal/ECMAScriptExternal.js~Number",
+    "src/.external-ecmascript.js~Number",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~object",
+    "src/.external-ecmascript.js~object",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
-    "BuiltinExternal/ECMAScriptExternal.js~Object",
+    "src/.external-ecmascript.js~Object",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~promise",
+    "src/.external-ecmascript.js~promise",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise",
-    "BuiltinExternal/ECMAScriptExternal.js~Promise",
+    "src/.external-ecmascript.js~Promise",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~proxy",
+    "src/.external-ecmascript.js~proxy",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Proxy",
-    "BuiltinExternal/ECMAScriptExternal.js~Proxy",
+    "src/.external-ecmascript.js~Proxy",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~rangeerror",
+    "src/.external-ecmascript.js~rangeerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RangeError",
-    "BuiltinExternal/ECMAScriptExternal.js~RangeError",
+    "src/.external-ecmascript.js~RangeError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~referenceerror",
+    "src/.external-ecmascript.js~referenceerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/ReferenceError",
-    "BuiltinExternal/ECMAScriptExternal.js~ReferenceError",
+    "src/.external-ecmascript.js~ReferenceError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~reflect",
+    "src/.external-ecmascript.js~reflect",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect",
-    "BuiltinExternal/ECMAScriptExternal.js~Reflect",
+    "src/.external-ecmascript.js~Reflect",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~regexp",
+    "src/.external-ecmascript.js~regexp",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp",
-    "BuiltinExternal/ECMAScriptExternal.js~RegExp",
+    "src/.external-ecmascript.js~RegExp",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~set",
+    "src/.external-ecmascript.js~set",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set",
-    "BuiltinExternal/ECMAScriptExternal.js~Set",
+    "src/.external-ecmascript.js~Set",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~string",
+    "src/.external-ecmascript.js~string",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
-    "BuiltinExternal/ECMAScriptExternal.js~String",
+    "src/.external-ecmascript.js~String",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~symbol",
+    "src/.external-ecmascript.js~symbol",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol",
-    "BuiltinExternal/ECMAScriptExternal.js~Symbol",
+    "src/.external-ecmascript.js~Symbol",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~syntaxerror",
+    "src/.external-ecmascript.js~syntaxerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/SyntaxError",
-    "BuiltinExternal/ECMAScriptExternal.js~SyntaxError",
+    "src/.external-ecmascript.js~SyntaxError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~typeerror",
+    "src/.external-ecmascript.js~typeerror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypeError",
-    "BuiltinExternal/ECMAScriptExternal.js~TypeError",
+    "src/.external-ecmascript.js~TypeError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~urierror",
+    "src/.external-ecmascript.js~urierror",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/URIError",
-    "BuiltinExternal/ECMAScriptExternal.js~URIError",
+    "src/.external-ecmascript.js~URIError",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~uint16array",
+    "src/.external-ecmascript.js~uint16array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint16Array",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint16Array",
+    "src/.external-ecmascript.js~Uint16Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~uint32array",
+    "src/.external-ecmascript.js~uint32array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint32Array",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint32Array",
+    "src/.external-ecmascript.js~Uint32Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~uint8array",
+    "src/.external-ecmascript.js~uint8array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint8Array",
+    "src/.external-ecmascript.js~Uint8Array",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~uint8clampedarray",
+    "src/.external-ecmascript.js~uint8clampedarray",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray",
-    "BuiltinExternal/ECMAScriptExternal.js~Uint8ClampedArray",
+    "src/.external-ecmascript.js~Uint8ClampedArray",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~weakmap",
+    "src/.external-ecmascript.js~weakmap",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakMap",
-    "BuiltinExternal/ECMAScriptExternal.js~WeakMap",
+    "src/.external-ecmascript.js~WeakMap",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~weakset",
+    "src/.external-ecmascript.js~weakset",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/WeakSet",
-    "BuiltinExternal/ECMAScriptExternal.js~WeakSet",
+    "src/.external-ecmascript.js~WeakSet",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~boolean",
+    "src/.external-ecmascript.js~boolean",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean",
-    "BuiltinExternal/ECMAScriptExternal.js~boolean",
+    "src/.external-ecmascript.js~boolean",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~function",
+    "src/.external-ecmascript.js~function",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function",
-    "BuiltinExternal/ECMAScriptExternal.js~function",
+    "src/.external-ecmascript.js~function",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~null",
+    "src/.external-ecmascript.js~null",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null",
-    "BuiltinExternal/ECMAScriptExternal.js~null",
+    "src/.external-ecmascript.js~null",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~number",
+    "src/.external-ecmascript.js~number",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number",
-    "BuiltinExternal/ECMAScriptExternal.js~number",
+    "src/.external-ecmascript.js~number",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~object",
+    "src/.external-ecmascript.js~object",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object",
-    "BuiltinExternal/ECMAScriptExternal.js~object",
+    "src/.external-ecmascript.js~object",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~string",
+    "src/.external-ecmascript.js~string",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String",
-    "BuiltinExternal/ECMAScriptExternal.js~string",
+    "src/.external-ecmascript.js~string",
     "external"
   ],
   [
-    "builtinexternal/ecmascriptexternal.js~undefined",
+    "src/.external-ecmascript.js~undefined",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined",
-    "BuiltinExternal/ECMAScriptExternal.js~undefined",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~audiocontext",
-    "https://developer.mozilla.org/en/docs/Web/API/AudioContext",
-    "BuiltinExternal/WebAPIExternal.js~AudioContext",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~canvasrenderingcontext2d",
-    "https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D",
-    "BuiltinExternal/WebAPIExternal.js~CanvasRenderingContext2D",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~documentfragment",
-    "https://developer.mozilla.org/en-US/docs/Web/API/DocumentFragment",
-    "BuiltinExternal/WebAPIExternal.js~DocumentFragment",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~element",
-    "https://developer.mozilla.org/en-US/docs/Web/API/Element",
-    "BuiltinExternal/WebAPIExternal.js~Element",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~event",
-    "https://developer.mozilla.org/en-US/docs/Web/API/Event",
-    "BuiltinExternal/WebAPIExternal.js~Event",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~node",
-    "https://developer.mozilla.org/en-US/docs/Web/API/Node",
-    "BuiltinExternal/WebAPIExternal.js~Node",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~nodelist",
-    "https://developer.mozilla.org/en-US/docs/Web/API/NodeList",
-    "BuiltinExternal/WebAPIExternal.js~NodeList",
-    "external"
-  ],
-  [
-    "builtinexternal/webapiexternal.js~xmlhttprequest",
-    "https://developer.mozilla.org/en/docs/Web/API/XMLHttpRequest",
-    "BuiltinExternal/WebAPIExternal.js~XMLHttpRequest",
+    "src/.external-ecmascript.js~undefined",
     "external"
   ],
   [
@@ -358,6 +322,12 @@ window.esdocSearchIndex = [
     "file/src/Path.js.html",
     "src/Path.js",
     "file"
+  ],
+  [
+    "src/path.js~path#_path",
+    "class/src/Path.js~Path.html#instance-member-_path",
+    "src/Path.js~Path#_path",
+    "member"
   ],
   [
     "src/path.js~path#append",
@@ -414,6 +384,30 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/query.js~query#_convert",
+    "class/src/Query.js~Query.html#instance-method-_convert",
+    "src/Query.js~Query#_convert",
+    "method"
+  ],
+  [
+    "src/query.js~query#_parse",
+    "class/src/Query.js~Query.html#instance-method-_parse",
+    "src/Query.js~Query#_parse",
+    "method"
+  ],
+  [
+    "src/query.js~query#_query",
+    "class/src/Query.js~Query.html#instance-member-_query",
+    "src/Query.js~Query#_query",
+    "member"
+  ],
+  [
+    "src/query.js~query#_urltemplatequerystring",
+    "class/src/Query.js~Query.html#instance-member-_urlTemplateQueryString",
+    "src/Query.js~Query#_urlTemplateQueryString",
+    "member"
+  ],
+  [
     "src/query.js~query#add",
     "class/src/Query.js~Query.html#instance-method-add",
     "src/Query.js~Query#add",
@@ -444,6 +438,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/query.js~query#geturltemplatequery",
+    "class/src/Query.js~Query.html#instance-method-getUrlTemplateQuery",
+    "src/Query.js~Query#getUrlTemplateQuery",
+    "method"
+  ],
+  [
     "src/query.js~query#merge",
     "class/src/Query.js~Query.html#instance-method-merge",
     "src/Query.js~Query#merge",
@@ -453,6 +453,12 @@ window.esdocSearchIndex = [
     "src/query.js~query#set",
     "class/src/Query.js~Query.html#instance-method-set",
     "src/Query.js~Query#set",
+    "method"
+  ],
+  [
+    "src/query.js~query#seturltemplatequery",
+    "class/src/Query.js~Query.html#instance-method-setUrlTemplateQuery",
+    "src/Query.js~Query#setUrlTemplateQuery",
     "method"
   ],
   [
@@ -498,117 +504,141 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/uri.js",
-    "file/src/Uri.js.html",
-    "src/Uri.js",
+    "src/tinyuri.js",
+    "file/src/TinyUri.js.html",
+    "src/TinyUri.js",
     "file"
   ],
   [
-    "src/uri.js~uri#[tar]",
-    "class/src/Uri.js~Uri.html#instance-member-[tar]",
-    "src/Uri.js~Uri#[tar]",
+    "src/tinyuri.js~tinyuri#[tar]",
+    "class/src/TinyUri.js~TinyUri.html#instance-member-[tar]",
+    "src/TinyUri.js~TinyUri#[tar]",
     "member"
   ],
   [
-    "src/uri.js~uri#authregex",
-    "class/src/Uri.js~Uri.html#instance-member-authRegEx",
-    "src/Uri.js~Uri#authRegEx",
+    "src/tinyuri.js~tinyuri#_authority",
+    "class/src/TinyUri.js~TinyUri.html#instance-member-_authority",
+    "src/TinyUri.js~TinyUri#_authority",
     "member"
   ],
   [
-    "src/uri.js~uri#authority",
-    "class/src/Uri.js~Uri.html#instance-method-authority",
-    "src/Uri.js~Uri#authority",
-    "method"
-  ],
-  [
-    "src/uri.js~uri#constructor",
-    "class/src/Uri.js~Uri.html#instance-constructor-constructor",
-    "src/Uri.js~Uri#constructor",
-    "method"
-  ],
-  [
-    "src/uri.js~uri#fragment",
-    "class/src/Uri.js~Uri.html#instance-method-fragment",
-    "src/Uri.js~Uri#fragment",
-    "method"
-  ],
-  [
-    "src/uri.js~uri#gs",
-    "class/src/Uri.js~Uri.html#instance-method-gs",
-    "src/Uri.js~Uri#gs",
-    "method"
-  ],
-  [
-    "src/uri.js~uri#host",
-    "class/src/Uri.js~Uri.html#instance-method-host",
-    "src/Uri.js~Uri#host",
-    "method"
-  ],
-  [
-    "src/uri.js~uri#parse",
-    "class/src/Uri.js~Uri.html#instance-method-parse",
-    "src/Uri.js~Uri#parse",
-    "method"
-  ],
-  [
-    "src/uri.js~uri#path",
-    "class/src/Uri.js~Uri.html#instance-member-path",
-    "src/Uri.js~Uri#path",
+    "src/tinyuri.js~tinyuri#authregex",
+    "class/src/TinyUri.js~TinyUri.html#instance-member-authRegEx",
+    "src/TinyUri.js~TinyUri#authRegEx",
     "member"
   ],
   [
-    "src/uri.js~uri#port",
-    "class/src/Uri.js~Uri.html#instance-method-port",
-    "src/Uri.js~Uri#port",
+    "src/tinyuri.js~tinyuri#authority",
+    "class/src/TinyUri.js~TinyUri.html#instance-method-authority",
+    "src/TinyUri.js~TinyUri#authority",
     "method"
   ],
   [
-    "src/uri.js~uri#portregex",
-    "class/src/Uri.js~Uri.html#instance-member-portRegEx",
-    "src/Uri.js~Uri#portRegEx",
+    "src/tinyuri.js~tinyuri#constructor",
+    "class/src/TinyUri.js~TinyUri.html#instance-constructor-constructor",
+    "src/TinyUri.js~TinyUri#constructor",
+    "method"
+  ],
+  [
+    "src/tinyuri.js~tinyuri#fragment",
+    "class/src/TinyUri.js~TinyUri.html#instance-method-fragment",
+    "src/TinyUri.js~TinyUri#fragment",
+    "method"
+  ],
+  [
+    "src/tinyuri.js~tinyuri#gs",
+    "class/src/TinyUri.js~TinyUri.html#instance-method-gs",
+    "src/TinyUri.js~TinyUri#gs",
+    "method"
+  ],
+  [
+    "src/tinyuri.js~tinyuri#host",
+    "class/src/TinyUri.js~TinyUri.html#instance-method-host",
+    "src/TinyUri.js~TinyUri#host",
+    "method"
+  ],
+  [
+    "src/tinyuri.js~tinyuri#parse",
+    "class/src/TinyUri.js~TinyUri.html#instance-method-parse",
+    "src/TinyUri.js~TinyUri#parse",
+    "method"
+  ],
+  [
+    "src/tinyuri.js~tinyuri#path",
+    "class/src/TinyUri.js~TinyUri.html#instance-member-path",
+    "src/TinyUri.js~TinyUri#path",
     "member"
   ],
   [
-    "src/uri.js~uri#protocol",
-    "class/src/Uri.js~Uri.html#instance-method-protocol",
-    "src/Uri.js~Uri#protocol",
+    "src/tinyuri.js~tinyuri#port",
+    "class/src/TinyUri.js~TinyUri.html#instance-method-port",
+    "src/TinyUri.js~TinyUri#port",
     "method"
   ],
   [
-    "src/uri.js~uri#qregex",
-    "class/src/Uri.js~Uri.html#instance-member-qRegEx",
-    "src/Uri.js~Uri#qRegEx",
+    "src/tinyuri.js~tinyuri#portregex",
+    "class/src/TinyUri.js~TinyUri.html#instance-member-portRegEx",
+    "src/TinyUri.js~TinyUri#portRegEx",
     "member"
   ],
   [
-    "src/uri.js~uri#query",
-    "class/src/Uri.js~Uri.html#instance-member-query",
-    "src/Uri.js~Uri#query",
+    "src/tinyuri.js~tinyuri#protocol",
+    "class/src/TinyUri.js~TinyUri.html#instance-method-protocol",
+    "src/TinyUri.js~TinyUri#protocol",
+    "method"
+  ],
+  [
+    "src/tinyuri.js~tinyuri#qregex",
+    "class/src/TinyUri.js~TinyUri.html#instance-member-qRegEx",
+    "src/TinyUri.js~TinyUri#qRegEx",
     "member"
   ],
   [
-    "src/uri.js~uri#scheme",
-    "class/src/Uri.js~Uri.html#instance-method-scheme",
-    "src/Uri.js~Uri#scheme",
-    "method"
-  ],
-  [
-    "src/uri.js~uri#tostring",
-    "class/src/Uri.js~Uri.html#instance-method-toString",
-    "src/Uri.js~Uri#toString",
-    "method"
-  ],
-  [
-    "src/uri.js~uri#uriregex",
-    "class/src/Uri.js~Uri.html#instance-member-uriRegEx",
-    "src/Uri.js~Uri#uriRegEx",
+    "src/tinyuri.js~tinyuri#query",
+    "class/src/TinyUri.js~TinyUri.html#instance-member-query",
+    "src/TinyUri.js~TinyUri#query",
     "member"
   ],
   [
-    "src/uri.js~uri#userinfo",
-    "class/src/Uri.js~Uri.html#instance-method-userInfo",
-    "src/Uri.js~Uri#userInfo",
+    "src/tinyuri.js~tinyuri#scheme",
+    "class/src/TinyUri.js~TinyUri.html#instance-method-scheme",
+    "src/TinyUri.js~TinyUri#scheme",
     "method"
+  ],
+  [
+    "src/tinyuri.js~tinyuri#tostring",
+    "class/src/TinyUri.js~TinyUri.html#instance-method-toString",
+    "src/TinyUri.js~TinyUri#toString",
+    "method"
+  ],
+  [
+    "src/tinyuri.js~tinyuri#uriregex",
+    "class/src/TinyUri.js~TinyUri.html#instance-member-uriRegEx",
+    "src/TinyUri.js~TinyUri#uriRegEx",
+    "member"
+  ],
+  [
+    "src/tinyuri.js~tinyuri#urltempqueryregex",
+    "class/src/TinyUri.js~TinyUri.html#instance-member-urlTempQueryRegEx",
+    "src/TinyUri.js~TinyUri#urlTempQueryRegEx",
+    "member"
+  ],
+  [
+    "src/tinyuri.js~tinyuri#userinfo",
+    "class/src/TinyUri.js~TinyUri.html#instance-method-userInfo",
+    "src/TinyUri.js~TinyUri#userInfo",
+    "method"
+  ],
+  [
+    "src/tinyuri.js~tinyuri.clone",
+    "class/src/TinyUri.js~TinyUri.html#static-method-clone",
+    "src/TinyUri.js~TinyUri.clone",
+    "method"
+  ],
+  [
+    "src/encode.js",
+    "file/src/encode.js.html",
+    "src/encode.js",
+    "file"
   ]
 ]

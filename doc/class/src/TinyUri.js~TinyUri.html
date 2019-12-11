@@ -3,14 +3,12 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">Uri | API Document</title>
+  <title data-ice="title">TinyUri | tiny-uri</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
-  
-  
   <script src="script/manual.js"></script>
-</head>
+<meta name="description" content="Lightweight Javascript library for handling URLs"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="tiny-uri"><meta property="twitter:description" content="Lightweight Javascript library for handling URLs"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -19,7 +17,6 @@
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
   
-  <a data-ice="repoURL" href="https://github.com/robhicks/Uri.git" class="repo-url-github">Repository</a>
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -27,7 +24,7 @@
   </span>
     <ul class="search-result"></ul>
   </div>
-</header>
+<a style="position:relative; top:3px;" href="https://github.com/robhicks/tiny-uri.git"><img width="20px" src="./image/github.png"></a></header>
 
 <nav class="navigation" data-ice="nav"><div>
   <ul>
@@ -35,23 +32,25 @@
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Path.js~Path.html">Path</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Query.js~Query.html">Query</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/StringBuilder.js~StringBuilder.html">StringBuilder</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Uri.js~Uri.html">Uri</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html">TinyUri</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-base64Decode">base64Decode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-base65Encode">base65Encode</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Uri from &apos;<span><a href="file/src/Uri.js.html#lineNumber8">Uri/src/Uri.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import TinyUri from &apos;<span><a href="file/src/TinyUri.js.html#lineNumber8">tiny-uri/src/TinyUri.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/Uri.js.html#lineNumber8">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/TinyUri.js.html#lineNumber8">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
-  <h1 data-ice="name">Uri</h1>
+  <h1 data-ice="name">TinyUri</h1>
 
   
 
@@ -81,7 +80,41 @@
 </div>
 
 
-
+<div data-ice="staticMethodSummary"><h2>Static Method Summary</h2><table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Static Public Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      <span data-ice="static">static</span>
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#static-method-clone">clone</a></span></span><span class="code" data-ice="signature">(uri: <span>*</span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+</div>
 <div data-ice="constructorSummary"><h2>Constructor Summary</h2><table class="summary" data-ice="summary">
   <thead><tr><td data-ice="title" colspan="3">Public Constructor</td></tr></thead>
   <tbody>
@@ -99,7 +132,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(uri: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(uri: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
         </p>
       </div>
       <div>
@@ -133,7 +167,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-member-[tar]">[tar]</a></span></span><span data-ice="signature">: <span>*</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-member-[tar]">[tar]</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -160,7 +195,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-member-authRegEx">authRegEx</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-member-authRegEx">authRegEx</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
         </p>
       </div>
       <div>
@@ -187,7 +223,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-member-path">path</a></span></span><span data-ice="signature">: <span>*</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-member-path">path</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -214,7 +251,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-member-portRegEx">portRegEx</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-member-portRegEx">portRegEx</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
         </p>
       </div>
       <div>
@@ -241,7 +279,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-member-qRegEx">qRegEx</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-member-qRegEx">qRegEx</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
         </p>
       </div>
       <div>
@@ -268,7 +307,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-member-query">query</a></span></span><span data-ice="signature">: <span>*</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-member-query">query</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -295,7 +335,70 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-member-uriRegEx">uriRegEx</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-member-uriRegEx">uriRegEx</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-member-urlTempQueryRegEx">urlTempQueryRegEx</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+<table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Private Members</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">private</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-member-_authority">_authority</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -329,7 +432,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-method-authority">authority</a></span></span><span data-ice="signature">(authority: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-method-authority">authority</a></span></span><span class="code" data-ice="signature">(authority: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
         </p>
       </div>
       <div>
@@ -356,7 +460,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-method-fragment">fragment</a></span></span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-method-fragment">fragment</a></span></span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
         </p>
       </div>
       <div>
@@ -383,7 +488,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-method-gs">gs</a></span></span><span data-ice="signature">(val: <span>*</span>, tar: <span>*</span>, fn: <span>*</span>): <span>*</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-method-gs">gs</a></span></span><span class="code" data-ice="signature">(val: <span>*</span>, tar: <span>*</span>, fn: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -410,7 +516,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-method-host">host</a></span></span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-method-host">host</a></span></span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
         </p>
       </div>
       <div>
@@ -437,7 +544,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-method-parse">parse</a></span></span><span data-ice="signature">(uri: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-method-parse">parse</a></span></span><span class="code" data-ice="signature">(uri: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
         </p>
       </div>
       <div>
@@ -464,7 +572,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-method-port">port</a></span></span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-method-port">port</a></span></span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
         </p>
       </div>
       <div>
@@ -491,7 +600,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-method-protocol">protocol</a></span></span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-method-protocol">protocol</a></span></span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
         </p>
       </div>
       <div>
@@ -518,7 +628,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-method-scheme">scheme</a></span></span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-method-scheme">scheme</a></span></span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
         </p>
       </div>
       <div>
@@ -545,7 +656,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-method-toString">toString</a></span></span><span data-ice="signature">(): <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-method-toString">toString</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -572,7 +684,8 @@
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Uri.js~Uri.html#instance-method-userInfo">userInfo</a></span></span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/TinyUri.js~TinyUri.html#instance-method-userInfo">userInfo</a></span></span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
         </p>
       </div>
       <div>
@@ -593,22 +706,21 @@
 
 
 
-
-<div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
+<div data-ice="staticMethodDetails"><h2 data-ice="title">Static Public Methods</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-constructor-constructor">
+  <h3 data-ice="anchor" id="static-method-clone">
     <span class="access" data-ice="access">public</span>
+    <span data-ice="static">static</span>
     
     
     
     
-    
-    <span data-ice="name">constructor</span><span data-ice="signature">(uri: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+    <span class="code" data-ice="name">clone</span><span class="code" data-ice="signature">(uri: <span>*</span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber13">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber144">source</a></span></span>
     </span>
   </h3>
 
@@ -628,8 +740,82 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">uri</td>
-      <td data-ice="type"><span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">uri</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+</div>
+<div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-constructor-constructor">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(uri: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber13">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">uri</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>a URI string</p>
 </td>
@@ -644,7 +830,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>instance</span></td>
+          <td class="return-type code" data-ice="returnType"><span>instance</span></td>
           <td class="return-desc" data-ice="returnDescription"><p>return Uri instance for chaining</p>
 </td>
         </tr>
@@ -680,11 +866,11 @@
     
     
     
-    <span data-ice="name">[tar]</span><span data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">[tar]</span><span class="code" data-ice="signature">: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber60">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber60">source</a></span></span>
     </span>
   </h3>
 
@@ -723,11 +909,11 @@
     
     
     
-    <span data-ice="name">authRegEx</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+    <span class="code" data-ice="name">authRegEx</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber15">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber15">source</a></span></span>
     </span>
   </h3>
 
@@ -766,11 +952,11 @@
     
     
     
-    <span data-ice="name">path</span><span data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">path</span><span class="code" data-ice="signature">: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber80">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber83">source</a></span></span>
     </span>
   </h3>
 
@@ -809,11 +995,11 @@
     
     
     
-    <span data-ice="name">portRegEx</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+    <span class="code" data-ice="name">portRegEx</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber16">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber16">source</a></span></span>
     </span>
   </h3>
 
@@ -852,11 +1038,11 @@
     
     
     
-    <span data-ice="name">qRegEx</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+    <span class="code" data-ice="name">qRegEx</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber17">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber17">source</a></span></span>
     </span>
   </h3>
 
@@ -895,11 +1081,11 @@
     
     
     
-    <span data-ice="name">query</span><span data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">query</span><span class="code" data-ice="signature">: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber84">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber85">source</a></span></span>
     </span>
   </h3>
 
@@ -938,11 +1124,99 @@
     
     
     
-    <span data-ice="name">uriRegEx</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+    <span class="code" data-ice="name">uriRegEx</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber14">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber14">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-urlTempQueryRegEx">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">urlTempQueryRegEx</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber18">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<h2 data-ice="title">Private Members</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-_authority">
+    <span class="access" data-ice="access">private</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">_authority</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber29">source</a></span></span>
     </span>
   </h3>
 
@@ -984,11 +1258,11 @@
     
     
     
-    <span data-ice="name">authority</span><span data-ice="signature">(authority: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+    <span class="code" data-ice="name">authority</span><span class="code" data-ice="signature">(authority: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber26">source</a></span></span>
     </span>
   </h3>
 
@@ -1008,8 +1282,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">authority</td>
-      <td data-ice="type"><span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">authority</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>username password part of URL</p>
 </td>
@@ -1024,7 +1298,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>instance</span></td>
+          <td class="return-type code" data-ice="returnType"><span>instance</span></td>
           <td class="return-desc" data-ice="returnDescription"><p>returns Uri instance for chaining</p>
 </td>
         </tr>
@@ -1057,11 +1331,11 @@
     
     
     
-    <span data-ice="name">fragment</span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+    <span class="code" data-ice="name">fragment</span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber54">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber54">source</a></span></span>
     </span>
   </h3>
 
@@ -1081,8 +1355,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">f</td>
-      <td data-ice="type"><span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">f</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>string representation of fragment</p>
 </td>
@@ -1097,7 +1371,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>instance</span></td>
+          <td class="return-type code" data-ice="returnType"><span>instance</span></td>
           <td class="return-desc" data-ice="returnDescription"><p>returns Uri instance for chaining</p>
 </td>
         </tr>
@@ -1130,11 +1404,11 @@
     
     
     
-    <span data-ice="name">gs</span><span data-ice="signature">(val: <span>*</span>, tar: <span>*</span>, fn: <span>*</span>): <span>*</span></span>
+    <span class="code" data-ice="name">gs</span><span class="code" data-ice="signature">(val: <span>*</span>, tar: <span>*</span>, fn: <span>*</span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber58">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber58">source</a></span></span>
     </span>
   </h3>
 
@@ -1154,20 +1428,20 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">val</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="name" class="code" data-depth="0">val</td>
+      <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">tar</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="name" class="code" data-depth="0">tar</td>
+      <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">fn</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="name" class="code" data-depth="0">fn</td>
+      <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1181,7 +1455,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>*</span></td>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
           
         </tr>
       </tbody>
@@ -1213,11 +1487,11 @@
     
     
     
-    <span data-ice="name">host</span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+    <span class="code" data-ice="name">host</span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber70">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber70">source</a></span></span>
     </span>
   </h3>
 
@@ -1237,8 +1511,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">f</td>
-      <td data-ice="type"><span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">f</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>string representation of host</p>
 </td>
@@ -1253,7 +1527,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>instance</span></td>
+          <td class="return-type code" data-ice="returnType"><span>instance</span></td>
           <td class="return-desc" data-ice="returnDescription"><p>returns Uri instance for chaining</p>
 </td>
         </tr>
@@ -1286,11 +1560,11 @@
     
     
     
-    <span data-ice="name">parse</span><span data-ice="signature">(uri: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+    <span class="code" data-ice="name">parse</span><span class="code" data-ice="signature">(uri: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber78">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber78">source</a></span></span>
     </span>
   </h3>
 
@@ -1310,8 +1584,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">uri</td>
-      <td data-ice="type"><span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">uri</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>URL</p>
 </td>
@@ -1326,7 +1600,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>instance</span></td>
+          <td class="return-type code" data-ice="returnType"><span>instance</span></td>
           <td class="return-desc" data-ice="returnDescription"><p>returns Uri instance for chaining</p>
 </td>
         </tr>
@@ -1359,11 +1633,11 @@
     
     
     
-    <span data-ice="name">port</span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+    <span class="code" data-ice="name">port</span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber92">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber94">source</a></span></span>
     </span>
   </h3>
 
@@ -1383,8 +1657,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">f</td>
-      <td data-ice="type"><span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">f</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>port part of URL</p>
 </td>
@@ -1399,7 +1673,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>instance</span></td>
+          <td class="return-type code" data-ice="returnType"><span>instance</span></td>
           <td class="return-desc" data-ice="returnDescription"><p>returns Uri instance for chaining</p>
 </td>
         </tr>
@@ -1432,11 +1706,11 @@
     
     
     
-    <span data-ice="name">protocol</span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+    <span class="code" data-ice="name">protocol</span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber100">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber102">source</a></span></span>
     </span>
   </h3>
 
@@ -1456,8 +1730,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">f</td>
-      <td data-ice="type"><span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">f</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>protocol part of URL</p>
 </td>
@@ -1472,7 +1746,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>instance</span></td>
+          <td class="return-type code" data-ice="returnType"><span>instance</span></td>
           <td class="return-desc" data-ice="returnDescription"><p>returns Uri instance for chaining</p>
 </td>
         </tr>
@@ -1505,11 +1779,11 @@
     
     
     
-    <span data-ice="name">scheme</span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+    <span class="code" data-ice="name">scheme</span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber108">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber110">source</a></span></span>
     </span>
   </h3>
 
@@ -1529,8 +1803,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">f</td>
-      <td data-ice="type"><span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">f</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>protocol scheme</p>
 </td>
@@ -1545,7 +1819,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>instance</span></td>
+          <td class="return-type code" data-ice="returnType"><span>instance</span></td>
           <td class="return-desc" data-ice="returnDescription"><p>returns Uri instance for chaining</p>
 </td>
         </tr>
@@ -1578,11 +1852,11 @@
     
     
     
-    <span data-ice="name">toString</span><span data-ice="signature">(): <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></span>
+    <span class="code" data-ice="name">toString</span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber125">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber127">source</a></span></span>
     </span>
   </h3>
 
@@ -1601,7 +1875,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></td>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
           <td class="return-desc" data-ice="returnDescription"><p>returns string URL</p>
 </td>
         </tr>
@@ -1634,11 +1908,11 @@
     
     
     
-    <span data-ice="name">userInfo</span><span data-ice="signature">(f: <span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span>): <span>instance</span></span>
+    <span class="code" data-ice="name">userInfo</span><span class="code" data-ice="signature">(f: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>instance</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Uri.js.html#lineNumber116">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/TinyUri.js.html#lineNumber118">source</a></span></span>
     </span>
   </h3>
 
@@ -1658,8 +1932,8 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">f</td>
-      <td data-ice="type"><span><a href="class/src/StringBuilder.js~StringBuilder.html#instance-member-string">string</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">f</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>user info part of URL</p>
 </td>
@@ -1674,7 +1948,7 @@
     <table>
       <tbody>
         <tr>
-          <td class="return-type" data-ice="returnType"><span>instance</span></td>
+          <td class="return-type code" data-ice="returnType"><span>instance</span></td>
           <td class="return-desc" data-ice="returnDescription"><p>returns Uri instance for chaining</p>
 </td>
         </tr>
@@ -1703,7 +1977,7 @@
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>

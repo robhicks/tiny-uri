@@ -1,0 +1,74 @@
+[
+  {
+    "name": "Query#set",
+    "filePath": "src/Query.js",
+    "lines": [
+      {
+        "lineNumber": 130,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 131,
+        "line": "   * Set with the query string - replaces existing query string"
+      },
+      {
+        "lineNumber": 132,
+        "line": "   * @param {obj} or {string} ...q"
+      },
+      {
+        "lineNumber": 133,
+        "line": "   * @return {instance} for chaining"
+      },
+      {
+        "lineNumber": 134,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 135,
+        "line": "  set(...q) {"
+      }
+    ],
+    "codeParams": [
+      "q"
+    ],
+    "docParams": [
+      "or"
+    ]
+  },
+  {
+    "name": "Query#setUrlTemplateQuery",
+    "filePath": "src/Query.js",
+    "lines": [
+      {
+        "lineNumber": 154,
+        "line": "  /**"
+      },
+      {
+        "lineNumber": 155,
+        "line": "   * Set the url template query string vale"
+      },
+      {
+        "lineNumber": 156,
+        "line": "   * @param {string} url-template query string"
+      },
+      {
+        "lineNumber": 157,
+        "line": "   * @return {instance} for chaining"
+      },
+      {
+        "lineNumber": 158,
+        "line": "   */"
+      },
+      {
+        "lineNumber": 159,
+        "line": "  setUrlTemplateQuery(s) {"
+      }
+    ],
+    "codeParams": [
+      "s"
+    ],
+    "docParams": [
+      "url-template"
+    ]
+  }
+]
