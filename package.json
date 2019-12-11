@@ -35,7 +35,6 @@
     "rollup-plugin-live-server": "^1.0.3",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^5.1.1",
-    "rollup-plugin-terser-js": "git+https://bitbucket.org/robhicks55/rollup-plugin-terser-js.git",
     "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0",
     "static-server": "^2.2.1"
