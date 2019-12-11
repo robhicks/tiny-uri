@@ -2,7 +2,7 @@ tiny-uri
 =======
 
 tiny-uri is yet another Javascript library for working with URLs. It offers a (fluent interface)[https://en.wikipedia.org/wiki/Fluent_interface],
-method chaining, and sensible means of manipulating Url parts and a file size of less than 2K, gzipped.
+method chaining, and sensible means of manipulating Url parts and a file size of less than 5K, gzipped.
 
 # Installation
 
@@ -46,10 +46,13 @@ let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 uri
   .scheme('https')
   .host('example.com')
-  .path.set('path/to/bar/index.html');
+  .authority('user:password@example.com')
+  .path.set('path/to/bar/index.html')
+  .query.merge({q, 'foo'});
 
 console.log('scheme', uri.scheme()); // 'https'
 console.log('host', uri.host()); // 'example.com'
+console.log('authority', uri.authority()) // 'user:password@example.com'
 console.log('path', uri.path.toString()); // /path/to/bar/index.html
 console.log('query', uri.query.toString()); // hello=world
 ```

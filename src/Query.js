@@ -88,8 +88,8 @@ export default class Query {
         let xKey = p[i];
         if(key === xKey) {
           if(kset) {
-            p.splice(i,1);
-            q.splice(i,1);
+            p.splice(i, 1);
+            q.splice(i, 1);
             continue;
           }
           if (Array.isArray(obj[key])) {

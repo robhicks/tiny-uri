@@ -1,35 +1,31 @@
-import { terser } from 'rollup-plugin-terser';
-const path = require('path');
+import {terser} from 'rollup-plugin-terser';
+const path = require("path");
 const root = process.cwd();
 
-let entry = path.resolve(root, 'src', 'TinyUri.js');
+const entry = path.resolve(root, "src", "TinyUri.js");
 
 export default [
-	{
+  {
     input: entry,
-    plugins: [
-    ],
+    plugins: [],
     output: {
-			name: 'TinyUri',
-      file: path.resolve(root, 'dist', 'tiny-uri.iife.js'),
-      format: 'iife'
+      file: path.resolve(root, "dist", "tiny-uri.cjs.js"),
+      format: "cjs"
     }
   },
-	{
+  {
     input: entry,
     plugins: [
 			terser()
     ],
     output: {
-			name: 'TinyUri',
-      file: path.resolve(root, 'dist', 'tiny-uri.iife.min.js'),
-      format: 'iife'
+      file: path.resolve(root, "dist", "tiny-uri.mjs"),
+      format: "es"
     }
   },
-	{
+  {
     input: entry,
-    plugins: [
-    ],
+    plugins: [terser()],
     output: {
       file: path.resolve(root, 'dist', 'tiny-uri.cjs.js'),
       format: 'cjs'
