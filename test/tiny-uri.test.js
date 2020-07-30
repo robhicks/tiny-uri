@@ -1,4 +1,4 @@
-import TinyUri from '../src/TinyUri.js';
+import { TinyUri } from '../src/TinyUri.js';
 
 describe('TinyUri', () => {
 

@@ -1,8 +1,6 @@
-tiny-uri
-=======
+# tiny-uri
 
-tiny-uri is yet another Javascript library for working with URLs. It offers a (fluent interface)[https://en.wikipedia.org/wiki/Fluent_interface],
-method chaining, and sensible means of manipulating Url parts and a file size of less than 5K, gzipped.
+tiny-uri is yet another Javascript library for working with URLs. It offers a (fluent interface)[<https://en.wikipedia.org/wiki/Fluent_interface>], method chaining, and sensible means of manipulating Url parts and a file size of less than 5K, gzipped.
 
 # Installation
 
@@ -12,16 +10,13 @@ npm install https://github.com/robhicks/tiny-uri.git
 # or
 
 yarn add https://github.com/robhicks/tiny-uri.git
-
 ```
 
 # Use
 
 You can use the library in the browser or on NodeJs.
 
-In the browser you can load dist/tiny-uri.iife.js in
-a script tag, or if you are using an es6 aware bundler like RollupJs, you can import it into your
-entry file.
+In the browser you can load dist/tiny-uri.iife.js in a script tag, or if you are using an es6 aware bundler like RollupJs, you can import it into your entry file.
 
 In NodeJs, require it as usual.
 
@@ -29,8 +24,10 @@ In NodeJs, require it as usual.
 
 ## Getting URL parts:
 
-```JavaScript
-let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
+```javascript
+import { TinyUri } from 'tiny-uri';
+
+const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
 console.log('scheme', uri.scheme()); // 'http'
 console.log('host', uri.host()); // 'example.org'
@@ -40,8 +37,10 @@ console.log('query', uri.query.toString()); // hello=world
 
 ## Manipulating URL parts:
 
-```JavaScript
-let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
+```javascript
+import { TinyUri } from 'tiny-uri';
+
+const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
 uri
   .scheme('https')
@@ -59,27 +58,32 @@ console.log('query', uri.query.toString()); // hello=world
 
 ## Manipulating query strings
 
-```JavaScript
-let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
+```javascript
+import { TinyUri } from 'tiny-uri';
+
+const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
 console.log('query', uri.query.toString()); // hello=world
 ```
 
 ### Setting the query string
 
-```JavaScript
-let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
+```javascript
+import { TinyUri } from 'tiny-uri';
+
+const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
 uri.query.set({goodby: 'world'});
 
 console.log('query', uri.query.toString()); // goodby=world
-
 ```
 
 ### Clearing the query string
 
-```JavaScript
-let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
+```javascript
+import { TinyUri } from 'tiny-uri';
+
+const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
 uri.query.clear();
 
@@ -88,33 +92,35 @@ console.log('query', uri.query.toString()); //
 
 ### Adding to the query string
 
-```JavaScript
-let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
+```javascript
+import { TinyUri } from 'tiny-uri';
+
+const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
 uri.query.add({goodby: 'world'});
 
 console.log('query', uri.query.toString()); // hello=world&goodby=world
-
 ```
 
 ### Merging the query string
 
-```JavaScript
-let uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
+```javascript
+import { TinyUri } from 'tiny-uri';
+
+const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
 uri.
   query.add({goodby: 'world'})
   query.merge({hello: 'universe'})
 
 console.log('query', uri.query.toString()); // hello=universe&goodby=world
-
 ```
 
 ## Chaining Methods
 
 You can chain Uri, Path and Query methods.
 
-```Javascript
+```javascript
 expect(uri.scheme().toString()).toBe('https');
 expect(uri.host().toString()).toBe('big.example.com');
 expect(uri.port().toString()).toBe('');

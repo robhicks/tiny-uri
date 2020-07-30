@@ -5,7 +5,7 @@ import StringBuilder from './StringBuilder.js';
 /**
  * Uri - manipulate URLs
  */
-class TinyUri {
+export class TinyUri {
   /**
    * @param {string} uri - a URI string
    * @return {instance} - return Uri instance for chaining
@@ -41,9 +41,9 @@ class TinyUri {
     }
     let userinfo = this.userInfo();
     if (userinfo) authority = userinfo + '@';
-    authority += this.host();
+    authority = authority + this.host();
     let port = this.port();
-    if (port) authority += ':' + port;
+    if (port) authority = authority + (':' + port);
     return authority;
   }
 
@@ -146,5 +146,3 @@ class TinyUri {
   }
 
 }
-
-export default TinyUri;
