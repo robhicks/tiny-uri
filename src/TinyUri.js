@@ -5,7 +5,7 @@ import StringBuilder from './StringBuilder.js';
 /**
  * Uri - manipulate URLs
  */
-export class TinyUri {
+export default class TinyUri {
   /**
    * @param {string} uri - a URI string
    * @return {instance} - return Uri instance for chaining
