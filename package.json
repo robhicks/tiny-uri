@@ -16,8 +16,7 @@
     "build": "npx rollup -c",
     "docs": "npx esdoc -c .esdoc.json",
     "mocha": "mocha -u bdd -R spec -t 5000 --watch test/tests.js",
-    "postinstall": "npx rollup -c",
-    "prepublish": "npx esdoc -c .esdoc.json",
+    "prepublish": "npx rollup -c && npx esdoc -c .esdoc.json",
     "start": "rollup -cw",
     "test": "mocha -u bdd -R spec -t 5000 test/tests.js"
   },
