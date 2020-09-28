@@ -39,28 +39,28 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="tiny-uri">tiny-uri</h1><p>tiny-uri is yet another Javascript library for working with URLs. It offers a (fluent interface)[<a href="https://en.wikipedia.org/wiki/Fluent_interface]">https://en.wikipedia.org/wiki/Fluent_interface]</a>,
-method chaining, and sensible means of manipulating Url parts and a file size of less than 5K, gzipped.</p>
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="tiny-uri">tiny-uri</h1><p>tiny-uri is yet another Javascript library for working with URLs. It offers a (fluent interface)[<a href="https://en.wikipedia.org/wiki/Fluent_interface">https://en.wikipedia.org/wiki/Fluent_interface</a>], method chaining, and sensible means of manipulating Url parts and a file size of less than 5K, gzipped.</p>
 <h1 id="installation">Installation</h1><pre><code class="lang-shell"><code class="source-code prettyprint">npm install https://github.com/robhicks/tiny-uri.git
 
 # or
 
-yarn add https://github.com/robhicks/tiny-uri.git
-</code>
+yarn add https://github.com/robhicks/tiny-uri.git</code>
 </code></pre>
 <h1 id="use">Use</h1><p>You can use the library in the browser or on NodeJs.</p>
-<p>In the browser you can load dist/tiny-uri.iife.js in
-a script tag, or if you are using an es6 aware bundler like RollupJs, you can import it into your
-entry file.</p>
+<p>In the browser you can load dist/tiny-uri.iife.js in a script tag, or if you are using an es6 aware bundler like RollupJs, you can import it into your entry file.</p>
 <p>In NodeJs, require it as usual.</p>
-<h1 id="examples">Examples</h1><h2 id="getting-url-parts-">Getting URL parts:</h2><pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+<h1 id="examples">Examples</h1><h2 id="getting-url-parts-">Getting URL parts:</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">import { TinyUri } from &apos;tiny-uri&apos;;
+
+const uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
 
 console.log(&apos;scheme&apos;, uri.scheme()); // &apos;http&apos;
 console.log(&apos;host&apos;, uri.host()); // &apos;example.org&apos;
 console.log(&apos;path&apos;, uri.path.toString()); // /path/to/foo/index.html
 console.log(&apos;query&apos;, uri.query.toString()); // hello=world</code>
 </code></pre>
-<h2 id="manipulating-url-parts-">Manipulating URL parts:</h2><pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+<h2 id="manipulating-url-parts-">Manipulating URL parts:</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">import { TinyUri } from &apos;tiny-uri&apos;;
+
+const uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
 
 uri
   .scheme(&apos;https&apos;)
@@ -75,41 +75,48 @@ console.log(&apos;authority&apos;, uri.authority()) // &apos;user:password@examp
 console.log(&apos;path&apos;, uri.path.toString()); // /path/to/bar/index.html
 console.log(&apos;query&apos;, uri.query.toString()); // hello=world</code>
 </code></pre>
-<h2 id="manipulating-query-strings">Manipulating query strings</h2><pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+<h2 id="manipulating-query-strings">Manipulating query strings</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">import { TinyUri } from &apos;tiny-uri&apos;;
+
+const uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
 
 console.log(&apos;query&apos;, uri.query.toString()); // hello=world</code>
 </code></pre>
-<h3 id="setting-the-query-string">Setting the query string</h3><pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+<h3 id="setting-the-query-string">Setting the query string</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import { TinyUri } from &apos;tiny-uri&apos;;
+
+const uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
 
 uri.query.set({goodby: &apos;world&apos;});
 
-console.log(&apos;query&apos;, uri.query.toString()); // goodby=world
-</code>
+console.log(&apos;query&apos;, uri.query.toString()); // goodby=world</code>
 </code></pre>
-<h3 id="clearing-the-query-string">Clearing the query string</h3><pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+<h3 id="clearing-the-query-string">Clearing the query string</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import { TinyUri } from &apos;tiny-uri&apos;;
+
+const uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
 
 uri.query.clear();
 
 console.log(&apos;query&apos;, uri.query.toString()); //</code>
 </code></pre>
-<h3 id="adding-to-the-query-string">Adding to the query string</h3><pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+<h3 id="adding-to-the-query-string">Adding to the query string</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import { TinyUri } from &apos;tiny-uri&apos;;
+
+const uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
 
 uri.query.add({goodby: &apos;world&apos;});
 
-console.log(&apos;query&apos;, uri.query.toString()); // hello=world&amp;goodby=world
-</code>
+console.log(&apos;query&apos;, uri.query.toString()); // hello=world&amp;goodby=world</code>
 </code></pre>
-<h3 id="merging-the-query-string">Merging the query string</h3><pre><code class="lang-JavaScript"><code class="source-code prettyprint">let uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
+<h3 id="merging-the-query-string">Merging the query string</h3><pre><code class="lang-javascript"><code class="source-code prettyprint">import { TinyUri } from &apos;tiny-uri&apos;;
+
+const uri = new TinyUri(&apos;http://example.org/path/to/foo/index.html?hello=world&apos;);
 
 uri.
   query.add({goodby: &apos;world&apos;})
   query.merge({hello: &apos;universe&apos;})
 
-console.log(&apos;query&apos;, uri.query.toString()); // hello=universe&amp;goodby=world
-</code>
+console.log(&apos;query&apos;, uri.query.toString()); // hello=universe&amp;goodby=world</code>
 </code></pre>
 <h2 id="chaining-methods">Chaining Methods</h2><p>You can chain Uri, Path and Query methods.</p>
-<pre><code class="lang-Javascript"><code class="source-code prettyprint">expect(uri.scheme().toString()).toBe(&apos;https&apos;);
+<pre><code class="lang-javascript"><code class="source-code prettyprint">expect(uri.scheme().toString()).toBe(&apos;https&apos;);
 expect(uri.host().toString()).toBe(&apos;big.example.com&apos;);
 expect(uri.port().toString()).toBe(&apos;&apos;);
 expect(Array.isArray(uri.path.get())).toEqual(true);
