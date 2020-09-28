@@ -13,5 +13,4 @@ tags
 .tags*
 build
 rollup.build.css
-dist
 .reify-cache
