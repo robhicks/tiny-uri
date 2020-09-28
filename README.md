@@ -25,7 +25,7 @@ In NodeJs, require it as usual.
 ## Getting URL parts:
 
 ```javascript
-import { TinyUri } from 'tiny-uri';
+import TinyUri from 'tiny-uri';
 
 const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
@@ -38,7 +38,7 @@ console.log('query', uri.query.toString()); // hello=world
 ## Manipulating URL parts:
 
 ```javascript
-import { TinyUri } from 'tiny-uri';
+import TinyUri from 'tiny-uri';
 
 const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
@@ -59,7 +59,7 @@ console.log('query', uri.query.toString()); // hello=world
 ## Manipulating query strings
 
 ```javascript
-import { TinyUri } from 'tiny-uri';
+import TinyUri from 'tiny-uri';
 
 const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
@@ -69,7 +69,7 @@ console.log('query', uri.query.toString()); // hello=world
 ### Setting the query string
 
 ```javascript
-import { TinyUri } from 'tiny-uri';
+import TinyUri from 'tiny-uri';
 
 const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
@@ -81,7 +81,7 @@ console.log('query', uri.query.toString()); // goodby=world
 ### Clearing the query string
 
 ```javascript
-import { TinyUri } from 'tiny-uri';
+import TinyUri from 'tiny-uri';
 
 const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
@@ -93,7 +93,7 @@ console.log('query', uri.query.toString()); //
 ### Adding to the query string
 
 ```javascript
-import { TinyUri } from 'tiny-uri';
+import TinyUri from 'tiny-uri';
 
 const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
@@ -105,7 +105,7 @@ console.log('query', uri.query.toString()); // hello=world&goodby=world
 ### Merging the query string
 
 ```javascript
-import { TinyUri } from 'tiny-uri';
+import TinyUri from 'tiny-uri';
 
 const uri = new TinyUri('http://example.org/path/to/foo/index.html?hello=world');
 
