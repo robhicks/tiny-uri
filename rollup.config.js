@@ -9,6 +9,7 @@ export default [
     input: entry,
     plugins: [],
     output: {
+      exports: 'auto',
       file: path.resolve(root, "dist", "tiny-uri.cjs.js"),
       format: "cjs"
     }
@@ -19,6 +20,7 @@ export default [
 			terser()
     ],
     output: {
+      exports: 'auto',
       file: path.resolve(root, "dist", "tiny-uri.mjs"),
       format: "es"
     }
@@ -27,6 +29,7 @@ export default [
     input: entry,
     plugins: [terser()],
     output: {
+      exports: 'auto',
       file: path.resolve(root, 'dist', 'tiny-uri.cjs.js'),
       format: 'cjs'
     }
@@ -36,6 +39,7 @@ export default [
     plugins: [
     ],
     output: {
+      exports: 'auto',
       file: path.resolve(root, 'dist', 'tiny-uri.mjs'),
       format: 'es'
     }
@@ -46,6 +50,7 @@ export default [
 			terser()
     ],
     output: {
+      exports: 'auto',
       file: path.resolve(root, 'dist', 'tiny-uri.min.mjs'),
       format: 'es'
     }
