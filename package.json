@@ -1,6 +1,6 @@
 {
   "name": "tiny-uri",
-  "version": "8.0.9",
+  "version": "8.1.0",
   "description": "Lightweight Javascript library for handling URLs",
   "keywords": [
     "Lightweight",
@@ -10,6 +10,7 @@
     "URLs"
   ],
   "repository": "https://github.com/robhicks/tiny-uri.git",
+  "browser": "src/TinyUri.js",
   "main": "dist/tiny-uri.cjs.js",
   "module": "src/TinyUri.js",
   "scripts": {
@@ -23,23 +24,23 @@
   "author": "rob@hixfamily.org",
   "license": "MIT",
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "^4.3.4",
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
-    "eslint": "^7.10.0",
-    "mocha": "^8.1.3",
-    "nock": "^13.0.4",
+    "eslint": "^7.24.0",
+    "mocha": "^8.3.2",
+    "nock": "^13.0.11",
     "npm-run-all": "^4.1.5",
     "reify": "^0.20.12",
-    "rollup": "^2.28.2",
+    "rollup": "^2.45.2",
     "rollup-plugin-buble": "^0.19.8",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-live-server": "^2.0.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-terser": "^7.0.2",
     "serialize-javascript": ">=5.0.1",
-    "sinon": "^9.0.3",
-    "sinon-chai": "^3.5.0",
+    "sinon": "^10.0.0",
+    "sinon-chai": "^3.6.0",
     "static-server": "^2.2.1"
   },
   "dependencies": {}

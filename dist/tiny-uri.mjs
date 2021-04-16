@@ -143,7 +143,7 @@ class Query {
    * Get the query string
    * @return {array} representing the query string
    */
-  get() {
+  get(name) {
     let dict = {};
     let obj = this._query;
 
@@ -156,6 +156,7 @@ class Query {
         dict[k] = [v];
       }
     }
+    if (name) return dict[name] && dict[name].length ? dict[name][0] : null;
     return dict;
   }
 
@@ -307,7 +308,7 @@ class StringBuilder {
    * @return {instance} for chaining
    */
   insert(pos, val) {
-    let length = this.string.length;
+    this.string.length;
     let left = this.string.slice(0, pos);
     let right = this.string.slice(pos);
     this.string = left + val + right;
@@ -441,7 +442,7 @@ class TinyUri {
   toString() {
     let q = this.query.toString();
     let p = this.path.toString();
-    let f = this.fragment();
+    this.fragment();
     let s = this.scheme();
     let str = new StringBuilder();
     let retStr = str.append(s ? s + '://' : "")
