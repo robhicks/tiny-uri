@@ -1,3 +1,4 @@
+import { expect } from 'chai';
 import TinyUri from '../src/TinyUri.js';
 
 describe('TinyUri', () => {
@@ -197,6 +198,26 @@ describe('TinyUri', () => {
       expect(uri.toString()).to.be.equal('https://user:pass@big.example.com/path/to/file.xml');
     });
 
+    it(`should get a leading query string parameter`, () => {
+      const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+      const uri = new TinyUri(url);
+      const qs = uri.query.get('context');
+      expect(qs).to.be.equal('foo');
+    });
+
+    it(`should get a trailing query string parameter`, () => {
+      const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+      const uri = new TinyUri(url);
+      const qs = uri.query.get('credentials');
+      expect(qs).to.be.equal('bar');
+    });
+
+    it(`should get null for an invalid query`, () => {
+      const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+      const uri = new TinyUri(url);
+      const qs = uri.query.get('hot');
+      expect(qs).to.be.null;
+    });
   });
 
   it('should change the host', () => {

@@ -115,6 +115,21 @@ uri.
 
 console.log('query', uri.query.toString()); // hello=universe&goodby=world
 ```
+### Getting a specific query string parameter
+
+Let's say you want to get the value of a context query string parameter
+
+```JavaScript
+const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+const uri = new TinyUri(url);
+const credentials = uri.query.get('credentials');
+const context = uri.query.get('context');
+const hot = uri.query.get('hot');
+
+console.log(credentials === 'bar') // true
+console.log(context === 'foo') // true
+console.log(hot === null) // true
+```
 
 ## Chaining Methods
 

@@ -53,7 +53,7 @@ export default class Query {
    * Get the query string
    * @return {array} representing the query string
    */
-  get() {
+  get(name) {
     let dict = {};
     let obj = this._query;
 
@@ -66,6 +66,7 @@ export default class Query {
         dict[k] = [v];
       }
     }
+    if (name) return dict[name] && dict[name].length ? dict[name][0] : null;
     return dict;
   }
 
