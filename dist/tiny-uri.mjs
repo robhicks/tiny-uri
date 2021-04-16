@@ -308,7 +308,7 @@ class StringBuilder {
    * @return {instance} for chaining
    */
   insert(pos, val) {
-    let length = this.string.length;
+    this.string.length;
     let left = this.string.slice(0, pos);
     let right = this.string.slice(pos);
     this.string = left + val + right;
@@ -442,7 +442,7 @@ class TinyUri {
   toString() {
     let q = this.query.toString();
     let p = this.path.toString();
-    let f = this.fragment();
+    this.fragment();
     let s = this.scheme();
     let str = new StringBuilder();
     let retStr = str.append(s ? s + '://' : "")

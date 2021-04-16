@@ -115,6 +115,17 @@ uri.
 
 console.log(&apos;query&apos;, uri.query.toString()); // hello=universe&amp;goodby=world</code>
 </code></pre>
+<h3 id="getting-a-specific-query-string-parameter">Getting a specific query string parameter</h3><p>Let&apos;s say you want to get the value of a context query string parameter</p>
+<pre><code class="lang-JavaScript"><code class="source-code prettyprint">const url = &apos;https://user:pass@big.example.com/path/to/file.xml?context=foo&amp;credentials=bar&apos;;
+const uri = new TinyUri(url);
+const credentials = uri.query.get(&apos;credentials&apos;);
+const context = uri.query.get(&apos;context&apos;);
+const hot = uri.query.get(&apos;hot&apos;);
+
+console.log(credentials === &apos;bar&apos;) // true
+console.log(context === &apos;foo&apos;) // true
+console.log(hot === null) // true</code>
+</code></pre>
 <h2 id="chaining-methods">Chaining Methods</h2><p>You can chain Uri, Path and Query methods.</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">expect(uri.scheme().toString()).toBe(&apos;https&apos;);
 expect(uri.host().toString()).toBe(&apos;big.example.com&apos;);
