@@ -14,3 +14,6 @@ tags
 build
 rollup.build.css
 .reify-cache
+package-lock.json
+dist
+doc

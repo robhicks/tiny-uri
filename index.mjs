@@ -140,8 +140,9 @@ class Query {
   }
 
   /**
-   * Get the query string
-   * @return {array} representing the query string
+   * Get the query string or get the value of a single query parameter
+   * @param {string} name representing single query string
+   * @returns {array} or {string} representing the query string the value of a single query parameter
    */
   get(name) {
     let dict = {};
@@ -245,7 +246,7 @@ class Query {
 
   /**
    * Set the url template query string vale
-   * @param {string} url-template query string
+   * @param {string} s url-template query string
    * @return {instance} for chaining
    */
   setUrlTemplateQuery(s) {
@@ -253,8 +254,8 @@ class Query {
   }
 
   /**
-   * Get string representatio of the path or the uri
-   * @param {boolen} uri - if true return string represention of uri
+   * Get string representation of the path or the uri
+   * @param {boolean} uri - if true return string representation of uri
    * @return {string} query or uri as string
    */
   toString(uri) {

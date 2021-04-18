@@ -1,58 +1,72 @@
+import { resolve } from 'path';
 import {terser} from 'rollup-plugin-terser';
-const path = require("path");
-const root = process.cwd();
+import commonjs from '@rollup/plugin-commonjs';
+import {liveServer} from 'rollup-plugin-live-server';
+import nodeResolve from '@rollup/plugin-node-resolve';
 
-const entry = path.resolve(root, "src", "TinyUri.js");
+const root = process.cwd();
+const production = !process.env.ROLLUP_WATCH;
+const entry = resolve(root, "src", "TinyUri.js");
+
+const plugins = [nodeResolve(), commonjs()];
 
 export default [
   {
     input: entry,
-    plugins: [],
+    plugins,
     output: {
       exports: 'auto',
-      file: path.resolve(root, "dist", "tiny-uri.cjs.js"),
+      file: resolve(root, "index.js"),
       format: "cjs"
     }
   },
   {
     input: entry,
-    plugins: [
-			terser()
-    ],
+    plugins,
     output: {
       exports: 'auto',
-      file: path.resolve(root, "dist", "tiny-uri.mjs"),
+      file: resolve(root, "index.mjs"),
       format: "es"
     }
   },
   {
     input: entry,
-    plugins: [terser()],
+    plugins: [...plugins, !production && liveServer({
+			file: 'mocha.html',
+			port: 3001,
+      host: '0.0.0.0',
+      root: './test',
+      mount: [
+        [ '/dist', './dist' ],
+        [ '/node_modules', './node_modules' ],
+        [ '/src', './src' ],
+        [ '/test', './test' ]
+      ],
+      open: false,
+      wait: 500
+		})],
     output: {
       exports: 'auto',
-      file: path.resolve(root, 'dist', 'tiny-uri.cjs.js'),
-      format: 'cjs'
+      file: resolve(root, "dist", "tiny-uri.js"),
+      format: "es"
     }
   },
-	{
+  {
     input: entry,
-    plugins: [
-    ],
+    plugins: [...plugins, terser()],
     output: {
       exports: 'auto',
-      file: path.resolve(root, 'dist', 'tiny-uri.mjs'),
-      format: 'es'
+      file: resolve(root, "dist", "tiny-uri.min.js"),
+      format: "es"
     }
   },
-	{
-    input: entry,
-    plugins: [
-			terser()
-    ],
+  {
+    input: resolve(root, 'test', 'tests.js'),
+    plugins: [...plugins],
     output: {
       exports: 'auto',
-      file: path.resolve(root, 'dist', 'tiny-uri.min.mjs'),
-      format: 'es'
+      file: resolve(root, "test", "test-bundle.js"),
+      format: "cjs"
     }
   }
 ];

@@ -147,3 +147,6 @@ expect(uri.query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString()).
 expect(uri.query.clear().query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString()).toEqual('foo=bars');
 expect(uri.query.clear().query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString(true)).toEqual('https://user:pass@big.example.com/path/to/file.xml?foo=bars');
 ```
+
+# Changes
+- 9.0.0 - the library hasn't changed but the build system has. This library only supports modern browsers and Node JS. Importing the library in the browser, pulls in an minified esm build. If you want to import the esm source directly, use ```import TinyUri from 'tiny-uri/src/TinyUri.js'```. In node, you can use the default cjs or if you are using esm ```import TinyUri from 'tiny-uri/index.mjs'```.
