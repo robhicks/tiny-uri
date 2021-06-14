@@ -1,6 +1,6 @@
 {
   "name": "tiny-uri",
-  "version": "9.1.0",
+  "version": "9.1.1",
   "description": "Lightweight Javascript library for handling URLs",
   "keywords": [
     "Lightweight",
@@ -17,7 +17,6 @@
     "build": "npx rollup -c",
     "docs": "npx esdoc -c .esdoc.json",
     "mocha": "mocha -u bdd -R spec -t 5000 --watch test/test-bundle.js",
-    "postinstall": "run-s build docs",
     "start": "rollup -cw",
     "test": "mocha -u bdd -R spec -t 5000 test/test-bundle.js"
   },
