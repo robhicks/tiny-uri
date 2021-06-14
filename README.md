@@ -56,6 +56,37 @@ console.log('path', uri.path.toString()); // /path/to/bar/index.html
 console.log('query', uri.query.toString()); // hello=world
 ```
 
+## Manipulating paths
+
+```JavaScript
+// remove the last segment of a path
+
+const url = 'https://user:pass@big.example.com/path/to/file.xml';
+const uri = new TinyUri(url);
+
+expect(uri.path.delete().path.toString()).to.be.equal('to/file.xml');
+```
+
+```JavaScript
+// remove a specific segment of the the path
+
+const url = 'https://user:pass@big.example.com/path/to/file.xml';
+const uri = new TinyUri(url);
+
+expect(uri.path.delete(0).path.toString()).to.be.equal('to/file.xml');
+```
+
+```JavaScript
+// should remove several segments of the the path
+// delete accepts an array of segment locations. segment locations must be
+// in ascending order and within the range of path segments
+
+const url = 'https://user:pass@big.example.com/really/long/path/to/file.xml';
+const uri = new TinyUri(url);
+
+expect(uri.path.delete([0, 1, 2, 3]).path.toString()).to.be.equal('file.xml');
+```
+
 ## Manipulating query strings
 
 ```javascript

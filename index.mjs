@@ -28,10 +28,14 @@ class Path {
    * @return {instance} for chaining
    */
   delete(loc) {
-    if (!loc) {
+    if (Array.isArray(loc)) {
+      loc.reverse().forEach(l => this._path.splice(l, 1));
+    } else if (Number.isInteger(loc)) {
+      this._path.splice(loc, 1);
+    } else {
       this._path.pop();
-      return this.ctx;
     }
+    return this.ctx;
   }
 
   /**

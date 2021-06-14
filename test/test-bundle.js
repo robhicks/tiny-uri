@@ -2,16 +2,14 @@
 
 var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-function createCommonjsModule(fn) {
-  var module = { exports: {} };
-	return fn(module, module.exports), module.exports;
-}
+var chai$7 = {};
 
 /*!
  * assertion-error
  * Copyright(c) 2013 Jake Luer <jake@qualiancy.com>
  * MIT Licensed
  */
+
 /*!
  * Return a function that will copy properties from
  * one object to another excluding any originally
@@ -46,7 +44,7 @@ function exclude () {
  * Primary Exports
  */
 
-var assertionError = AssertionError;
+var assertionError = AssertionError$1;
 
 /**
  * ### AssertionError
@@ -59,7 +57,7 @@ var assertionError = AssertionError;
  * @param {callee} start stack function (optional)
  */
 
-function AssertionError (message, _props, ssf) {
+function AssertionError$1 (message, _props, ssf) {
   var extend = exclude('name', 'message', 'stack', 'constructor', 'toJSON')
     , props = extend(_props || {});
 
@@ -73,7 +71,7 @@ function AssertionError (message, _props, ssf) {
   }
 
   // capture stack trace
-  ssf = ssf || AssertionError;
+  ssf = ssf || AssertionError$1;
   if (Error.captureStackTrace) {
     Error.captureStackTrace(this, ssf);
   } else {
@@ -89,19 +87,19 @@ function AssertionError (message, _props, ssf) {
  * Inherit from Error.prototype
  */
 
-AssertionError.prototype = Object.create(Error.prototype);
+AssertionError$1.prototype = Object.create(Error.prototype);
 
 /*!
  * Statically set name
  */
 
-AssertionError.prototype.name = 'AssertionError';
+AssertionError$1.prototype.name = 'AssertionError';
 
 /*!
  * Ensure correct constructor
  */
 
-AssertionError.prototype.constructor = AssertionError;
+AssertionError$1.prototype.constructor = AssertionError$1;
 
 /**
  * Allow errors to be converted to JSON for static transfer.
@@ -110,7 +108,7 @@ AssertionError.prototype.constructor = AssertionError;
  * @return {Object} object that can be `JSON.stringify`
  */
 
-AssertionError.prototype.toJSON = function (stack) {
+AssertionError$1.prototype.toJSON = function (stack) {
   var extend = exclude('constructor', 'toJSON', 'stack')
     , props = extend({ name: this.name }, this);
 
@@ -121,6 +119,8 @@ AssertionError.prototype.toJSON = function (stack) {
 
   return props;
 };
+
+var utils = {};
 
 /* !
  * Chai - pathval utility
@@ -166,7 +166,7 @@ AssertionError.prototype.toJSON = function (stack) {
  * @api public
  */
 
-function hasProperty$1(obj, name) {
+function hasProperty(obj, name) {
   if (typeof obj === 'undefined' || obj === null) {
     return false;
   }
@@ -324,7 +324,7 @@ function internalSetPathValue(obj, val, parsed) {
  * @api public
  */
 
-function getPathInfo$1(obj, path) {
+function getPathInfo(obj, path) {
   var parsed = parsePath(path);
   var last = parsed[parsed.length - 1];
   var info = {
@@ -335,7 +335,7 @@ function getPathInfo$1(obj, path) {
     name: last.p || last.i,
     value: internalGetPathValue(obj, parsed),
   };
-  info.exists = hasProperty$1(info.parent, info.name);
+  info.exists = hasProperty(info.parent, info.name);
 
   return info;
 }
@@ -372,7 +372,7 @@ function getPathInfo$1(obj, path) {
  */
 
 function getPathValue(obj, path) {
-  var info = getPathInfo$1(obj, path);
+  var info = getPathInfo(obj, path);
   return info.value;
 }
 
@@ -415,9 +415,9 @@ function setPathValue(obj, path, val) {
   return obj;
 }
 
-var pathval = {
-  hasProperty: hasProperty$1,
-  getPathInfo: getPathInfo$1,
+var pathval$1 = {
+  hasProperty: hasProperty,
+  getPathInfo: getPathInfo,
   getPathValue: getPathValue,
   setPathValue: setPathValue,
 };
@@ -427,6 +427,7 @@ var pathval = {
  * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
 /**
  * ### .flag(object, key, [value])
  *
@@ -446,7 +447,7 @@ var pathval = {
  * @api private
  */
 
-var flag$1 = function flag(obj, key, value) {
+var flag$a = function flag(obj, key, value) {
   var flags = obj.__flags || (obj.__flags = Object.create(null));
   if (arguments.length === 3) {
     flags[key] = value;
@@ -465,7 +466,7 @@ var flag$1 = function flag(obj, key, value) {
  * Module dependencies
  */
 
-
+var flag$9 = flag$a;
 
 /**
  * ### .test(object, expression)
@@ -478,13 +479,15 @@ var flag$1 = function flag(obj, key, value) {
  * @name test
  */
 
-var test$1 = function test(obj, args) {
-  var negate = flag$1(obj, 'negate')
+var test = function test(obj, args) {
+  var negate = flag$9(obj, 'negate')
     , expr = args[0];
   return negate ? !expr : expr;
 };
 
-var typeDetect = createCommonjsModule(function (module, exports) {
+var typeDetect = {exports: {}};
+
+(function (module, exports) {
 (function (global, factory) {
 	module.exports = factory() ;
 }(commonjsGlobal, (function () {
@@ -870,7 +873,7 @@ function typeDetect(obj) {
 return typeDetect;
 
 })));
-});
+}(typeDetect));
 
 /*!
  * Chai - expectTypes utility
@@ -892,17 +895,17 @@ return typeDetect;
  * @api public
  */
 
+var AssertionError = assertionError;
+var flag$8 = flag$a;
+var type$2 = typeDetect.exports;
 
-
-
-
-var expectTypes$1 = function expectTypes(obj, types) {
-  var flagMsg = flag$1(obj, 'message');
-  var ssfi = flag$1(obj, 'ssfi');
+var expectTypes = function expectTypes(obj, types) {
+  var flagMsg = flag$8(obj, 'message');
+  var ssfi = flag$8(obj, 'ssfi');
 
   flagMsg = flagMsg ? flagMsg + ': ' : '';
 
-  obj = flag$1(obj, 'object');
+  obj = flag$8(obj, 'object');
   types = types.map(function (t) { return t.toLowerCase(); });
   types.sort();
 
@@ -913,10 +916,10 @@ var expectTypes$1 = function expectTypes(obj, types) {
     return or + art + ' ' + t;
   }).join(', ');
 
-  var objType = typeDetect(obj).toLowerCase();
+  var objType = type$2(obj).toLowerCase();
 
   if (!types.some(function (expected) { return objType === expected; })) {
-    throw new assertionError(
+    throw new AssertionError(
       flagMsg + 'object tested must be ' + str + ', but ' + objType + ' given',
       undefined,
       ssfi
@@ -929,6 +932,7 @@ var expectTypes$1 = function expectTypes(obj, types) {
  * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
 /**
  * ### .getActual(object, [actual])
  *
@@ -943,6 +947,8 @@ var expectTypes$1 = function expectTypes(obj, types) {
 var getActual$1 = function getActual(obj, args) {
   return args.length > 4 ? args[4] : obj._obj;
 };
+
+var inspect$2 = {exports: {}};
 
 /* !
  * Chai - getFuncName utility
@@ -992,6 +998,7 @@ var getFuncName_1 = getFuncName;
  * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
 /**
  * ### .getProperties(object)
  *
@@ -1005,7 +1012,7 @@ var getFuncName_1 = getFuncName;
  * @api public
  */
 
-var getProperties = function getProperties(object) {
+var getProperties$1 = function getProperties(object) {
   var result = Object.getOwnPropertyNames(object);
 
   function addProperty(property) {
@@ -1028,6 +1035,7 @@ var getProperties = function getProperties(object) {
  * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
 /**
  * ### .getEnumerableProperties(object)
  *
@@ -1049,7 +1057,7 @@ var getEnumerableProperties = function getEnumerableProperties(object) {
   return result;
 };
 
-var config = {
+var config$4 = {
 
   /**
    * ### config.includeStack
@@ -1144,14 +1152,14 @@ var config = {
   proxyExcludedKeys: ['then', 'catch', 'inspect', 'toJSON']
 };
 
-var inspect_1 = createCommonjsModule(function (module, exports) {
+(function (module, exports) {
 // This is (almost) directly from Node.js utils
 // https://github.com/joyent/node/blob/f8c335d0caf47f16d31413f89aa28eda3878e3aa/lib/util.js
 
-
-
-
-
+var getName = getFuncName_1;
+var getProperties = getProperties$1;
+var getEnumerableProperties$1 = getEnumerableProperties;
+var config = config$4;
 
 module.exports = inspect;
 
@@ -1247,7 +1255,7 @@ function formatValue(ctx, value, recurseTimes) {
   }
 
   // Look up the keys of the object.
-  var visibleKeys = getEnumerableProperties(value);
+  var visibleKeys = getEnumerableProperties$1(value);
   var keys = ctx.showHidden ? getProperties(value) : visibleKeys;
 
   var name, nameSuffix;
@@ -1260,7 +1268,7 @@ function formatValue(ctx, value, recurseTimes) {
       (keys.length === 2 && keys[0] === 'description' && keys[1] === 'stack')
      ))) {
     if (typeof value === 'function') {
-      name = getFuncName_1(value);
+      name = getName(value);
       nameSuffix = name ? ': ' + name : '';
       return ctx.stylize('[Function' + nameSuffix + ']', 'special');
     }
@@ -1293,7 +1301,7 @@ function formatValue(ctx, value, recurseTimes) {
 
   // Make functions say that they are functions
   if (typeof value === 'function') {
-    name = getFuncName_1(value);
+    name = getName(value);
     nameSuffix = name ? ': ' + name : '';
     base = ' [Function' + nameSuffix + ']';
   }
@@ -1524,7 +1532,7 @@ function isError(e) {
 function objectToString(o) {
   return Object.prototype.toString.call(o);
 }
-});
+}(inspect$2, inspect$2.exports));
 
 /*!
  * Chai - flag utility
@@ -1536,8 +1544,8 @@ function objectToString(o) {
  * Module dependencies
  */
 
-
-
+var inspect$1 = inspect$2.exports;
+var config$3 = config$4;
 
 /**
  * ### .objDisplay(object)
@@ -1553,10 +1561,10 @@ function objectToString(o) {
  */
 
 var objDisplay$1 = function objDisplay(obj) {
-  var str = inspect_1(obj)
+  var str = inspect$1(obj)
     , type = Object.prototype.toString.call(obj);
 
-  if (config.truncateThreshold && str.length >= config.truncateThreshold) {
+  if (config$3.truncateThreshold && str.length >= config$3.truncateThreshold) {
     if (type === '[object Function]') {
       return !obj.name || obj.name === ''
         ? '[Function]'
@@ -1587,7 +1595,9 @@ var objDisplay$1 = function objDisplay(obj) {
  * Module dependencies
  */
 
-
+var flag$7 = flag$a
+  , getActual = getActual$1
+  , objDisplay = objDisplay$1;
 
 /**
  * ### .getMessage(object, message, negateMessage)
@@ -1608,20 +1618,20 @@ var objDisplay$1 = function objDisplay(obj) {
  * @api public
  */
 
-var getMessage$2 = function getMessage(obj, args) {
-  var negate = flag$1(obj, 'negate')
-    , val = flag$1(obj, 'object')
+var getMessage$1 = function getMessage(obj, args) {
+  var negate = flag$7(obj, 'negate')
+    , val = flag$7(obj, 'object')
     , expected = args[3]
-    , actual = getActual$1(obj, args)
+    , actual = getActual(obj, args)
     , msg = negate ? args[2] : args[1]
-    , flagMsg = flag$1(obj, 'message');
+    , flagMsg = flag$7(obj, 'message');
 
   if(typeof msg === "function") msg = msg();
   msg = msg || '';
   msg = msg
-    .replace(/#\{this\}/g, function () { return objDisplay$1(val); })
-    .replace(/#\{act\}/g, function () { return objDisplay$1(actual); })
-    .replace(/#\{exp\}/g, function () { return objDisplay$1(expected); });
+    .replace(/#\{this\}/g, function () { return objDisplay(val); })
+    .replace(/#\{act\}/g, function () { return objDisplay(actual); })
+    .replace(/#\{exp\}/g, function () { return objDisplay(expected); });
 
   return flagMsg ? flagMsg + ': ' + msg : msg;
 };
@@ -1631,6 +1641,7 @@ var getMessage$2 = function getMessage(obj, args) {
  * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
 /**
  * ### .transferFlags(assertion, object, includeAll = true)
  *
@@ -1654,7 +1665,7 @@ var getMessage$2 = function getMessage(obj, args) {
  * @api private
  */
 
-var transferFlags$1 = function transferFlags(assertion, object, includeAll) {
+var transferFlags$6 = function transferFlags(assertion, object, includeAll) {
   var flags = assertion.__flags || (assertion.__flags = Object.create(null));
 
   if (!object.__flags) {
@@ -1671,6 +1682,8 @@ var transferFlags$1 = function transferFlags(assertion, object, includeAll) {
   }
 };
 
+var deepEql = {exports: {}};
+
 /* globals Symbol: false, Uint8Array: false, WeakMap: false */
 /*!
  * deep-eql
@@ -1678,7 +1691,7 @@ var transferFlags$1 = function transferFlags(assertion, object, includeAll) {
  * MIT Licensed
  */
 
-
+var type$1 = typeDetect.exports;
 function FakeMap() {
   this._key = 'chai/deep-eql__' + Math.random() + Date.now();
 }
@@ -1748,8 +1761,8 @@ function memoizeSet(leftHandOperand, rightHandOperand, memoizeMap, result) {
  * Primary Export
  */
 
-var deepEql = deepEqual;
-var MemoizeMap_1 = MemoizeMap;
+deepEql.exports = deepEqual;
+deepEql.exports.MemoizeMap = MemoizeMap;
 
 /**
  * Assert deeply nested sameValue equality between two objects of any type.
@@ -1852,8 +1865,8 @@ function extensiveDeepEqual(leftHandOperand, rightHandOperand, options) {
     }
   }
 
-  var leftHandType = typeDetect(leftHandOperand);
-  if (leftHandType !== typeDetect(rightHandOperand)) {
+  var leftHandType = type$1(leftHandOperand);
+  if (leftHandType !== type$1(rightHandOperand)) {
     memoizeSet(leftHandOperand, rightHandOperand, options.memoize, false);
     return false;
   }
@@ -2125,7 +2138,8 @@ function objectEqual(leftHandOperand, rightHandOperand, options) {
 function isPrimitive(value) {
   return value === null || typeof value !== 'object';
 }
-deepEql.MemoizeMap = MemoizeMap_1;
+
+var config$2 = config$4;
 
 /*!
  * Chai - isProxyEnabled helper
@@ -2144,8 +2158,8 @@ deepEql.MemoizeMap = MemoizeMap_1;
  * @name isProxyEnabled
  */
 
-var isProxyEnabled$1 = function isProxyEnabled() {
-  return config.useProxy &&
+var isProxyEnabled$3 = function isProxyEnabled() {
+  return config$2.useProxy &&
     typeof Proxy !== 'undefined' &&
     typeof Reflect !== 'undefined';
 };
@@ -2155,6 +2169,11 @@ var isProxyEnabled$1 = function isProxyEnabled() {
  * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
+var chai$6 = chai$7;
+var flag$6 = flag$a;
+var isProxyEnabled$2 = isProxyEnabled$3;
+var transferFlags$5 = transferFlags$6;
 
 /**
  * ### .addProperty(ctx, name, getter)
@@ -2182,7 +2201,7 @@ var isProxyEnabled$1 = function isProxyEnabled() {
  * @api public
  */
 
-var addProperty$1 = function addProperty(ctx, name, getter) {
+var addProperty = function addProperty(ctx, name, getter) {
   getter = getter === undefined ? function () {} : getter;
 
   Object.defineProperty(ctx, name,
@@ -2202,16 +2221,16 @@ var addProperty$1 = function addProperty(ctx, name, getter) {
         //
         // If proxy protection is enabled, then the `ssfi` flag has already been
         // set by the proxy getter.
-        if (!isProxyEnabled$1() && !flag$1(this, 'lockSsfi')) {
-          flag$1(this, 'ssfi', propertyGetter);
+        if (!isProxyEnabled$2() && !flag$6(this, 'lockSsfi')) {
+          flag$6(this, 'ssfi', propertyGetter);
         }
 
         var result = getter.call(this);
         if (result !== undefined)
           return result;
 
-        var newAssertion = new chai$1.Assertion();
-        transferFlags$1(this, newAssertion);
+        var newAssertion = new chai$6.Assertion();
+        transferFlags$5(this, newAssertion);
         return newAssertion;
       }
     , configurable: true
@@ -2260,7 +2279,7 @@ var fnLengthDesc = Object.getOwnPropertyDescriptor(function () {}, 'length');
  * @name addLengthGuard
  */
 
-var addLengthGuard$1 = function addLengthGuard (fn, assertionName, isChainable) {
+var addLengthGuard$3 = function addLengthGuard (fn, assertionName, isChainable) {
   if (!fnLengthDesc.configurable) return fn;
 
   Object.defineProperty(fn, 'length', {
@@ -2278,6 +2297,11 @@ var addLengthGuard$1 = function addLengthGuard (fn, assertionName, isChainable) 
 
   return fn;
 };
+
+var config$1 = config$4;
+var flag$5 = flag$a;
+var getProperties = getProperties$1;
+var isProxyEnabled$1 = isProxyEnabled$3;
 
 /*!
  * Chai - proxify utility
@@ -2306,7 +2330,7 @@ var addLengthGuard$1 = function addLengthGuard (fn, assertionName, isChainable) 
 
 var builtins = ['__flags', '__methods', '_obj', 'assert'];
 
-var proxify$1 = function proxify(obj, nonChainableMethodName) {
+var proxify$3 = function proxify(obj, nonChainableMethodName) {
   if (!isProxyEnabled$1()) return obj;
 
   return new Proxy(obj, {
@@ -2316,7 +2340,7 @@ var proxify$1 = function proxify(obj, nonChainableMethodName) {
       // The values for which an error should be thrown can be configured using
       // the `config.proxyExcludedKeys` setting.
       if (typeof property === 'string' &&
-          config.proxyExcludedKeys.indexOf(property) === -1 &&
+          config$1.proxyExcludedKeys.indexOf(property) === -1 &&
           !Reflect.has(target, property)) {
         // Special message for invalid property access of non-chainable methods.
         if (nonChainableMethodName) {
@@ -2367,8 +2391,8 @@ var proxify$1 = function proxify(obj, nonChainableMethodName) {
       // if the `lockSsfi` flag is set, thus indicating that this assertion is
       // being called from within another assertion. In that case, the `ssfi`
       // flag is already set to the outer assertion's starting point.
-      if (builtins.indexOf(property) === -1 && !flag$1(target, 'lockSsfi')) {
-        flag$1(target, 'ssfi', proxyGetter);
+      if (builtins.indexOf(property) === -1 && !flag$5(target, 'lockSsfi')) {
+        flag$5(target, 'ssfi', proxyGetter);
       }
 
       return Reflect.get(target, property);
@@ -2428,6 +2452,12 @@ function stringDistanceCapped(strA, strB, cap) {
  * MIT Licensed
  */
 
+var addLengthGuard$2 = addLengthGuard$3;
+var chai$5 = chai$7;
+var flag$4 = flag$a;
+var proxify$2 = proxify$3;
+var transferFlags$4 = transferFlags$6;
+
 /**
  * ### .addMethod(ctx, name, method)
  *
@@ -2454,7 +2484,7 @@ function stringDistanceCapped(strA, strB, cap) {
  * @api public
  */
 
-var addMethod$1 = function addMethod(ctx, name, method) {
+var addMethod = function addMethod(ctx, name, method) {
   var methodWrapper = function () {
     // Setting the `ssfi` flag to `methodWrapper` causes this function to be the
     // starting point for removing implementation frames from the stack trace of
@@ -2468,21 +2498,21 @@ var addMethod$1 = function addMethod(ctx, name, method) {
     // inside of another assertion. In the first case, the `ssfi` flag has
     // already been set by the overwriting assertion. In the second case, the
     // `ssfi` flag has already been set by the outer assertion.
-    if (!flag$1(this, 'lockSsfi')) {
-      flag$1(this, 'ssfi', methodWrapper);
+    if (!flag$4(this, 'lockSsfi')) {
+      flag$4(this, 'ssfi', methodWrapper);
     }
 
     var result = method.apply(this, arguments);
     if (result !== undefined)
       return result;
 
-    var newAssertion = new chai$1.Assertion();
-    transferFlags$1(this, newAssertion);
+    var newAssertion = new chai$5.Assertion();
+    transferFlags$4(this, newAssertion);
     return newAssertion;
   };
 
-  addLengthGuard$1(methodWrapper, name, false);
-  ctx[name] = proxify$1(methodWrapper, name);
+  addLengthGuard$2(methodWrapper, name, false);
+  ctx[name] = proxify$2(methodWrapper, name);
 };
 
 /*!
@@ -2490,6 +2520,11 @@ var addMethod$1 = function addMethod(ctx, name, method) {
  * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
+var chai$4 = chai$7;
+var flag$3 = flag$a;
+var isProxyEnabled = isProxyEnabled$3;
+var transferFlags$3 = transferFlags$6;
 
 /**
  * ### .overwriteProperty(ctx, name, fn)
@@ -2525,7 +2560,7 @@ var addMethod$1 = function addMethod(ctx, name, method) {
  * @api public
  */
 
-var overwriteProperty$1 = function overwriteProperty(ctx, name, getter) {
+var overwriteProperty = function overwriteProperty(ctx, name, getter) {
   var _get = Object.getOwnPropertyDescriptor(ctx, name)
     , _super = function () {};
 
@@ -2549,24 +2584,24 @@ var overwriteProperty$1 = function overwriteProperty(ctx, name, getter) {
         //
         // If proxy protection is enabled, then the `ssfi` flag has already been
         // set by the proxy getter.
-        if (!isProxyEnabled$1() && !flag$1(this, 'lockSsfi')) {
-          flag$1(this, 'ssfi', overwritingPropertyGetter);
+        if (!isProxyEnabled() && !flag$3(this, 'lockSsfi')) {
+          flag$3(this, 'ssfi', overwritingPropertyGetter);
         }
 
         // Setting the `lockSsfi` flag to `true` prevents the overwritten
         // assertion from changing the `ssfi` flag. By this point, the `ssfi`
         // flag is already set to the correct starting point for this assertion.
-        var origLockSsfi = flag$1(this, 'lockSsfi');
-        flag$1(this, 'lockSsfi', true);
+        var origLockSsfi = flag$3(this, 'lockSsfi');
+        flag$3(this, 'lockSsfi', true);
         var result = getter(_super).call(this);
-        flag$1(this, 'lockSsfi', origLockSsfi);
+        flag$3(this, 'lockSsfi', origLockSsfi);
 
         if (result !== undefined) {
           return result;
         }
 
-        var newAssertion = new chai$1.Assertion();
-        transferFlags$1(this, newAssertion);
+        var newAssertion = new chai$4.Assertion();
+        transferFlags$3(this, newAssertion);
         return newAssertion;
       }
     , configurable: true
@@ -2578,6 +2613,12 @@ var overwriteProperty$1 = function overwriteProperty(ctx, name, getter) {
  * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
+var addLengthGuard$1 = addLengthGuard$3;
+var chai$3 = chai$7;
+var flag$2 = flag$a;
+var proxify$1 = proxify$3;
+var transferFlags$2 = transferFlags$6;
 
 /**
  * ### .overwriteMethod(ctx, name, fn)
@@ -2613,7 +2654,7 @@ var overwriteProperty$1 = function overwriteProperty(ctx, name, getter) {
  * @api public
  */
 
-var overwriteMethod$1 = function overwriteMethod(ctx, name, method) {
+var overwriteMethod = function overwriteMethod(ctx, name, method) {
   var _method = ctx[name]
     , _super = function () {
       throw new Error(name + ' is not a function');
@@ -2635,24 +2676,24 @@ var overwriteMethod$1 = function overwriteMethod(ctx, name, method) {
     // inside of another assertion. In the first case, the `ssfi` flag has
     // already been set by the overwriting assertion. In the second case, the
     // `ssfi` flag has already been set by the outer assertion.
-    if (!flag$1(this, 'lockSsfi')) {
-      flag$1(this, 'ssfi', overwritingMethodWrapper);
+    if (!flag$2(this, 'lockSsfi')) {
+      flag$2(this, 'ssfi', overwritingMethodWrapper);
     }
 
     // Setting the `lockSsfi` flag to `true` prevents the overwritten assertion
     // from changing the `ssfi` flag. By this point, the `ssfi` flag is already
     // set to the correct starting point for this assertion.
-    var origLockSsfi = flag$1(this, 'lockSsfi');
-    flag$1(this, 'lockSsfi', true);
+    var origLockSsfi = flag$2(this, 'lockSsfi');
+    flag$2(this, 'lockSsfi', true);
     var result = method(_super).apply(this, arguments);
-    flag$1(this, 'lockSsfi', origLockSsfi);
+    flag$2(this, 'lockSsfi', origLockSsfi);
 
     if (result !== undefined) {
       return result;
     }
 
-    var newAssertion = new chai$1.Assertion();
-    transferFlags$1(this, newAssertion);
+    var newAssertion = new chai$3.Assertion();
+    transferFlags$2(this, newAssertion);
     return newAssertion;
   };
 
@@ -2670,11 +2711,11 @@ var overwriteMethod$1 = function overwriteMethod(ctx, name, method) {
  * Module dependencies
  */
 
-
-
-
-
-
+var addLengthGuard = addLengthGuard$3;
+var chai$2 = chai$7;
+var flag$1 = flag$a;
+var proxify = proxify$3;
+var transferFlags$1 = transferFlags$6;
 
 /*!
  * Module variables
@@ -2732,7 +2773,7 @@ var call  = Function.prototype.call,
  * @api public
  */
 
-var addChainableMethod$1 = function addChainableMethod(ctx, name, method, chainingBehavior) {
+var addChainableMethod = function addChainableMethod(ctx, name, method, chainingBehavior) {
   if (typeof chainingBehavior !== 'function') {
     chainingBehavior = function () { };
   }
@@ -2777,12 +2818,12 @@ var addChainableMethod$1 = function addChainableMethod(ctx, name, method, chaini
             return result;
           }
 
-          var newAssertion = new chai$1.Assertion();
+          var newAssertion = new chai$2.Assertion();
           transferFlags$1(this, newAssertion);
           return newAssertion;
         };
 
-        addLengthGuard$1(chainableMethodWrapper, name, true);
+        addLengthGuard(chainableMethodWrapper, name, true);
 
         // Use `Object.setPrototypeOf` if available
         if (canSetPrototype) {
@@ -2807,7 +2848,7 @@ var addChainableMethod$1 = function addChainableMethod(ctx, name, method, chaini
         }
 
         transferFlags$1(this, chainableMethodWrapper);
-        return proxify$1(chainableMethodWrapper);
+        return proxify(chainableMethodWrapper);
       }
     , configurable: true
   });
@@ -2818,6 +2859,9 @@ var addChainableMethod$1 = function addChainableMethod(ctx, name, method, chaini
  * Copyright(c) 2012-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
+var chai$1 = chai$7;
+var transferFlags = transferFlags$6;
 
 /**
  * ### .overwriteChainableMethod(ctx, name, method, chainingBehavior)
@@ -2852,7 +2896,7 @@ var addChainableMethod$1 = function addChainableMethod(ctx, name, method, chaini
  * @api public
  */
 
-var overwriteChainableMethod$1 = function overwriteChainableMethod(ctx, name, method, chainingBehavior) {
+var overwriteChainableMethod = function overwriteChainableMethod(ctx, name, method, chainingBehavior) {
   var chainableBehavior = ctx.__methods[name];
 
   var _chainingBehavior = chainableBehavior.chainingBehavior;
@@ -2863,7 +2907,7 @@ var overwriteChainableMethod$1 = function overwriteChainableMethod(ctx, name, me
     }
 
     var newAssertion = new chai$1.Assertion();
-    transferFlags$1(this, newAssertion);
+    transferFlags(this, newAssertion);
     return newAssertion;
   };
 
@@ -2875,7 +2919,7 @@ var overwriteChainableMethod$1 = function overwriteChainableMethod(ctx, name, me
     }
 
     var newAssertion = new chai$1.Assertion();
-    transferFlags$1(this, newAssertion);
+    transferFlags(this, newAssertion);
     return newAssertion;
   };
 };
@@ -2890,7 +2934,7 @@ var overwriteChainableMethod$1 = function overwriteChainableMethod(ctx, name, me
  * Module dependencies
  */
 
-
+var inspect = inspect$2.exports;
 
 /**
  * ### .compareByInspect(mixed, mixed)
@@ -2908,8 +2952,8 @@ var overwriteChainableMethod$1 = function overwriteChainableMethod(ctx, name, me
  * @api public
  */
 
-var compareByInspect$1 = function compareByInspect(a, b) {
-  return inspect_1(a) < inspect_1(b) ? -1 : 1;
+var compareByInspect = function compareByInspect(a, b) {
+  return inspect(a) < inspect(b) ? -1 : 1;
 };
 
 /*!
@@ -2917,6 +2961,7 @@ var compareByInspect$1 = function compareByInspect(a, b) {
  * Copyright(c) 2011-2016 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
 /**
  * ### .getOwnEnumerablePropertySymbols(object)
  *
@@ -2949,7 +2994,7 @@ var getOwnEnumerablePropertySymbols$1 = function getOwnEnumerablePropertySymbols
  * Module dependencies
  */
 
-
+var getOwnEnumerablePropertySymbols = getOwnEnumerablePropertySymbols$1;
 
 /**
  * ### .getOwnEnumerableProperties(object)
@@ -2965,8 +3010,8 @@ var getOwnEnumerablePropertySymbols$1 = function getOwnEnumerablePropertySymbols
  * @api public
  */
 
-var getOwnEnumerableProperties$1 = function getOwnEnumerableProperties(obj) {
-  return Object.keys(obj).concat(getOwnEnumerablePropertySymbols$1(obj));
+var getOwnEnumerableProperties = function getOwnEnumerableProperties(obj) {
+  return Object.keys(obj).concat(getOwnEnumerablePropertySymbols(obj));
 };
 
 /* !
@@ -3121,7 +3166,7 @@ function getConstructorName(errorLike) {
  * @api public
  */
 
-function getMessage$1(errorLike) {
+function getMessage(errorLike) {
   var msg = '';
   if (errorLike && errorLike.message) {
     msg = errorLike.message;
@@ -3132,11 +3177,11 @@ function getMessage$1(errorLike) {
   return msg;
 }
 
-var checkError$1 = {
+var checkError = {
   compatibleInstance: compatibleInstance,
   compatibleConstructor: compatibleConstructor,
   compatibleMessage: compatibleMessage,
-  getMessage: getMessage$1,
+  getMessage: getMessage,
   getConstructorName: getConstructorName,
 };
 
@@ -3145,6 +3190,7 @@ var checkError$1 = {
  * Copyright(c) 2012-2015 Sakthipriyan Vairamani <thechargingvolcano@gmail.com>
  * MIT Licensed
  */
+
 /**
  * ### .isNaN(value)
  *
@@ -3164,10 +3210,14 @@ function isNaN(value) {
 }
 
 // If ECMAScript 6's Number.isNaN is present, prefer that.
-var _isNaN$1 = Number.isNaN || isNaN;
+var _isNaN = Number.isNaN || isNaN;
+
+var type = typeDetect.exports;
+
+var flag = flag$a;
 
 function isObjectType(obj) {
-  var objectType = typeDetect(obj);
+  var objectType = type(obj);
   var objectTypes = ['Array', 'Object', 'function'];
 
   return objectTypes.indexOf(objectType) !== -1;
@@ -3189,9 +3239,9 @@ function isObjectType(obj) {
  * @api public
  */
 
-var getOperator$1 = function getOperator(obj, args) {
-  var operator = flag$1(obj, 'operator');
-  var negate = flag$1(obj, 'negate');
+var getOperator = function getOperator(obj, args) {
+  var operator = flag(obj, 'operator');
+  var negate = flag(obj, 'negate');
   var expected = args[3];
   var msg = negate ? args[2] : args[1];
 
@@ -3228,205 +3278,174 @@ var getOperator$1 = function getOperator(obj, args) {
  * Dependencies that are used for multiple exports are required here only once
  */
 
-
+var pathval = pathval$1;
 
 /*!
  * test utility
  */
 
-var test = test$1;
+utils.test = test;
 
 /*!
  * type utility
  */
 
-var type = typeDetect;
+utils.type = typeDetect.exports;
 
 /*!
  * expectTypes utility
  */
-var expectTypes = expectTypes$1;
+utils.expectTypes = expectTypes;
 
 /*!
  * message utility
  */
 
-var getMessage = getMessage$2;
+utils.getMessage = getMessage$1;
 
 /*!
  * actual utility
  */
 
-var getActual = getActual$1;
+utils.getActual = getActual$1;
 
 /*!
  * Inspect util
  */
 
-var inspect = inspect_1;
+utils.inspect = inspect$2.exports;
 
 /*!
  * Object Display util
  */
 
-var objDisplay = objDisplay$1;
+utils.objDisplay = objDisplay$1;
 
 /*!
  * Flag utility
  */
 
-var flag = flag$1;
+utils.flag = flag$a;
 
 /*!
  * Flag transferring utility
  */
 
-var transferFlags = transferFlags$1;
+utils.transferFlags = transferFlags$6;
 
 /*!
  * Deep equal utility
  */
 
-var eql = deepEql;
+utils.eql = deepEql.exports;
 
 /*!
  * Deep path info
  */
 
-var getPathInfo = pathval.getPathInfo;
+utils.getPathInfo = pathval.getPathInfo;
 
 /*!
  * Check if a property exists
  */
 
-var hasProperty = pathval.hasProperty;
+utils.hasProperty = pathval.hasProperty;
 
 /*!
  * Function name
  */
 
-var getName = getFuncName_1;
+utils.getName = getFuncName_1;
 
 /*!
  * add Property
  */
 
-var addProperty = addProperty$1;
+utils.addProperty = addProperty;
 
 /*!
  * add Method
  */
 
-var addMethod = addMethod$1;
+utils.addMethod = addMethod;
 
 /*!
  * overwrite Property
  */
 
-var overwriteProperty = overwriteProperty$1;
+utils.overwriteProperty = overwriteProperty;
 
 /*!
  * overwrite Method
  */
 
-var overwriteMethod = overwriteMethod$1;
+utils.overwriteMethod = overwriteMethod;
 
 /*!
  * Add a chainable method
  */
 
-var addChainableMethod = addChainableMethod$1;
+utils.addChainableMethod = addChainableMethod;
 
 /*!
  * Overwrite chainable method
  */
 
-var overwriteChainableMethod = overwriteChainableMethod$1;
+utils.overwriteChainableMethod = overwriteChainableMethod;
 
 /*!
  * Compare by inspect method
  */
 
-var compareByInspect = compareByInspect$1;
+utils.compareByInspect = compareByInspect;
 
 /*!
  * Get own enumerable property symbols method
  */
 
-var getOwnEnumerablePropertySymbols = getOwnEnumerablePropertySymbols$1;
+utils.getOwnEnumerablePropertySymbols = getOwnEnumerablePropertySymbols$1;
 
 /*!
  * Get own enumerable properties method
  */
 
-var getOwnEnumerableProperties = getOwnEnumerableProperties$1;
+utils.getOwnEnumerableProperties = getOwnEnumerableProperties;
 
 /*!
  * Checks error against a given set of criteria
  */
 
-var checkError = checkError$1;
+utils.checkError = checkError;
 
 /*!
  * Proxify util
  */
 
-var proxify = proxify$1;
+utils.proxify = proxify$3;
 
 /*!
  * addLengthGuard util
  */
 
-var addLengthGuard = addLengthGuard$1;
+utils.addLengthGuard = addLengthGuard$3;
 
 /*!
  * isProxyEnabled helper
  */
 
-var isProxyEnabled = isProxyEnabled$1;
+utils.isProxyEnabled = isProxyEnabled$3;
 
 /*!
  * isNaN method
  */
 
-var _isNaN = _isNaN$1;
+utils.isNaN = _isNaN;
 
 /*!
  * getOperator method
  */
 
-var getOperator = getOperator$1;
-
-var utils = {
-	test: test,
-	type: type,
-	expectTypes: expectTypes,
-	getMessage: getMessage,
-	getActual: getActual,
-	inspect: inspect,
-	objDisplay: objDisplay,
-	flag: flag,
-	transferFlags: transferFlags,
-	eql: eql,
-	getPathInfo: getPathInfo,
-	hasProperty: hasProperty,
-	getName: getName,
-	addProperty: addProperty,
-	addMethod: addMethod,
-	overwriteProperty: overwriteProperty,
-	overwriteMethod: overwriteMethod,
-	addChainableMethod: addChainableMethod,
-	overwriteChainableMethod: overwriteChainableMethod,
-	compareByInspect: compareByInspect,
-	getOwnEnumerablePropertySymbols: getOwnEnumerablePropertySymbols,
-	getOwnEnumerableProperties: getOwnEnumerableProperties,
-	checkError: checkError,
-	proxify: proxify,
-	addLengthGuard: addLengthGuard,
-	isProxyEnabled: isProxyEnabled,
-	isNaN: _isNaN,
-	getOperator: getOperator
-};
+utils.getOperator = getOperator;
 
 /*!
  * chai
@@ -3434,6 +3453,8 @@ var utils = {
  * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
+var config = config$4;
 
 var assertion = function (_chai, util) {
   /*!
@@ -3608,6 +3629,7 @@ var assertion = function (_chai, util) {
  * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
 var assertions = function (chai, _) {
   var Assertion = chai.Assertion
     , AssertionError = chai.AssertionError
@@ -7458,6 +7480,7 @@ var assertions = function (chai, _) {
  * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
 var expect$1 = function (chai, util) {
   chai.expect = function (val, message) {
     return new chai.Assertion(val, message);
@@ -7505,6 +7528,7 @@ var expect$1 = function (chai, util) {
  * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
 var should = function (chai, util) {
   var Assertion = chai.Assertion;
 
@@ -7723,6 +7747,7 @@ var should = function (chai, util) {
  * Copyright(c) 2011-2014 Jake Luer <jake@alogicalparadox.com>
  * MIT Licensed
  */
+
 var assert = function (chai, util) {
   /*!
    * Chai dependencies.
@@ -10837,7 +10862,7 @@ var assert = function (chai, util) {
  * MIT Licensed
  */
 
-var chai$1 = createCommonjsModule(function (module, exports) {
+(function (exports) {
 var used = [];
 
 /*!
@@ -10856,7 +10881,7 @@ exports.AssertionError = assertionError;
  * Utils for plugins (not exported)
  */
 
-
+var util = utils;
 
 /**
  * # .use(function)
@@ -10870,7 +10895,7 @@ exports.AssertionError = assertionError;
 
 exports.use = function (fn) {
   if (!~used.indexOf(fn)) {
-    fn(exports, utils);
+    fn(exports, util);
     used.push(fn);
   }
 
@@ -10881,52 +10906,52 @@ exports.use = function (fn) {
  * Utility Functions
  */
 
-exports.util = utils;
+exports.util = util;
 
 /*!
  * Configuration
  */
 
-
+var config = config$4;
 exports.config = config;
 
 /*!
  * Primary `Assertion` prototype
  */
 
-
-exports.use(assertion);
+var assertion$1 = assertion;
+exports.use(assertion$1);
 
 /*!
  * Core Assertions
  */
 
-
-exports.use(assertions);
+var core = assertions;
+exports.use(core);
 
 /*!
  * Expect interface
  */
 
-
-exports.use(expect$1);
+var expect = expect$1;
+exports.use(expect);
 
 /*!
  * Should interface
  */
 
-
-exports.use(should);
+var should$1 = should;
+exports.use(should$1);
 
 /*!
  * Assert interface
  */
 
+var assert$1 = assert;
+exports.use(assert$1);
+}(chai$7));
 
-exports.use(assert);
-});
-
-var chai = chai$1;
+var chai = chai$7;
 
 const expect = chai.expect;
 chai.version;
@@ -10969,10 +10994,14 @@ class Path {
    * @return {instance} for chaining
    */
   delete(loc) {
-    if (!loc) {
+    if (Array.isArray(loc)) {
+      loc.reverse().forEach(l => this._path.splice(l, 1));
+    } else if (Number.isInteger(loc)) {
+      this._path.splice(loc, 1);
+    } else {
       this._path.pop();
-      return this.ctx;
     }
+    return this.ctx;
   }
 
   /**
@@ -11407,8 +11436,8 @@ class TinyUri {
 describe('TinyUri', () => {
 
   it('should parse a url into its parts', () => {
-    let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
-    let uri = new TinyUri(url);
+    const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+    const uri = new TinyUri(url);
     expect(uri.scheme()).to.be.equal('https');
     expect(uri.host()).to.be.equal('big.example.com');
     expect(uri.authority()).to.be.equal('user:pass@big.example.com');
@@ -11417,8 +11446,8 @@ describe('TinyUri', () => {
   });
 
   it('should parse an empty string url without blowing up', () => {
-    let url = '';
-    let uri = new TinyUri(url);
+    const url = '';
+    const uri = new TinyUri(url);
     expect(uri.scheme()).to.be.equal('');
     expect(uri.host()).to.be.equal('');
     expect(uri.authority()).to.be.equal('');
@@ -11427,8 +11456,8 @@ describe('TinyUri', () => {
   });
 
   it('should parse a relative url into its parts', () => {
-    let url = 'path/to/file.xml?context=foo&credentials=bar';
-    let uri = new TinyUri(url);
+    const url = 'path/to/file.xml?context=foo&credentials=bar';
+    const uri = new TinyUri(url);
     expect(uri.scheme()).to.be.equal('');
     expect(uri.host()).to.be.equal('');
     expect(uri.authority()).to.be.equal('');
@@ -11437,8 +11466,8 @@ describe('TinyUri', () => {
   });
 
   it('should parse a url with url template tags into its parts', () => {
-    let url = 'https://user:pass@big.example.com/quotetools/getHistoryDownload/{user}/download.csv{?webmasterId,startDay,startMonth,startYear,endDay,endMonth,endYear,isRanged,symbol}';
-    let uri = new TinyUri(url);
+    const url = 'https://user:pass@big.example.com/quotetools/getHistoryDownload/{user}/download.csv{?webmasterId,startDay,startMonth,startYear,endDay,endMonth,endYear,isRanged,symbol}';
+    const uri = new TinyUri(url);
     expect(uri.scheme()).to.be.equal('https');
     expect(uri.host()).to.be.equal('big.example.com');
     expect(uri.authority()).to.be.equal('user:pass@big.example.com');
@@ -11450,8 +11479,8 @@ describe('TinyUri', () => {
   });
 
   it('should parse a url into its parts even if query string not provided', () => {
-    let url = 'https://user:pass@big.example.com/path/to/file.xml';
-    let uri = new TinyUri(url);
+    const url = 'https://user:pass@big.example.com/path/to/file.xml';
+    const uri = new TinyUri(url);
     expect(uri.scheme()).to.be.equal('https');
     expect(uri.host()).to.be.equal('big.example.com');
     expect(uri.authority()).to.be.equal('user:pass@big.example.com');
@@ -11460,91 +11489,105 @@ describe('TinyUri', () => {
   });
 
   it('should convert the uri to a string', () => {
-    let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
-    let uri = new TinyUri(url);
+    const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+    const uri = new TinyUri(url);
     expect(uri.toString()).to.be.equal(url);
   });
 
   it('should convert the uri to a string without a trailing slash', () => {
-    let url = 'https://big.example.com/';
-    let uri = new TinyUri(url);
+    const url = 'https://big.example.com/';
+    const uri = new TinyUri(url);
     expect(uri.toString()).to.be.equal('https://big.example.com');
   });
 
   it('should change the host', () => {
-    let url = 'https://big.example.com/';
-    let uri = new TinyUri(url);
+    const url = 'https://big.example.com/';
+    const uri = new TinyUri(url);
     uri.host(uri.host() === 'big.example.com' ? 'small.example.com' : uri.host());
     expect(uri.toString()).to.be.equal('https://small.example.com');
   });
 
   it('should change the host', () => {
-    let url = 'https://small.example.com/';
-    let uri = new TinyUri(url);
+    const url = 'https://small.example.com/';
+    const uri = new TinyUri(url);
     uri.host(uri.host() === 'big.example.com' ? 'small.example.com' : uri.host());
     expect(uri.toString()).to.be.equal('https://small.example.com');
   });
 
   describe('Path', () => {
     it('should return the path', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml';
+      const uri = new TinyUri(url);
 
       expect(uri.path.toString()).to.be.equal('path/to/file.xml');
     });
 
     it('should replace the path', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml';
+      const uri = new TinyUri(url);
 
       expect(uri.path.replace('different/path/to/file.json').path.toString()).to.be.equal('different/path/to/file.json');
     });
 
     it('should replace the file part of the path', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml';
+      const uri = new TinyUri(url);
 
       expect(uri.path.replace('file.json', 'file').path.toString()).to.be.equal('path/to/file.json');
     });
 
     it('should remove the last segment of the path', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml';
+      const uri = new TinyUri(url);
 
       expect(uri.path.delete().path.toString()).to.be.equal('path/to');
     });
 
+    it('should remove a specific segment of the the path', () => {
+      const url = 'https://user:pass@big.example.com/path/to/file.xml';
+      const uri = new TinyUri(url);
+
+      expect(uri.path.delete(0).path.toString()).to.be.equal('to/file.xml');
+    });
+
+    it('should remove several segments of the the path', () => {
+      const url = 'https://user:pass@big.example.com/really/long/path/to/file.xml';
+      const uri = new TinyUri(url);
+
+      expect(uri.path.delete([0, 1, 2, 3]).path.toString()).to.be.equal('file.xml');
+    });
+
     it('should replace the first segment of the path', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml';
+      const uri = new TinyUri(url);
 
       expect(uri.path.replace('new-path', 0).path.toString()).to.be.equal('new-path/to/file.xml');
     });
 
     it('should replace the second segment of the path', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml';
+      const uri = new TinyUri(url);
 
       expect(uri.path.replace('new-to', 1).path.toString()).to.be.equal('path/new-to/file.xml');
     });
 
     it('should return the uri as a string', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml';
+      const uri = new TinyUri(url);
 
       expect(uri.path.replace('new-to', 1).path.toString(true)).to.be.equal('https://user:pass@big.example.com/path/new-to/file.xml');
     });
 
     it('should support path chaining', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml';
+      const uri = new TinyUri(url);
 
       expect(uri.path.replace('new-path', 0).path.replace('new-to', 1).path.toString(true)).to.be.equal('https://user:pass@big.example.com/new-path/new-to/file.xml');
     });
 
     it('should support path appending and chaining', () => {
-      let url = 'https://user:pass@big.example.com';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com';
+      const uri = new TinyUri(url);
       uri.path.append('path').path.append('to').path.append('file');
 
       expect(uri.toString()).to.be.equal('https://user:pass@big.example.com/path/to/file');
@@ -11554,49 +11597,49 @@ describe('TinyUri', () => {
 
   describe('Query', () => {
     it('should set the query string', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+      const uri = new TinyUri(url);
       uri.query.set({foo: 'bar'});
       expect(uri.query.toString()).to.be.equal('foo=bar');
     });
 
     it('should return a url template query string', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml{?userid,name}';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml{?userid,name}';
+      const uri = new TinyUri(url);
 
       expect(uri.query.getUrlTemplateQuery()).to.be.equal('userid,name');
     });
 
     it('should add a query string properly on a naked host', () => {
-      let url = 'https://big.example.com';
-      let uri = new TinyUri(url);
+      const url = 'https://big.example.com';
+      const uri = new TinyUri(url);
       uri.query.add({foo: 'bar'});
       expect(uri.toString()).to.be.equal('https://big.example.com?foo=bar');
     });
 
     it('should clear to the query string', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+      const uri = new TinyUri(url);
       expect(uri.query.clear().query.toString()).to.be.equal('');
     });
 
     it('should append to the query string', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+      const uri = new TinyUri(url);
       uri.query.add({foo: 'bar'});
       expect(uri.query.toString()).to.be.equal('context=foo&credentials=bar&foo=bar');
     });
 
     it('should change/replace a query parameter', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+      const uri = new TinyUri(url);
       uri.query.merge({context: 'bar'});
       expect(uri.query.toString()).to.be.equal('context=bar&credentials=bar');
     });
 
     it('should, when cleared, return a proper url', () => {
-      let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
-      let uri = new TinyUri(url);
+      const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+      const uri = new TinyUri(url);
       uri.query.clear();
       expect(uri.toString()).to.be.equal('https://user:pass@big.example.com/path/to/file.xml');
     });
@@ -11624,22 +11667,22 @@ describe('TinyUri', () => {
   });
 
   it('should change the host', () => {
-    let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
-    let uri = new TinyUri(url);
+    const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+    const uri = new TinyUri(url);
     uri.host('little.example.com');
     expect(uri.host()).to.be.equal('little.example.com');
   });
 
   it('should change the scheme', () => {
-    let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
-    let uri = new TinyUri(url);
+    const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+    const uri = new TinyUri(url);
     uri.scheme('http');
     expect(uri.scheme()).to.be.equal('http');
   });
 
   it('should demonstrate chaining', () => {
-    let url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
-    let uri = new TinyUri(url);
+    const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
+    const uri = new TinyUri(url);
     expect(uri.scheme().toString()).to.be.equal('https');
     expect(uri.host().toString()).to.be.equal('big.example.com');
     expect(uri.port().toString()).to.be.equal('');

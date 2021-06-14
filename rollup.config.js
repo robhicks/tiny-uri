@@ -31,20 +31,7 @@ export default [
   },
   {
     input: entry,
-    plugins: [...plugins, !production && liveServer({
-			file: 'mocha.html',
-			port: 3001,
-      host: '0.0.0.0',
-      root: './test',
-      mount: [
-        [ '/dist', './dist' ],
-        [ '/node_modules', './node_modules' ],
-        [ '/src', './src' ],
-        [ '/test', './test' ]
-      ],
-      open: false,
-      wait: 500
-		})],
+    plugins: [...plugins],
     output: {
       exports: 'auto',
       file: resolve(root, "dist", "tiny-uri.js"),
@@ -62,7 +49,20 @@ export default [
   },
   {
     input: resolve(root, 'test', 'tests.js'),
-    plugins: [...plugins],
+    plugins: [...plugins, !production && liveServer({
+			file: 'mocha.html',
+			port: 3001,
+      host: '0.0.0.0',
+      root: './test',
+      mount: [
+        [ '/dist', './dist' ],
+        [ '/node_modules', './node_modules' ],
+        [ '/src', './src' ],
+        [ '/test', './test' ]
+      ],
+      open: false,
+      wait: 500
+		})],
     output: {
       exports: 'auto',
       file: resolve(root, "test", "test-bundle.js"),
