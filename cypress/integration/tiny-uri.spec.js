@@ -1,7 +1,6 @@
-import TinyUri from '../src/TinyUri.js';
+import TinyUri from '../../src/TinyUri';
 
 describe('TinyUri', () => {
-
   it('should parse a url into its parts', () => {
     const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
     const uri = new TinyUri(url);
@@ -166,7 +165,7 @@ describe('TinyUri', () => {
     it('should set the query string', () => {
       const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
       const uri = new TinyUri(url);
-      uri.query.set({foo: 'bar'});
+      uri.query.set({ foo: 'bar' });
       expect(uri.query.toString()).to.be.equal('foo=bar');
     });
 
@@ -180,7 +179,7 @@ describe('TinyUri', () => {
     it('should add a query string properly on a naked host', () => {
       const url = 'https://big.example.com';
       const uri = new TinyUri(url);
-      uri.query.add({foo: 'bar'});
+      uri.query.add({ foo: 'bar' });
       expect(uri.toString()).to.be.equal('https://big.example.com?foo=bar');
     });
 
@@ -193,14 +192,14 @@ describe('TinyUri', () => {
     it('should append to the query string', () => {
       const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
       const uri = new TinyUri(url);
-      uri.query.add({foo: 'bar'});
+      uri.query.add({ foo: 'bar' });
       expect(uri.query.toString()).to.be.equal('context=foo&credentials=bar&foo=bar');
     });
 
     it('should change/replace a query parameter', () => {
       const url = 'https://user:pass@big.example.com/path/to/file.xml?context=foo&credentials=bar';
       const uri = new TinyUri(url);
-      uri.query.merge({context: 'bar'});
+      uri.query.merge({ context: 'bar' });
       expect(uri.query.toString()).to.be.equal('context=bar&credentials=bar');
     });
 
@@ -255,10 +254,9 @@ describe('TinyUri', () => {
     expect(uri.port().toString()).to.be.equal('');
     expect(Array.isArray(uri.path.get())).to.be.equal(true);
     expect(uri.path.toString()).to.be.equal('path/to/file.xml');
-    expect(uri.query.add({foo: 'bar'}).query.toString()).to.be.equal('context=foo&credentials=bar&foo=bar');
-    expect(uri.query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString()).to.be.equal('context=foo&credentials=bar&foo=bars');
-    expect(uri.query.clear().query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString()).to.be.equal('foo=bars');
-    expect(uri.query.clear().query.add({foo: 'bar'}).query.merge({foo: 'bars'}).query.toString(true)).to.be.equal('https://user:pass@big.example.com/path/to/file.xml?foo=bars');
+    expect(uri.query.add({ foo: 'bar' }).query.toString()).to.be.equal('context=foo&credentials=bar&foo=bar');
+    expect(uri.query.add({ foo: 'bar' }).query.merge({ foo: 'bars' }).query.toString()).to.be.equal('context=foo&credentials=bar&foo=bars');
+    expect(uri.query.clear().query.add({ foo: 'bar' }).query.merge({ foo: 'bars' }).query.toString()).to.be.equal('foo=bars');
+    expect(uri.query.clear().query.add({ foo: 'bar' }).query.merge({ foo: 'bars' }).query.toString(true)).to.be.equal('https://user:pass@big.example.com/path/to/file.xml?foo=bars');
   });
-
 });
