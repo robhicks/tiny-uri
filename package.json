@@ -1,6 +1,6 @@
 {
   "name": "tiny-uri",
-  "version": "9.1.1",
+  "version": "9.1.2",
   "description": "Lightweight Javascript library for handling URLs",
   "keywords": [
     "Lightweight",
@@ -24,11 +24,11 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.3.4",
-    "eslint": "^7.28.0",
-    "mocha": "^9.0.0",
+    "eslint": "^7.29.0",
+    "mocha": "^9.0.1",
     "nock": "^13.1.0",
     "rollup-plugin-live-server": "^2.0.0",
-    "serialize-javascript": ">=5.0.1",
+    "serialize-javascript": ">=6.0.0",
     "sinon": "^11.1.1",
     "sinon-chai": "^3.7.0",
     "static-server": "^2.2.1"
@@ -39,7 +39,7 @@
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
     "npm-run-all": "^4.1.5",
-    "rollup": "^2.51.2",
+    "rollup": "^2.52.2",
     "rollup-plugin-server": "^0.7.0",
     "rollup-plugin-terser": "^7.0.2"
   }

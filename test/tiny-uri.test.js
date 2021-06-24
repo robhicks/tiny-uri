@@ -1,4 +1,3 @@
-import { expect } from 'chai';
 import TinyUri from '../src/TinyUri.js';
 
 describe('TinyUri', () => {
