@@ -467,4 +467,4 @@ class TinyUri {
 
 }
 
-export default TinyUri;
+export { TinyUri as default };

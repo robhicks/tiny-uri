@@ -1,6 +1,6 @@
 {
   "name": "tiny-uri",
-  "version": "9.1.3",
+  "version": "9.1.4",
   "description": "Lightweight Javascript library for handling URLs",
   "keywords": [
     "Lightweight",
@@ -24,17 +24,17 @@
   "author": "rob@hixfamily.org",
   "license": "MIT",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^19.0.0",
-    "@rollup/plugin-node-resolve": "^13.0.0",
-    "cypress": "^7.6.0",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "cypress": "^9.5.0",
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
-    "eslint": "^7.29.0",
+    "eslint": "^8.9.0",
     "eslint-config-standard": "^16.0.3",
-    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^5.1.0",
-    "rollup": "^2.52.2",
+    "eslint-plugin-promise": "^6.0.0",
+    "rollup": "^2.68.0",
     "rollup-plugin-terser": "^7.0.2"
   },
   "dependencies": {}
