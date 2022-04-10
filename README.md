@@ -1,6 +1,6 @@
 # tiny-uri
 
-tiny-uri is yet another Javascript library for working with URLs. It offers a (fluent interface)[<https://en.wikipedia.org/wiki/Fluent_interface>], method chaining, and sensible means of manipulating Url parts and a file size of less than 5K, gzipped.
+tiny-uri is yet another Javascript library for working with URLs. It offers a [fluent interface](<https://en.wikipedia.org/wiki/Fluent_interface>), method chaining, and sensible means of manipulating Url parts and a file size of less than 5K, gzipped.
 
 # Installation
 
@@ -22,7 +22,7 @@ In NodeJs, require it as usual.
 
 # Examples
 
-## Getting URL parts:
+## Getting URL parts
 
 ```javascript
 import TinyUri from 'tiny-uri';
@@ -35,7 +35,7 @@ console.log('path', uri.path.toString()); // /path/to/foo/index.html
 console.log('query', uri.query.toString()); // hello=world
 ```
 
-## Manipulating URL parts:
+## Manipulating URL parts
 
 ```javascript
 import TinyUri from 'tiny-uri';
@@ -146,6 +146,7 @@ uri.
 
 console.log('query', uri.query.toString()); // hello=universe&goodby=world
 ```
+
 ### Getting a specific query string parameter
 
 Let's say you want to get the value of a context query string parameter
@@ -180,4 +181,5 @@ expect(uri.query.clear().query.add({foo: 'bar'}).query.merge({foo: 'bars'}).quer
 ```
 
 # Changes
+
 - 9.0.0 - the library hasn't changed but the build system has. This library only supports modern browsers and Node JS. Importing the library in the browser, pulls in an minified esm build. If you want to import the esm source directly, use ```import TinyUri from 'tiny-uri/src/TinyUri.js'```. In node, you can use the default cjs or if you are using esm ```import TinyUri from 'tiny-uri/index.mjs'```.

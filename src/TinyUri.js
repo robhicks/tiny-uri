@@ -11,8 +11,8 @@ export default class TinyUri {
    * @return {instance} - return Uri instance for chaining
    */
   constructor(uri) {
-    this.uriRegEx = /^(([^:\/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
-    this.authRegEx = /^([^\@]+)\@/;
+    this.uriRegEx = /^(([^:/?#]+):)?(\/\/([^\/?#]*))?([^?#]*)(\?([^#]*))?(#(.*))?/;
+    this.authRegEx = /^([^@]+)@/;
     this.portRegEx = /:(\d+)$/;
     this.qRegEx = /^([^=]+)(?:=(.*))?$/;
     this.urlTempQueryRegEx = /\{\?(.*?)\}/;
